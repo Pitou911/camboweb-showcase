@@ -101,3 +101,31 @@ export const templateUrl = (slug, fields = {}) => {
 }
 
 export const siteUrl = (slug, name) => `/templates/${slug}/index.html${name ? `?name=${encodeURIComponent(name)}` : ''}`
+
+// POS templates live in public/templates/pos-<kind>/ and share public/templates/shared/pos.js.
+export const posTemplates = [
+  {
+    slug: 'pos-mart',
+    name: 'Mart',
+    title: 'Sunrise Mart',
+    swatch: ['#0f4d32', '#ffc93c'],
+    blurb: 'For minimarts and shops. Scan a barcode or tap a product, see stock as you sell, and give change in dollars or riel.',
+    highlights: ['Barcode scanning', 'Live stock count', 'Low-stock warnings', 'Change in USD & riel'],
+  },
+  {
+    slug: 'pos-cafe',
+    name: 'Café',
+    title: 'Mekong Brew',
+    swatch: ['#2b1d14', '#c4692e'],
+    blurb: 'For coffee shops. Size, sugar and ice on every drink, dine-in or takeaway, and an order number for the pickup queue.',
+    highlights: ['Size, sugar & ice', 'Order numbers', 'Pickup queue', 'KHQR & cash'],
+  },
+  {
+    slug: 'pos-restaurant',
+    name: 'Restaurant',
+    title: 'Riverside Kitchen',
+    swatch: ['#141a26', '#e4572e'],
+    blurb: 'For table service. Pick a table, send rounds to the kitchen printer, then print the bill and take payment.',
+    highlights: ['Tables at a glance', 'Send to kitchen', 'Bill & pay', 'Khmer dish names'],
+  },
+]

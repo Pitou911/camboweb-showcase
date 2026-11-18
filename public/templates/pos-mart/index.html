@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunrise Mart · Mart POS Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Battambang:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pos.css">
+<style>:root{--font:'Figtree',system-ui,sans-serif;--bg:#f2f4f1;--panel:#ffffff;--ink:#14211a;--muted:#647169;--line:#dfe5df;--bar:#0f4d32;--bar-ink:#ffffff;--bar-field:rgba(255,255,255,.13);--accent:#ffc93c;--accent-ink:#1d1a05;--hover:#edf1ed;--ok:#1f8a4c;--warn:#c2410c;--busy:#1f8a4c;--sent:#f4faf5}</style>
+</head>
+<body data-order="Get this POS" data-need="POS system">
+<script>window.POS = {
+ "mode": "mart",
+ "rate": 4100,
+ "cashier": "Till 1 · Sreyneang",
+ "brand": {
+  "mark": "S",
+  "name": "Sunrise Mart",
+  "sub": "Minimart · Toul Kork",
+  "address": "Street 315, Toul Kork, Phnom Penh"
+ },
+ "categories": [
+  {
+   "id": "drinks",
+   "name": "Drinks",
+   "hue": 200
+  },
+  {
+   "id": "snacks",
+   "name": "Snacks",
+   "hue": 30
+  },
+  {
+   "id": "pantry",
+   "name": "Pantry",
+   "hue": 45
+  },
+  {
+   "id": "fresh",
+   "name": "Fresh",
+   "hue": 130
+  },
+  {
+   "id": "home",
+   "name": "Household",
+   "hue": 260
+  },
+  {
+   "id": "care",
+   "name": "Personal care",
+   "hue": 320
+  }
+ ],
+ "items": [
+  {
+   "id": "m-water",
+   "name": "Drinking water 500ml",
+   "cat": "drinks",
+   "price": 0.3,
+   "kh": "ទឹកសុទ្ធ",
+   "code": "8850001",
+   "stock": 48
+  },
+  {
+   "id": "m-water15",
+   "name": "Drinking water 1.5L",
+   "cat": "drinks",
+   "price": 0.6,
+   "kh": "ទឹកសុទ្ធ",
+   "code": "8850002",
+   "stock": 24
+  },
+  {
+   "id": "m-cola",
+   "name": "Cola can 330ml",
+   "cat": "drinks",
+   "price": 0.6,
+   "code": "8850003",
+   "stock": 36
+  },
+  {
+   "id": "m-oj",
+   "name": "Orange juice 1L",
+   "cat": "drinks",
+   "price": 2.5,
+   "kh": "ទឹកក្រូច",
+   "code": "8850004",
+   "stock": 4
+  },
+  {
+   "id": "m-energy",
+   "name": "Energy drink",
+   "cat": "drinks",
+   "price": 0.7,
+   "code": "8850005",
+   "stock": 30
+  },
+  {
+   "id": "m-lager",
+   "name": "Lager can 330ml",
+   "cat": "drinks",
+   "price": 0.85,
+   "code": "8850006",
+   "stock": 60
+  },
+  {
+   "id": "m-noodle",
+   "name": "Instant noodles",
+   "cat": "snacks",
+   "price": 0.4,
+   "kh": "មី",
+   "code": "8850011",
+   "stock": 80
+  },
+  {
+   "id": "m-chips",
+   "name": "Potato chips",
+   "cat": "snacks",
+   "price": 0.9,
+   "code": "8850012",
+   "stock": 22
+  },
+  {
+   "id": "m-choc",
+   "name": "Chocolate bar",
+   "cat": "snacks",
+   "price": 1.1,
+   "code": "8850013",
+   "stock": 3
+  },
+  {
+   "id": "m-coffee",
+   "name": "Coffee 3-in-1, 10 sachets",
+   "cat": "snacks",
+   "price": 1.8,
+   "kh": "កាហ្វេ",
+   "code": "8850014",
+   "stock": 18
+  },
+  {
+   "id": "m-rice",
+   "name": "Jasmine rice 5kg",
+   "cat": "pantry",
+   "price": 6.5,
+   "kh": "អង្ករក្រអូប",
+   "code": "8850021",
+   "stock": 12
+  },
+  {
+   "id": "m-fish",
+   "name": "Fish sauce 700ml",
+   "cat": "pantry",
+   "price": 1.2,
+   "kh": "ទឹកត្រី",
+   "code": "8850022",
+   "stock": 16
+  },
+  {
+   "id": "m-soy",
+   "name": "Soy sauce 300ml",
+   "cat": "pantry",
+   "price": 1.0,
+   "code": "8850023",
+   "stock": 14
+  },
+  {
+   "id": "m-palm",
+   "name": "Palm sugar 500g",
+   "cat": "pantry",
+   "price": 1.5,
+   "kh": "ស្ករត្នោត",
+   "code": "8850024",
+   "stock": 9
+  },
+  {
+   "id": "m-oil",
+   "name": "Cooking oil 1L",
+   "cat": "pantry",
+   "price": 2.4,
+   "code": "8850025",
+   "stock": 2
+  },
+  {
+   "id": "m-bread",
+   "name": "White bread",
+   "cat": "fresh",
+   "price": 1.25,
+   "kh": "នំបុ័ង",
+   "code": "8850031",
+   "stock": 6
+  },
+  {
+   "id": "m-eggs",
+   "name": "Eggs, 10 pack",
+   "cat": "fresh",
+   "price": 1.6,
+   "kh": "ពងមាន់",
+   "code": "8850032",
+   "stock": 15
+  },
+  {
+   "id": "m-milk",
+   "name": "Fresh milk 1L",
+   "cat": "fresh",
+   "price": 2.2,
+   "kh": "ទឹកដោះគោ",
+   "code": "8850033",
+   "stock": 8
+  },
+  {
+   "id": "m-ice",
+   "name": "Ice 2kg",
+   "cat": "fresh",
+   "price": 0.5,
+   "kh": "ទឹកកក",
+   "code": "8850034",
+   "stock": 20
+  },
+  {
+   "id": "m-tissue",
+   "name": "Tissue, 6 rolls",
+   "cat": "home",
+   "price": 2.1,
+   "code": "8850041",
+   "stock": 11
+  },
+  {
+   "id": "m-soap",
+   "name": "Laundry powder 1kg",
+   "cat": "home",
+   "price": 2.9,
+   "code": "8850042",
+   "stock": 7
+  },
+  {
+   "id": "m-paste",
+   "name": "Toothpaste",
+   "cat": "care",
+   "price": 1.3,
+   "code": "8850051",
+   "stock": 13
+  },
+  {
+   "id": "m-shampoo",
+   "name": "Shampoo 200ml",
+   "cat": "care",
+   "price": 2.8,
+   "code": "8850052",
+   "stock": 5
+  }
+ ]
+}</script>
+<script src="../shared/pos.js"></script>
+<script src="../shared/ribbon.js"></script>
+</body>
+</html>

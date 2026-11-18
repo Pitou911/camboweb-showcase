@@ -391,3 +391,5 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; l
 .screens figure { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--line); background: var(--raised); }
 .screens figcaption { padding: 12px 16px; font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--line); }
 @media (max-width: 720px) { .screens { grid-template-columns: minmax(0, 1fr); } }
+.tablet-frame { padding: clamp(10px, 1.4vw, 16px); border-radius: clamp(18px, 2.4vw, 30px); background: #10232a; box-shadow: 0 40px 70px -40px rgba(6, 32, 41, 0.5); }
+.tablet-frame .live { border-radius: clamp(8px, 1vw, 14px); overflow: hidden; }

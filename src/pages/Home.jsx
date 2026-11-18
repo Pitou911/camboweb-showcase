@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { invitations, siteUrl, templateUrl, websites } from '../data/templates'
+import { invitations, posTemplates, siteUrl, templateUrl, websites } from '../data/templates'
 import LiveFrame from '../components/LiveFrame'
 import { Link } from 'react-router-dom'
-import { Tablet } from '../components/Devices'
 import Cover from '../components/Cover'
 import { projects } from '../data/projects'
 
@@ -154,6 +153,45 @@ function SiteStudio() {
   )
 }
 
+function PosStudio() {
+  const [active, setActive] = useState(posTemplates[0])
+  const [name, setName] = useState('')
+  const frame = useRef(null)
+
+  const push = useCallback(() => {
+    frame.current?.contentWindow?.postMessage({ type: 'cw-fields', fields: { name } }, window.location.origin)
+  }, [name])
+  useEffect(() => { push() }, [push])
+
+  return (
+    <div className="site-studio">
+      <div className="site-bar">
+        <Picker items={posTemplates} active={active} onPick={setActive} label="POS templates" sub={(t) => t.name} />
+        <div className="site-controls">
+          <label className="biz">Your business name
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder={active.title} />
+          </label>
+        </div>
+      </div>
+      <div className="site-view">
+        <div className="tablet-frame">
+          <LiveFrame key={active.slug} ref={frame} src={siteUrl(active.slug)} width={1280} height={800} title={`${active.title} POS template, live preview`} onLoad={push} />
+        </div>
+        <aside className="site-info">
+          <h3>{active.title}</h3>
+          <p>{active.blurb}</p>
+          <ul className="hl">{active.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
+          <div className="panel-actions">
+            <a className="btn btn-ink" href={siteUrl(active.slug, name.trim())} target="_blank" rel="noreferrer">Open full screen</a>
+            <Link className="btn btn-line" to={`/contact?need=POS%20system&template=${encodeURIComponent(active.title)}`}>Get this POS</Link>
+          </div>
+          <p className="fine">Ring up a sale and take payment. It runs on any Android tablet or iPad. Nothing here is saved.</p>
+        </aside>
+      </div>
+    </div>
+  )
+}
+
 function WorkStrip() {
   return (
     <div className="work-strip">
@@ -182,7 +220,7 @@ export default function Home() {
             <nav className="tpl-tabs" aria-label="Template types">
               <a href="#invitations">E-invitations <span>{invitations.length}</span></a>
               <a href="#websites">Websites <span>{websites.length}</span></a>
-              <a href="#pos">POS <span>soon</span></a>
+              <a href="#pos">POS <span>{posTemplates.length}</span></a>
             </nav>
           </div>
           <div className="showcase" aria-hidden="true">
@@ -216,17 +254,14 @@ export default function Home() {
       </section>
 
       <section className="wrap section" id="pos" aria-labelledby="pos-h">
-        <div className="pos-soon">
-          <div>
-            <h2 id="pos-h" className="h-section">POS system</h2>
-            <p className="body-lg">
-              The tablet point-of-sale we built for LoRi, ready for your restaurant, bar or café: floor plan,
-              kitchen printing, bills in USD and riel, and nightly sales reports. Live preview coming soon.
-            </p>
-            <Link className="btn btn-ink" to="/contact?need=POS%20system">Ask for a demo</Link>
-          </div>
-          <div className="pos-dev"><Tablet /></div>
+        <div className="head-row">
+          <h2 id="pos-h" className="h-section">POS systems</h2>
+          <p>
+            Built on the tablet POS we made for <Link className="text-link" to="/work/lori-pos">LoRi</Link>. Prices in dollars
+            and riel, KHQR, kitchen printing and daily reports.
+          </p>
         </div>
+        <PosStudio />
       </section>
 
       <section className="wrap section" aria-labelledby="clients-h">

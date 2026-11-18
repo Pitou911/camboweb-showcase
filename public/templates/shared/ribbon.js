@@ -4,6 +4,7 @@
   function mount() {
     if (document.querySelector('.cw-demo')) return
     const label = document.body.dataset.order || (document.body.dataset.music ? 'Order this invitation' : 'Get this website')
+    const need = document.body.dataset.need || (document.body.dataset.music ? 'E-invitation' : 'Website')
     const css = document.createElement('style')
     css.textContent = `
       .cw-demo{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2147483000;
@@ -19,7 +20,7 @@
     document.head.appendChild(css)
     const bar = document.createElement('div')
     bar.className = 'cw-demo'
-    bar.innerHTML = `<i aria-hidden="true"></i><span>Demo by CamboWeb</span><a target="_top" href="/contact?need=${document.body.dataset.music ? "E-invitation" : "Website"}&template=${encodeURIComponent(document.title.split(" · ")[0].trim())}">${label}</a>`
+    bar.innerHTML = `<i aria-hidden="true"></i><span>Demo by CamboWeb</span><a target="_top" href="/contact?need=${encodeURIComponent(need)}&template=${encodeURIComponent(document.title.split(" · ")[0].trim())}">${label}</a>`
     document.body.appendChild(bar)
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount)

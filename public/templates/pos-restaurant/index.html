@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riverside Kitchen · Restaurant POS Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&family=Battambang:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pos.css">
+<style>:root{--font:'Barlow Semi Condensed',system-ui,sans-serif;--bg:#eef1f5;--panel:#ffffff;--ink:#141a26;--muted:#606a7b;--line:#e1e5ec;--bar:#141a26;--bar-ink:#ffffff;--bar-field:rgba(255,255,255,.1);--accent:#e4572e;--accent-ink:#ffffff;--hover:#eff1f5;--ok:#1f8a4c;--warn:#c2410c;--busy:#2f6fdf;--sent:#f3f8f4}</style>
+</head>
+<body data-order="Get this POS" data-need="POS system">
+<script>window.POS = {
+ "mode": "restaurant",
+ "rate": 4100,
+ "cashier": "Server · Dara",
+ "brand": {
+  "mark": "R",
+  "name": "Riverside Kitchen",
+  "sub": "Khmer restaurant · Siem Reap",
+  "address": "Pub Street area, Siem Reap"
+ },
+ "tables": [
+  "T1",
+  "T2",
+  "T3",
+  "T4",
+  "T5",
+  "T6",
+  "T7",
+  "T8"
+ ],
+ "categories": [
+  {
+   "id": "starters",
+   "name": "Starters",
+   "hue": 30
+  },
+  {
+   "id": "mains",
+   "name": "Mains",
+   "hue": 140
+  },
+  {
+   "id": "drinks",
+   "name": "Drinks",
+   "hue": 200
+  },
+  {
+   "id": "desserts",
+   "name": "Desserts",
+   "hue": 300
+  }
+ ],
+ "items": [
+  {
+   "id": "r-rolls",
+   "name": "Fried spring rolls",
+   "cat": "starters",
+   "price": 3.5,
+   "kh": "ណែមចៀន"
+  },
+  {
+   "id": "r-mango",
+   "name": "Green mango salad",
+   "cat": "starters",
+   "price": 4.0
+  },
+  {
+   "id": "r-banhchok",
+   "name": "Num banh chok",
+   "cat": "starters",
+   "price": 3.0,
+   "kh": "នំបញ្ចុក"
+  },
+  {
+   "id": "r-amok",
+   "name": "Fish amok",
+   "cat": "mains",
+   "price": 6.5,
+   "kh": "អាម៉ុកត្រី"
+  },
+  {
+   "id": "r-loklak",
+   "name": "Beef lok lak",
+   "cat": "mains",
+   "price": 7.0,
+   "kh": "ឡុកឡាក់សាច់គោ"
+  },
+  {
+   "id": "r-curry",
+   "name": "Chicken curry",
+   "cat": "mains",
+   "price": 6.0
+  },
+  {
+   "id": "r-crab",
+   "name": "Kampot pepper crab",
+   "cat": "mains",
+   "price": 12.0,
+   "kh": "ក្តាមម្រេចកំពត"
+  },
+  {
+   "id": "r-prahok",
+   "name": "Prahok ktiss",
+   "cat": "mains",
+   "price": 5.5,
+   "kh": "ប្រហុកខ្ទិះ"
+  },
+  {
+   "id": "r-rice",
+   "name": "Fried rice",
+   "cat": "mains",
+   "price": 4.5,
+   "kh": "បាយឆា"
+  },
+  {
+   "id": "r-steamed",
+   "name": "Steamed rice",
+   "cat": "mains",
+   "price": 0.75
+  },
+  {
+   "id": "r-coco",
+   "name": "Fresh coconut",
+   "cat": "drinks",
+   "price": 2.0,
+   "kh": "ទឹកដូង"
+  },
+  {
+   "id": "r-icedtea",
+   "name": "Iced tea",
+   "cat": "drinks",
+   "price": 1.0
+  },
+  {
+   "id": "r-lime",
+   "name": "Fresh lime juice",
+   "cat": "drinks",
+   "price": 1.5
+  },
+  {
+   "id": "r-lager",
+   "name": "Lager, draught",
+   "cat": "drinks",
+   "price": 2.0
+  },
+  {
+   "id": "r-sticky",
+   "name": "Mango sticky rice",
+   "cat": "desserts",
+   "price": 3.0,
+   "kh": "បាយដំណើបស្វាយ"
+  },
+  {
+   "id": "r-custard",
+   "name": "Pumpkin custard",
+   "cat": "desserts",
+   "price": 2.5
+  }
+ ]
+}</script>
+<script src="../shared/pos.js"></script>
+<script src="../shared/ribbon.js"></script>
+</body>
+</html>

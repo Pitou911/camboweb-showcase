@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mekong Brew · Café POS Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Battambang:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/pos.css">
+<style>:root{--font:'Plus Jakarta Sans',system-ui,sans-serif;--bg:#f5efe6;--panel:#fffaf3;--ink:#2b1d14;--muted:#806b5a;--line:#e9ddcd;--bar:#2b1d14;--bar-ink:#f6eee4;--bar-field:rgba(255,255,255,.1);--accent:#c4692e;--accent-ink:#ffffff;--hover:#f2e8db;--ok:#4f8a55;--warn:#b4441c;--busy:#4f8a55;--sent:#f6f8f1}</style>
+</head>
+<body data-order="Get this POS" data-need="POS system">
+<script>window.POS = {
+ "mode": "cafe",
+ "rate": 4100,
+ "cashier": "Counter · Vanna",
+ "brand": {
+  "mark": "M",
+  "name": "Mekong Brew",
+  "sub": "Coffee & bakery · Riverside",
+  "address": "Sisowath Quay, Daun Penh, Phnom Penh"
+ },
+ "categories": [
+  {
+   "id": "coffee",
+   "name": "Coffee",
+   "hue": 25
+  },
+  {
+   "id": "tea",
+   "name": "Tea",
+   "hue": 110
+  },
+  {
+   "id": "fruit",
+   "name": "Smoothies & soda",
+   "hue": 40
+  },
+  {
+   "id": "bakery",
+   "name": "Bakery",
+   "hue": 340
+  }
+ ],
+ "items": [
+  {
+   "id": "c-khmer",
+   "name": "Iced coffee with milk",
+   "cat": "coffee",
+   "price": 1.5,
+   "kh": "កាហ្វេទឹកដោះគោទឹកកក",
+   "opts": true
+  },
+  {
+   "id": "c-latte",
+   "name": "Iced latte",
+   "cat": "coffee",
+   "price": 2.25,
+   "opts": true
+  },
+  {
+   "id": "c-amer",
+   "name": "Americano",
+   "cat": "coffee",
+   "price": 1.75,
+   "opts": true
+  },
+  {
+   "id": "c-capp",
+   "name": "Cappuccino",
+   "cat": "coffee",
+   "price": 2.25,
+   "opts": true
+  },
+  {
+   "id": "c-coco",
+   "name": "Coconut coffee",
+   "cat": "coffee",
+   "price": 2.5,
+   "opts": true
+  },
+  {
+   "id": "c-matcha",
+   "name": "Iced matcha latte",
+   "cat": "tea",
+   "price": 2.5,
+   "opts": true
+  },
+  {
+   "id": "c-lemon",
+   "name": "Iced lemon tea",
+   "cat": "tea",
+   "price": 1.25,
+   "opts": true
+  },
+  {
+   "id": "c-thai",
+   "name": "Thai milk tea",
+   "cat": "tea",
+   "price": 1.75,
+   "opts": true
+  },
+  {
+   "id": "c-jasmine",
+   "name": "Hot jasmine tea",
+   "cat": "tea",
+   "price": 1.25
+  },
+  {
+   "id": "c-mango",
+   "name": "Mango smoothie",
+   "cat": "fruit",
+   "price": 2.25,
+   "opts": true
+  },
+  {
+   "id": "c-passion",
+   "name": "Passion fruit soda",
+   "cat": "fruit",
+   "price": 2.0,
+   "opts": true
+  },
+  {
+   "id": "c-shake",
+   "name": "Coconut shake",
+   "cat": "fruit",
+   "price": 2.0,
+   "opts": true
+  },
+  {
+   "id": "c-crois",
+   "name": "Butter croissant",
+   "cat": "bakery",
+   "price": 1.5
+  },
+  {
+   "id": "c-banana",
+   "name": "Banana cake",
+   "cat": "bakery",
+   "price": 1.25
+  },
+  {
+   "id": "c-muffin",
+   "name": "Chocolate muffin",
+   "cat": "bakery",
+   "price": 1.5
+  },
+  {
+   "id": "c-numpang",
+   "name": "Num pang, pâté sandwich",
+   "cat": "bakery",
+   "price": 1.75,
+   "kh": "នំបុ័ងប៉ាតេ"
+  }
+ ]
+}</script>
+<script src="../shared/pos.js"></script>
+<script src="../shared/ribbon.js"></script>
+</body>
+</html>
