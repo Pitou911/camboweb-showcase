@@ -487,3 +487,41 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.1; le
   .prefs .toggle { min-width: 34px; height: 34px; padding: 0 8px; }
   .nav .btn-sm { padding: 8px 14px; }
 }
+
+/* ---------- 3D floaters in the page margins (Floater.jsx) ---------- */
+.section, .page-hero-grid, .hero { position: relative; }
+.fl { --s: 84px; position: absolute; z-index: 0; width: var(--s); height: var(--s); perspective: 700px; pointer-events: none; display: none; animation: fl-bob 7s ease-in-out infinite; }
+.fl-left { left: calc(var(--s) * -1.35); }
+.fl-right { right: calc(var(--s) * -1.35); }
+.fl-obj { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: fl-spin 16s linear infinite; }
+@keyframes fl-bob { 50% { translate: 0 -16px; } }
+@keyframes fl-spin { from { transform: rotateX(-14deg) rotateY(0deg); } to { transform: rotateX(-14deg) rotateY(360deg); } }
+@media (min-width: 1420px) { .fl { display: block; } }
+
+/* coin: two faces and eight edge slices for thickness */
+.fl-coin { animation-duration: 9s; }
+.coin-face, .coin-edge { position: absolute; inset: 0; border-radius: 50%; }
+.coin-face { display: grid; place-items: center; font-style: normal; font-weight: 600; font-size: calc(var(--s) * 0.42); color: #5c4310; background: radial-gradient(circle at 35% 30%, #fff3c4, #e8bf55 45%, #b98a2c 100%); box-shadow: inset 0 0 0 calc(var(--s) * 0.06) rgba(120, 84, 20, 0.35); backface-visibility: hidden; }
+.coin-front { transform: translateZ(5px); }
+.coin-back { transform: rotateY(180deg) translateZ(5px); font-family: 'Battambang', serif; }
+.coin-edge { background: #a87b25; transform: translateZ(calc(var(--i) * 1.25px - 4.4px)); }
+
+/* cube: glass faces with neon edges */
+.fl-cube { --h: calc(var(--s) / 2); animation-duration: 20s; }
+.cube-face { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 14px; border: 1px solid rgba(43, 217, 240, 0.55); background: linear-gradient(135deg, rgba(43, 217, 240, 0.16), rgba(43, 217, 240, 0.04)); backdrop-filter: blur(2px); }
+.cube-face img { width: 46%; border-radius: 10px; }
+.cube-f { transform: translateZ(var(--h)); }
+.cube-b { transform: rotateY(180deg) translateZ(var(--h)); }
+.cube-l { transform: rotateY(-90deg) translateZ(var(--h)); }
+.cube-r { transform: rotateY(90deg) translateZ(var(--h)); }
+.cube-t { transform: rotateX(90deg) translateZ(var(--h)); }
+.cube-d { transform: rotateX(-90deg) translateZ(var(--h)); }
+
+/* ring: the neon C, turning slowly */
+.fl-ring { animation-duration: 14s; }
+.fl-ring .neon-c { filter: drop-shadow(0 0 4px rgba(43, 217, 240, 0.8)) drop-shadow(0 0 14px rgba(43, 217, 240, 0.4)); }
+.fl-ring .c-arc { stroke-dashoffset: 0; animation: none; }
+.fl-ring .c-dot { opacity: 1; animation: none; }
+
+:root[data-theme='dark'] .cube-face { background: linear-gradient(135deg, rgba(43, 217, 240, 0.2), rgba(43, 217, 240, 0.05)); }
+@media (prefers-reduced-motion: reduce) { .fl, .fl-obj { animation: none; } .fl-obj { transform: rotateX(-14deg) rotateY(-28deg); } }

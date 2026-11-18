@@ -3,6 +3,7 @@ import { projects } from '../data/projects'
 import Cover from '../components/Cover'
 import Hero3D from '../components/Hero3D'
 import { usePrefs } from '../prefs'
+import Floater from '../components/Floater'
 
 export default function Work() {
   const { t, pick } = usePrefs()
@@ -24,6 +25,8 @@ export default function Work() {
       </section>
 
       <section className="wrap section" id="work" aria-labelledby="work-h">
+        <Floater kind="cube" side="left" top="4%" />
+        <Floater kind="coin" side="right" top="46%" size={70} />
         <div className="head-row">
           <h2 id="work-h" className="h-section">{t('Client work', 'ស្នាដៃ')}</h2>
           <p>{t(

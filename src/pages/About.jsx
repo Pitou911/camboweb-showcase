@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { usePrefs } from '../prefs'
+import Floater from '../components/Floater'
 
 // [English title, Khmer title, English text, Khmer text, link, English link text, Khmer link text]
 const BUILD = [
@@ -56,6 +57,7 @@ export default function About() {
       </section>
 
       <section className="wrap section" aria-labelledby="build-h">
+        <Floater kind="coin" side="right" top="12%" />
         <div className="head-row">
           <h2 id="build-h" className="h-section">{t('What we build', 'អ្វីដែលយើងបង្កើត')}</h2>
           <p>{t('Ready-made templates when you need something fast, custom software when you need it to fit exactly.', 'គំរូរួចរាល់ពេលអ្នកត្រូវការលឿន និងកម្មវិធីធ្វើតាមតម្រូវការពេលអ្នកត្រូវការឱ្យត្រូវនឹងការងារពិតប្រាកដ។')}</p>
@@ -72,6 +74,7 @@ export default function About() {
       </section>
 
       <section className="wrap section" id="process" aria-labelledby="process-h">
+        <Floater kind="ring" side="left" top="14%" />
         <div className="head-row">
           <h2 id="process-h" className="h-section">{t('How we work', 'របៀបយើងធ្វើការ')}</h2>
           <p>{t('The same four steps for every project, whether it’s an invitation or a full POS.', 'បួនជំហានដូចគ្នាសម្រាប់គ្រប់គម្រោង មិនថាធៀប ឬប្រព័ន្ធ POS ពេញលេញ។')}</p>
@@ -84,6 +87,7 @@ export default function About() {
       </section>
 
       <section className="wrap section" aria-labelledby="promise-h">
+        <Floater kind="cube" side="right" top="16%" />
         <div className="head-row">
           <h2 id="promise-h" className="h-section">{t('What you can count on', 'អ្វីដែលអ្នកអាចទុកចិត្តបាន')}</h2>
           <p>{t('Small businesses need software that keeps working and costs they can plan for. So we work like this.', 'អាជីវកម្មតូចៗត្រូវការកម្មវិធីដែលដំណើរការជានិច្ច និងចំណាយដែលអាចគ្រោងទុកបាន។ ដូច្នេះយើងធ្វើការបែបនេះ។')}</p>

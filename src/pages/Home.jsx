@@ -6,6 +6,7 @@ import LiveFrame from '../components/LiveFrame'
 import Cover from '../components/Cover'
 import HeroStack from '../components/HeroStack'
 import { usePrefs } from '../prefs'
+import Floater from '../components/Floater'
 
 const EMPTY = { a: '', b: '', guest: '', date: '', venue: '' }
 
@@ -251,6 +252,7 @@ export default function Home() {
       </section>
 
       <section className="wrap section" id="invitations" aria-labelledby="inv-h">
+        <Floater kind="ring" side="left" top="8%" />
         <div className="head-row">
           <h2 id="inv-h" className="h-section">{t('E-invitations', 'ធៀបឌីជីថល')}</h2>
           <p>{t(
@@ -262,6 +264,7 @@ export default function Home() {
       </section>
 
       <section className="wrap section" id="websites" aria-labelledby="web-h">
+        <Floater kind="cube" side="right" top="10%" />
         <div className="head-row">
           <h2 id="web-h" className="h-section">{t('Business websites', 'គេហទំព័រអាជីវកម្ម')}</h2>
           <p>{t(
@@ -273,6 +276,7 @@ export default function Home() {
       </section>
 
       <section className="wrap section" id="pos" aria-labelledby="pos-h">
+        <Floater kind="coin" side="left" top="14%" />
         <div className="head-row">
           <h2 id="pos-h" className="h-section">{t('POS systems', 'ប្រព័ន្ធលក់ POS')}</h2>
           <p>
@@ -285,6 +289,7 @@ export default function Home() {
       </section>
 
       <section className="wrap section" aria-labelledby="clients-h">
+        <Floater kind="ring" side="right" top="18%" size={64} />
         <div className="head-row">
           <h2 id="clients-h" className="h-section">{t('Built for real clients', 'បង្កើតសម្រាប់អតិថិជនពិត')}</h2>
           <p>

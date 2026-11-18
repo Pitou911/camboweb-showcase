@@ -1,6 +1,7 @@
 import ContactForm from '../components/ContactForm'
 import { site } from '../data/site'
 import { usePrefs } from '../prefs'
+import Floater from '../components/Floater'
 
 const NEXT = [
   ['We reply within a day', 'យើងឆ្លើយតបក្នុងមួយថ្ងៃ', 'On Telegram, by phone or by email, in Khmer or English.', 'តាម Telegram ទូរស័ព្ទ ឬអ៊ីមែល ជាភាសាខ្មែរ ឬអង់គ្លេស។'],
@@ -50,6 +51,7 @@ export default function Contact() {
       </section>
 
       <section className="wrap section contact-grid">
+        <Floater kind="ring" side="left" top="10%" />
         <ContactForm />
         <aside className="contact-side">
           <div>
@@ -72,6 +74,7 @@ export default function Contact() {
       </section>
 
       <section className="wrap section" aria-labelledby="faq-h">
+        <Floater kind="coin" side="right" top="12%" />
         <div className="head-row">
           <h2 id="faq-h" className="h-section">{t('Questions we often get', 'សំណួរដែលគេសួរញឹកញាប់')}</h2>
           <p>{t('Something else on your mind? Ask it in the form above.', 'មានសំណួរផ្សេងទៀត? សួរក្នុងទម្រង់ខាងលើ។')}</p>
