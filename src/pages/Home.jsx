@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import Cover from '../components/Cover'
+import Hero3D from '../components/Hero3D'
 
-const SERVICES = [
-  ['Business systems', 'POS, inventory, lab and booking systems built around how your team actually works.'],
-  ['Mobile & desktop apps', 'Android tablet apps and offline Windows apps that work without reliable internet.'],
-  ['Websites & invitations', 'Fast, beautiful sites and digital invitations, designed for Khmer and English.'],
+const STEPS = [
+  ['Clickable prototype', 'Within the first week you can tap through a working prototype and tell us what to change.'],
+  ['Build in small releases', 'New features arrive every few days, so you see progress and steer it as we go.'],
+  ['Test on your own devices', 'We test on your tablet, your printer and your PCs before anything goes live.'],
+  ['Go live, then keep improving', 'Your data and hosting stay in your name. We keep shipping fixes from your feedback.'],
 ]
 
 export default function Home() {
@@ -13,62 +15,53 @@ export default function Home() {
     <>
       <section className="hero wrap">
         <div className="hero-text">
-          <p className="eyebrow"><span className="dot" /> Web studio · Phnom Penh</p>
-          <h1>
-            Software that runs<br />real Cambodian <span className="neon-text">businesses.</span>
-          </h1>
+          <h1>We build the software Cambodian businesses run on.</h1>
           <p className="lead">
-            From a bar’s point-of-sale to a medical lab’s reports, CamboWeb designs and builds
-            tools that people use every day, in Khmer and English.
+            A bar’s tablet POS, a medical lab’s desktop app, an invitation every guest opens on their
+            phone. Each one is in daily use by a real client.
           </p>
-          <div className="hero-actions">
-            <a className="btn btn-dark" href="#work">See our work</a>
-            <a className="btn btn-ghost" href="#contact">Start a project</a>
+          <div className="actions">
+            <a className="btn btn-ink" href="#work">See the work</a>
+            <a className="btn btn-line" href="#contact">Start a project</a>
           </div>
         </div>
-        <div className="hero-mark" aria-hidden="true">
-          <div className="glow-tile">
-            <img src="/img/camboweb-pfp-neon-black.png" alt="" />
-          </div>
-        </div>
+        <Hero3D />
       </section>
 
-      <section className="wrap section" id="work">
-        <div className="section-head">
-          <h2>Selected work</h2>
-          <p>{projects.length} projects delivered in 2026</p>
-        </div>
-        <div className="grid">
-          {projects.map((p, i) => (
-            <Link key={p.slug} to={`/work/${p.slug}`} className={`card ${i === 0 ? 'card-wide' : ''}`}>
-              <Cover project={p} />
-              <div className="card-body">
-                <div className="tags">
-                  <span>{p.industry}</span>
-                  <span>{p.type}</span>
+      <section className="wrap section" id="work" aria-labelledby="work-h">
+        <h2 id="work-h" className="h-section">Client work</h2>
+        <div className="chapters">
+          {projects.map((p) => (
+            <article key={p.slug} className="chapter">
+              <Link to={`/work/${p.slug}`} className="chapter-cover" tabIndex={-1} aria-hidden="true">
+                <Cover project={p} />
+              </Link>
+              <div className="chapter-text">
+                <div>
+                  <h3><Link to={`/work/${p.slug}`}>{p.name}</Link></h3>
+                  <p>{p.tagline}</p>
                 </div>
-                <h3>{p.name}</h3>
-                <p>{p.tagline}</p>
-                <span className="more">View case study <span aria-hidden="true">→</span></span>
+                <dl className="facts">
+                  <div><dt>Client</dt><dd>{p.client}</dd></div>
+                  <div><dt>Built as</dt><dd>{p.type}</dd></div>
+                  <div><dt>Timeframe</dt><dd>{p.duration}</dd></div>
+                </dl>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="wrap section" id="services">
-        <div className="section-head">
-          <h2>What we build</h2>
-        </div>
-        <div className="services">
-          {SERVICES.map(([t, d], i) => (
-            <div key={t} className="service">
-              <span className="num">0{i + 1}</span>
+      <section className="wrap section" id="process" aria-labelledby="process-h">
+        <h2 id="process-h" className="h-section">How we work</h2>
+        <ol className="steps">
+          {STEPS.map(([t, d]) => (
+            <li key={t}>
               <h3>{t}</h3>
               <p>{d}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
     </>
   )

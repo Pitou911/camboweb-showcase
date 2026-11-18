@@ -114,7 +114,7 @@ export const projects = [
       ['Paper that feels real', 'Layered shadows that follow a single light source, a paper texture and grain make the card look photographed, not drawn.'],
       ['Smooth on budget phones', 'One self-contained page with GPU-friendly transforms keeps the animation smooth on low-end Android phones.'],
     ],
-    stats: [['1', 'link to share'], ['2', 'languages'], ['0', 'apps to install']],
+    stats: [['Khmer & English', 'languages'], ['None', 'apps to install']],
     timeline: [
       ['Nov 2', 'Design, paper & leaf assets'],
       ['Nov 5', 'KHQR gifting section added, shared with guests'],

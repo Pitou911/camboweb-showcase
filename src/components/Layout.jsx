@@ -1,11 +1,11 @@
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
 export function Logo() {
   return (
     <Link to="/" className="logo" aria-label="CamboWeb home">
       <img src="/img/camboweb-pfp-neon-black.png" alt="" />
-      <span>cambo<b>web</b></span>
+      <span><b>cambo</b>web</span>
     </Link>
   )
 }
@@ -20,31 +20,32 @@ export default function Layout() {
 
   return (
     <>
+      <a className="skip" href="#main">Skip to content</a>
       <header className="nav">
         <div className="wrap nav-inner">
           <Logo />
-          <nav>
-            <NavLink to="/#work">Work</NavLink>
-            <NavLink to="/#services">Services</NavLink>
-            <a className="btn btn-sm" href="#contact">Contact</a>
+          <nav aria-label="Main">
+            <Link to="/#work">Work</Link>
+            <Link to="/#process">How we work</Link>
+            <a className="btn btn-ink btn-sm" href="#contact">Contact us</a>
           </nav>
         </div>
       </header>
-      <main>
+      <main id="main">
         <Outlet />
       </main>
       <footer className="footer" id="contact">
-        <div className="wrap footer-inner">
-          <div className="footer-cta">
+        <div className="wrap">
+          <div className="footer-top">
             <img className="footer-logo" src="/img/camboweb-logo-neon-horizontal.png" alt="CamboWeb" />
-            <h2>Have a project in mind?</h2>
-            <p>We build websites, apps and systems for businesses in Cambodia.</p>
-            {/* TODO: replace with real contact details */}
-            <div className="footer-links">
+            <div className="footer-cta">
+              <h2>Tell us what your business needs.</h2>
+              <p>We reply within a day, in Khmer or English.</p>
+              {/* TODO: replace with real contact details */}
               <a className="btn btn-neon" href="https://t.me/" target="_blank" rel="noreferrer">Message us on Telegram</a>
             </div>
           </div>
-          <p className="footer-small">© {new Date().getFullYear()} CamboWeb · Web Studio · Phnom Penh</p>
+          <p className="footer-small">© {new Date().getFullYear()} CamboWeb, Phnom Penh</p>
         </div>
       </footer>
     </>
