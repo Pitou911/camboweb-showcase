@@ -8,6 +8,11 @@
 // Other helpers:
 //   [data-reveal] gets .in on scroll
 (function () {
+  // Invitations scroll by touch, wheel or keys; a visible scrollbar looks out of place on them.
+  const hideBars = document.createElement('style')
+  hideBars.textContent = 'html,body,*{scrollbar-width:none;-ms-overflow-style:none}*::-webkit-scrollbar{display:none;width:0;height:0}'
+  document.head.appendChild(hideBars)
+
   const pad = (n) => String(n).padStart(2, '0')
   const counters = []
 

@@ -8,7 +8,15 @@
     <meta name="description" content="CamboWeb is a web studio in Phnom Penh. Try live invitation and website templates, or see the custom systems we build for Cambodian businesses." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Lexend:wght@300;700&family=Battambang:wght@400;700&family=Italianno&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300..700&family=Lexend:wght@300;700&family=Battambang:wght@400;700&family=Italianno&display=swap" rel="stylesheet" />
+    <script>
+      // Set theme + language before the first paint, so there is no flash.
+      try {
+        var t = localStorage.getItem('cw-theme'), l = localStorage.getItem('cw-lang');
+        document.documentElement.dataset.theme = t === 'dark' || t === 'light' ? t : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.lang = l === 'kh' ? 'kh' : 'en';
+      } catch (e) {}
+    </script>
     <title>CamboWeb · Websites, e-invitations and business systems in Phnom Penh</title>
   </head>
   <body>
