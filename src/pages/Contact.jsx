@@ -73,7 +73,7 @@ export default function Contact() {
         </aside>
       </section>
 
-      <section className="wrap section" aria-labelledby="faq-h">
+      <section className="wrap section band" aria-labelledby="faq-h">
         <Floater kind="coin" side="right" top="12%" />
         <div className="head-row">
           <h2 id="faq-h" className="h-section">{t('Questions we often get', 'សំណួរដែលគេសួរញឹកញាប់')}</h2>

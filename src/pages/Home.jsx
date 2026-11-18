@@ -263,7 +263,7 @@ export default function Home() {
         <InviteStudio />
       </section>
 
-      <section className="wrap section" id="websites" aria-labelledby="web-h">
+      <section className="wrap section band" id="websites" aria-labelledby="web-h">
         <Floater kind="cube" side="right" top="10%" />
         <div className="head-row">
           <h2 id="web-h" className="h-section">{t('Business websites', 'គេហទំព័រអាជីវកម្ម')}</h2>

@@ -73,7 +73,7 @@ export default function About() {
         </ul>
       </section>
 
-      <section className="wrap section" id="process" aria-labelledby="process-h">
+      <section className="wrap section band" id="process" aria-labelledby="process-h">
         <Floater kind="ring" side="left" top="14%" />
         <div className="head-row">
           <h2 id="process-h" className="h-section">{t('How we work', 'របៀបយើងធ្វើការ')}</h2>
