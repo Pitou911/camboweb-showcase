@@ -51,6 +51,17 @@ export default function Project() {
         </ul>
       </section>
 
+      {p.screens && (
+        <section className="wrap row">
+          <h2>Real screens</h2>
+          <div className="screens">
+            {p.screens.map(([src, cap]) => (
+              <figure key={src}><img src={src} alt={cap} loading="lazy" /><figcaption>{cap}</figcaption></figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="wrap row">
         <h2>Hard problems we solved</h2>
         <div className="problems">

@@ -15,6 +15,10 @@ export const projects = [
     cover: 'lori',
     accent: '#073D20',
     logo: '/img/lori-wordmark.png',
+    screens: [
+      ['/img/lori-floor.jpg', 'Floor plan: every table’s status and bill at a glance'],
+      ['/img/lori-order.jpg', 'Taking an order: menu by category, rounds sent to bar and kitchen'],
+    ],
     testimonial: null, // TODO: add client quote
     goal:
       'LoRi was a new bar-restaurant that needed an affordable way to take orders, get food tickets to a kitchen one floor up, and close out bills without paper notes or a costly subscription POS. The owner wanted a system the bartender could run from a single tablet, on hosting the owner pays for directly.',

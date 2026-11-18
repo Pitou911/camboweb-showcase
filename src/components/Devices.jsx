@@ -1,20 +1,11 @@
 // Device mock-ups that hold each project's real UI. Pure CSS, no images of devices.
 
-const TABLES = ['free', 'seated', 'new', 'free', 'billed', 'seated', 'free', 'new', 'seated']
-
-export function Tablet() {
+// LoRi's real floor plan, captured from the app with sample orders.
+export function Tablet({ src = '/img/lori-floor.jpg' }) {
   return (
     <div className="dev dev-tablet">
-      <div className="screen lori-screen">
-        <div className="lori-top">
-          <img src="/img/lori-wordmark.png" alt="" />
-          <span>Floor</span>
-        </div>
-        <div className="lori-grid">
-          {TABLES.map((s, i) => (
-            <span key={i} className={`tbl tbl-${s}`}>T{i + 1}</span>
-          ))}
-        </div>
+      <div className="screen">
+        <img src={src} alt="" />
       </div>
     </div>
   )
