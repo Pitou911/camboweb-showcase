@@ -18,12 +18,11 @@ export default function Hero3D() {
     return () => ro.disconnect()
   }, [])
 
-  // Gentle tilt toward the pointer, eased with requestAnimationFrame.
+  // Tilt toward the pointer, and turn + spread apart as the page scrolls.
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const fine = window.matchMedia('(pointer: fine)').matches
-    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!fine || calm) return
-    let tx = 0, ty = 0, x = 0, y = 0, raf
+    let tx = 0, ty = 0, x = 0, y = 0, sp = 0, raf
     const onMove = (e) => {
       tx = (e.clientX / window.innerWidth - 0.5) * 2
       ty = (e.clientY / window.innerHeight - 0.5) * 2
@@ -31,11 +30,17 @@ export default function Hero3D() {
     const tick = () => {
       x += (tx - x) * 0.06
       y += (ty - y) * 0.06
-      scene.current?.style.setProperty('--ry', `${-18 + x * 7}deg`)
-      scene.current?.style.setProperty('--rx', `${16 - y * 5}deg`)
+      const target = Math.min(1, window.scrollY / 520)
+      sp += (target - sp) * 0.1
+      const s = scene.current
+      if (s) {
+        s.style.setProperty('--ry', `${-18 + x * 7 + sp * 22}deg`)
+        s.style.setProperty('--rx', `${16 - y * 5 + sp * 10}deg`)
+        s.style.setProperty('--sp', sp.toFixed(3))
+      }
       raf = requestAnimationFrame(tick)
     }
-    window.addEventListener('pointermove', onMove)
+    if (fine) window.addEventListener('pointermove', onMove)
     raf = requestAnimationFrame(tick)
     return () => {
       window.removeEventListener('pointermove', onMove)
@@ -54,7 +59,7 @@ export default function Hero3D() {
           <Link to="/work/lori-pos" className="obj obj-tablet" aria-label="LoRi POS case study">
             <div className="rise"><Tablet /></div>
           </Link>
-          <Link to="/work/engagement-invitation" className="obj obj-phone" aria-label="Engagement e-invitation case study">
+          <Link to="/templates" className="obj obj-phone" aria-label="Invitation templates">
             <div className="rise"><Phone /></div>
           </Link>
         </div>

@@ -54,8 +54,8 @@ export default function Project() {
       <section className="wrap row">
         <h2>Hard problems we solved</h2>
         <div className="problems">
-          {p.challenges.map(([t, d]) => (
-            <div key={t}><h3>{t}</h3><p>{d}</p></div>
+          {p.challenges.map(([t, d], i) => (
+            <details key={t} open={i === 0}><summary>{t}</summary><p>{d}</p></details>
           ))}
         </div>
       </section>

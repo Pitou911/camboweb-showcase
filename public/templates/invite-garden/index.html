@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbf3f1">
+<title>Garden · Engagement Invitation Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Marcellus&family=Moul&family=Battambang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fbf3f1;--white:#fffdfc;--blush:#f2d4d2;--rose:#c0727c;--rose-d:#9c5560;--sage:#93ab92;--sage-d:#6d8a6c;--ink:#4b3e3c;--muted:#8d7c79}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:400 15px/1.8 'Battambang',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.locked{overflow:hidden;height:100svh}
+  .script{font-family:'Pinyon Script',cursive;font-weight:400}
+  .serif{font-family:'Marcellus',serif}
+  main{max-width:480px;margin:0 auto;background:var(--white);box-shadow:0 0 60px rgba(156,85,96,.12);overflow:hidden}
+
+  /* soft moving watercolour blobs behind everything */
+  .wash{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+  .wash i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+  .wash i:nth-child(1){background:#f4c9cc;left:-20vmax;top:-20vmax}
+  .wash i:nth-child(2){background:#cfe0cc;right:-25vmax;bottom:-20vmax;animation-delay:-8s}
+  .wash i:nth-child(3){background:#fbe3d2;left:30%;top:40%;width:40vmax;height:40vmax;animation-delay:-14s}
+  @keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+
+  /* ---------- cover ---------- */
+  .cover{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;background:linear-gradient(180deg,rgba(251,243,241,.2),rgba(251,243,241,.95) 62%),url('img/couple.jpg') center 20%/cover;
+    transition:transform 1.4s cubic-bezier(.7,0,.2,1),opacity 1.4s}
+  .cover.gone{transform:translateY(-100%);opacity:.6;pointer-events:none}
+  .cover-in{width:min(100%,400px);text-align:center;display:grid;justify-items:center;gap:6px;margin-top:38vh}
+  .cover .kt{font:400 17px/2 'Moul',serif;color:var(--rose-d)}
+  .cover .names{font:400 54px/1.1 'Pinyon Script',cursive;color:var(--ink)}
+  .ribbon{margin:10px 0 4px;padding:10px 40px;min-width:270px;background:var(--white);border-radius:4px;box-shadow:0 6px 20px rgba(156,85,96,.15);position:relative}
+  .ribbon::before,.ribbon::after{content:'';position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;background:var(--white);transform:rotate(45deg)}
+  .ribbon::before{left:-8px}.ribbon::after{right:-8px}
+  .ribbon small{display:block;font-size:12px;color:var(--muted)}
+  .ribbon b{font:400 20px/1.4 'Marcellus','Battambang',serif;color:var(--rose-d)}
+  .open{margin-top:14px;padding:13px 30px;border:0;border-radius:99px;background:var(--rose);color:#fff;font:700 15px 'Battambang',serif;cursor:pointer;box-shadow:0 10px 24px rgba(192,114,124,.35);animation:breathe 2.4s ease-in-out infinite}
+  .open small{display:block;font:400 12px 'Marcellus',serif;opacity:.85}
+  @keyframes breathe{50%{transform:scale(1.04)}}
+
+  /* ---------- petals ---------- */
+  .petal{position:fixed;top:-20px;z-index:30;pointer-events:none;width:12px;height:10px;border-radius:12px 0 12px 0;background:linear-gradient(135deg,#f7cdd2,#e39aa6);opacity:.85;animation:float var(--t) linear infinite;animation-delay:var(--d)}
+  @keyframes float{0%{transform:translate(0,-20px) rotate(0)}50%{transform:translate(var(--x),55vh) rotate(200deg)}100%{transform:translate(calc(var(--x) * -.5),110vh) rotate(400deg)}}
+
+  /* ---------- arch hero ---------- */
+  .hero{position:relative;padding:44px 28px 30px;text-align:center}
+  .arch{position:relative;width:78%;margin:0 auto;aspect-ratio:3/4}
+  .arch .ph{position:absolute;inset:0;border-radius:999px 999px 14px 14px;overflow:hidden;box-shadow:0 20px 40px rgba(156,85,96,.18)}
+  .arch .ph img{width:100%;height:100%;object-fit:cover;animation:zoom 14s ease-in-out infinite alternate}
+  @keyframes zoom{to{transform:scale(1.08)}}
+  .vine{position:absolute;inset:-9% -14% -4%;width:128%;height:113%;pointer-events:none;overflow:visible}
+  .vine path{fill:none;stroke:var(--sage-d);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s ease forwards .4s}
+  .vine .leaf{fill:var(--sage);opacity:0;animation:pop .6s ease forwards}
+  .vine .bloom{fill:var(--blush);stroke:var(--rose);stroke-width:1;opacity:0;animation:pop .6s ease forwards}
+  .vine .heart{fill:var(--rose)}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  .vine .leaf,.vine .bloom{transform-box:fill-box;transform-origin:center}
+  .hero .kt{margin-top:26px;font:400 18px/2 'Moul',serif;color:var(--rose-d)}
+  .hero .names{font:400 58px/1.05 'Pinyon Script',cursive}
+  .hero .names i{display:block;font:400 26px 'Marcellus',serif;font-style:normal;color:var(--rose)}
+
+  /* ---------- sections ---------- */
+  section{padding:46px 28px;text-align:center}
+  .tint{background:linear-gradient(180deg,#fdf6f4,#f8ebe8)}
+  h2{font:400 15px/2 'Moul',serif;color:var(--rose-d)}
+  h2 + .en{font:400 13px 'Marcellus',serif;letter-spacing:.2em;color:var(--sage-d);margin-bottom:20px}
+  .mono{width:120px;height:120px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;gap:2px;border-radius:50%;border:1px solid var(--rose);outline:1px solid var(--blush);outline-offset:5px;font:400 46px/1 'Pinyon Script',cursive;color:var(--rose-d)}
+  .mono sup{font-size:.5em;vertical-align:.5em;color:var(--sage-d)}
+  p.body{font-size:15px}
+  p.en-body{margin-top:12px;font:400 15px/1.7 'Marcellus',serif;color:var(--muted)}
+
+  .date{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:6px auto 0;max-width:330px}
+  .date span{font:400 14px 'Marcellus',serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:8px 0;border-block:1px solid var(--blush)}
+  .date b{font:400 64px/1 'Marcellus',serif;color:var(--rose-d)}
+  .time{margin-top:12px;font:400 16px 'Marcellus',serif}
+
+  .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+  .count div{aspect-ratio:1;display:grid;place-content:center;border-radius:50%;background:var(--white);box-shadow:inset 0 0 0 1px var(--blush),0 8px 18px rgba(156,85,96,.1)}
+  .count b{font:400 26px/1 'Marcellus',serif;color:var(--rose-d)}
+  .count small{font-size:11px;color:var(--muted)}
+
+  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 28px 14px;margin:0 -28px;scrollbar-width:none}
+  .gallery::-webkit-scrollbar{display:none}
+  .gallery img{flex:none;width:66%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:999px 999px 12px 12px;scroll-snap-align:center;box-shadow:0 12px 26px rgba(156,85,96,.15)}
+  .swipe{font:400 12px 'Marcellus',serif;color:var(--muted);letter-spacing:.1em}
+
+  .plan{display:grid;gap:12px;text-align:left}
+  .plan li{list-style:none;display:grid;grid-template-columns:46px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 1px var(--blush)}
+  .plan svg{width:46px;height:46px;padding:11px;border-radius:50%;background:var(--blush);stroke:var(--rose-d);fill:none;stroke-width:1.6}
+  .plan b{display:block;font-size:15px}
+  .plan small{font:400 13px 'Marcellus',serif;color:var(--muted)}
+  .plan time{font:400 17px 'Marcellus',serif;color:var(--rose-d)}
+
+  .venue{font:400 34px/1.1 'Pinyon Script',cursive;color:var(--ink);margin-top:4px}
+  .btn{display:inline-flex;justify-content:center;gap:8px;margin-top:18px;padding:12px 26px;border-radius:99px;border:0;background:var(--sage-d);color:#fff;font:700 14px 'Battambang',serif;text-decoration:none;cursor:pointer}
+  .qr{width:180px;margin:16px auto 0;padding:10px;background:#fff;border-radius:16px;box-shadow:0 0 0 1px var(--blush),0 14px 30px rgba(156,85,96,.15)}
+
+  form{display:grid;gap:12px;text-align:left}
+  label{font-size:13px;color:var(--muted)}
+  input,select{width:100%;margin-top:4px;padding:12px 14px;border-radius:12px;border:1px solid var(--blush);background:var(--white);font:400 15px 'Battambang',serif;color:var(--ink)}
+  input:focus,select:focus{outline:2px solid var(--rose);outline-offset:1px}
+  .choice{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice label{display:block;padding:12px;border-radius:12px;border:1px solid var(--blush);background:var(--white);text-align:center;color:var(--ink);cursor:pointer}
+  .choice input:checked + label{background:var(--rose);border-color:var(--rose);color:#fff}
+  .choice input:focus-visible + label{outline:2px solid var(--rose-d)}
+  form .btn{background:var(--rose)}
+  [data-thanks] p{font:400 32px 'Pinyon Script',cursive;color:var(--rose-d)}
+
+  .thanks{position:relative;padding:0;color:#fff}
+  .thanks img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .thanks div{position:absolute;inset:0;display:grid;place-content:center;background:linear-gradient(180deg,transparent 30%,rgba(75,62,60,.55))}
+  .thanks b{font:400 52px/1 'Pinyon Script',cursive}
+  .thanks small{font:400 15px 'Battambang',serif}
+
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity 1s,transform 1s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  footer{padding:24px 0 34px;text-align:center}
+  .made{display:inline-flex;padding:6px 13px;border-radius:99px;background:#001820}
+  .made img{height:15px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.vine path{stroke-dashoffset:0}.vine .leaf,.vine .bloom{opacity:1}}
+</style>
+</head>
+<body class="locked">
+<div class="wash" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="cover" id="cover">
+  <div class="cover-in">
+    <div class="kt">ពិធីភ្ជាប់ពាក្យ</div>
+    <div class="names"><span data-field="a">Sokha</span> &amp; <span data-field="b">Nary</span></div>
+    <div class="ribbon"><small>សូមគោរពអញ្ជើញ</small><b data-field="guest">លោក លោកស្រី</b></div>
+    <button class="open" id="open">បើកធៀប<small>Open invitation</small></button>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="arch">
+      <div class="ph"><img src="img/couple.jpg" alt="The couple"></div>
+      <svg class="vine" viewBox="0 0 128 113" aria-hidden="true">
+        <path pathLength="1" d="M8 112 C4 80 10 52 22 34 C36 13 54 6 64 6 C74 6 92 13 106 34 C118 52 124 80 120 112"/>
+        <g>
+          <ellipse class="leaf" cx="10" cy="92" rx="4" ry="1.8" transform="rotate(-60 10 92)" style="animation-delay:.9s"/>
+          <ellipse class="leaf" cx="13" cy="70" rx="4" ry="1.8" transform="rotate(-40 13 70)" style="animation-delay:1.2s"/>
+          <ellipse class="leaf" cx="20" cy="48" rx="4" ry="1.8" transform="rotate(-20 20 48)" style="animation-delay:1.5s"/>
+          <ellipse class="leaf" cx="36" cy="22" rx="4" ry="1.8" transform="rotate(20 36 22)" style="animation-delay:1.9s"/>
+          <ellipse class="leaf" cx="92" cy="22" rx="4" ry="1.8" transform="rotate(-20 92 22)" style="animation-delay:2.2s"/>
+          <ellipse class="leaf" cx="108" cy="48" rx="4" ry="1.8" transform="rotate(20 108 48)" style="animation-delay:2.5s"/>
+          <ellipse class="leaf" cx="115" cy="70" rx="4" ry="1.8" transform="rotate(40 115 70)" style="animation-delay:2.8s"/>
+          <ellipse class="leaf" cx="118" cy="92" rx="4" ry="1.8" transform="rotate(60 118 92)" style="animation-delay:3.1s"/>
+          <circle class="bloom" cx="16" cy="60" r="3.4" style="animation-delay:1.4s"/>
+          <circle class="bloom" cx="26" cy="32" r="2.6" style="animation-delay:1.8s"/>
+          <circle class="bloom" cx="102" cy="32" r="2.6" style="animation-delay:2.4s"/>
+          <circle class="bloom" cx="112" cy="60" r="3.4" style="animation-delay:2.7s"/>
+          <path class="heart" d="M64 9 C62 5 57 6 58 10 C59 13 64 15 64 15 C64 15 69 13 70 10 C71 6 66 5 64 9Z" style="stroke:none;stroke-dasharray:none;animation:pop .6s ease 2s both"/>
+        </g>
+      </svg>
+    </div>
+    <div class="kt">ពិធីភ្ជាប់ពាក្យ</div>
+    <div class="names"><span data-field="a">Sokha</span><i>&amp;</i><span data-field="b">Nary</span></div>
+  </section>
+
+  <section class="tint" data-reveal>
+    <div class="mono" id="mono">S<sup>&amp;</sup>N</div>
+    <h2>សូមគោរពអញ្ជើញ</h2>
+    <p class="body">ឯកឧត្ដម លោកជំទាវ អ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្ត អញ្ជើញចូលរួមជាភ្ញៀវកិត្តិយសដើម្បីប្រសិទ្ធពរជ័យ សិរីសួស្ដី ជ័យមង្គល ក្នុងពិធីភ្ជាប់ពាក្យកូនប្រុស កូនស្រីរបស់យើងខ្ញុំ។</p>
+    <p class="en-body">With joy in our hearts, we invite you to celebrate our engagement.</p>
+  </section>
+
+  <section data-reveal>
+    <h2>កាលបរិច្ឆេទ</h2><p class="en">SAVE THE DATE</p>
+    <div class="date"><span data-date="weekday">Sunday</span><b data-date="d">18</b><span data-date="monthyear">April 2027</span></div>
+    <p class="time">ម៉ោង ៨:០០ ព្រឹក · 8:00 in the morning</p>
+    <div class="count" data-countdown="2027-04-18T08:00:00+07:00" style="margin-top:26px">
+      <div><b data-u="d">00</b><small>ថ្ងៃ</small></div>
+      <div><b data-u="h">00</b><small>ម៉ោង</small></div>
+      <div><b data-u="m">00</b><small>នាទី</small></div>
+      <div><b data-u="s">00</b><small>វិនាទី</small></div>
+    </div>
+  </section>
+
+  <section class="tint" data-reveal>
+    <h2>រូបភាពអនុស្សាវរីយ៍</h2><p class="en">OUR MOMENTS</p>
+    <div class="gallery">
+      <img src="img/beach.jpg" alt="" loading="lazy">
+      <img src="img/rings.jpg" alt="" loading="lazy">
+      <img src="img/bouquet.jpg" alt="" loading="lazy">
+      <img src="img/aisle.jpg" alt="" loading="lazy">
+    </div>
+    <p class="swipe">swipe →</p>
+  </section>
+
+  <section data-reveal>
+    <h2>កម្មវិធី</h2><p class="en">THE DAY</p>
+    <ul class="plan">
+      <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><div><b>ពិធីជួបជុំ</b><small>Welcoming the families</small></div><time>8:00</time></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M9 9l1.5-4h3L15 9"/></svg><div><b>ពិធីពាក់ចិញ្ចៀន</b><small>Ring ceremony</small></div><time>9:30</time></li>
+      <li><svg viewBox="0 0 24 24"><path d="M4 11h16M6 11v9h12v-9M9 11V7a3 3 0 0 1 6 0v4"/></svg><div><b>ពិសាអាហារ</b><small>Lunch together</small></div><time>11:30</time></li>
+    </ul>
+  </section>
+
+  <section class="tint" data-reveal>
+    <h2>ទីតាំង</h2><p class="en">THE VENUE</p>
+    <p class="venue" data-field="venue">Rose Garden Pavilion</p>
+    <p class="body">Chroy Changvar, Phnom Penh</p>
+    <a class="btn" href="https://maps.google.com/?q=Phnom+Penh" target="_blank" rel="noopener">បើកផែនទី · Open map</a>
+  </section>
+
+  <section data-reveal>
+    <h2>ចំណងដៃ</h2><p class="en">GIFT</p>
+    <p class="body">បើសិនជាភ្ញៀវកិត្តិយសខកខានមិនបានចូលរួម អាចជូនពរតាមរយៈ QR បាន</p>
+    <img class="qr" src="../invite-eucalyptus/assets/demo-qr.svg" alt="Demo KHQR code">
+  </section>
+
+  <section class="tint" data-reveal>
+    <h2>ឆ្លើយតប</h2><p class="en">RSVP</p>
+    <form data-rsvp>
+      <label>ឈ្មោះ · Your name<input name="name" required autocomplete="name"></label>
+      <div class="choice">
+        <div><input type="radio" id="y" name="go" value="yes" checked><label for="y">ចូលរួម · Yes</label></div>
+        <div><input type="radio" id="n" name="go" value="no"><label for="n">មិនបាន · No</label></div>
+      </div>
+      <label>ចំនួនភ្ញៀវ · Guests<select name="guests"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <button class="btn" type="submit">ផ្ញើ · Send</button>
+    </form>
+    <div data-thanks hidden><p>Thank you, <span data-who></span></p><p class="body">យើងខ្ញុំបានទទួលការឆ្លើយតបរបស់អ្នកហើយ។</p></div>
+  </section>
+
+  <section class="thanks">
+    <img src="img/hands.jpg" alt="" loading="lazy">
+    <div><b>Thank you</b><small>សូមអរគុណ</small></div>
+  </section>
+
+  <footer><a class="made" href="/" target="_top"><img src="../invite-eucalyptus/assets/camboweb-logo-neon-horizontal.png" alt="Made by CamboWeb"></a></footer>
+</main>
+
+<script src="../shared/invite.js"></script>
+<script>
+  const cover = document.getElementById('cover')
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches
+  function petals() {
+    if (calm) return
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('i')
+      p.className = 'petal'
+      p.style.left = Math.random() * 100 + 'vw'
+      p.style.setProperty('--t', 9 + Math.random() * 8 + 's')
+      p.style.setProperty('--d', -Math.random() * 16 + 's')
+      p.style.setProperty('--x', (Math.random() - 0.5) * 120 + 'px')
+      document.body.appendChild(p)
+    }
+  }
+  function openInvite() {
+    cover.classList.add('gone')
+    document.body.classList.remove('locked')
+    petals()
+  }
+  document.getElementById('open').addEventListener('click', openInvite)
+  if (location.hash === '#open') openInvite()
+
+  // Monogram follows the names
+  const initial = (s) => (s || '').trim().charAt(0).toUpperCase()
+  document.addEventListener('invite:fields', () => {
+    const a = document.querySelector('[data-field="a"]').textContent
+    const b = document.querySelector('[data-field="b"]').textContent
+    document.getElementById('mono').innerHTML = `${initial(a)}<sup>&amp;</sup>${initial(b)}`
+  })
+</script>
+</body>
+</html>
