@@ -75,9 +75,6 @@ h1, h2, h3 { font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
 .hero::before { content: ''; position: absolute; inset: 0 -50vw; z-index: -1; background:
   radial-gradient(40% 60% at 75% 55%, rgba(43, 217, 240, 0.13), transparent 70%),
   linear-gradient(var(--paper), var(--paper)); }
-.hero::after { content: ''; position: absolute; right: -10%; top: 0; bottom: 0; width: 70%; z-index: -1; opacity: 0.6;
-  background-image: radial-gradient(rgba(6, 32, 41, 0.12) 1px, transparent 1px); background-size: 22px 22px;
-  mask-image: radial-gradient(closest-side, #000, transparent); -webkit-mask-image: radial-gradient(closest-side, #000, transparent); }
 .kicker { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border-radius: 999px; background: var(--mist); font-size: 14px; font-weight: 400; color: var(--ink-2); margin-bottom: 22px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 10px var(--neon); animation: blink 2.4s ease-in-out infinite; }
 @keyframes blink { 50% { opacity: 0.35; } }
@@ -143,9 +140,6 @@ h1, h2, h3 { font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
 /* ---------- project covers (scroll + pointer driven 3D) ---------- */
 .cover { --p: 1; --tx: 0; --ty: 0; position: relative; display: grid; place-items: center; aspect-ratio: 16 / 8.5; border-radius: var(--r-lg); overflow: hidden; perspective: 1400px;
   background: radial-gradient(70% 90% at 50% 100%, rgba(43, 217, 240, 0.16), transparent 70%), linear-gradient(180deg, var(--mist), var(--mist-2)); }
-.cover-grid { position: absolute; left: -20%; right: -20%; bottom: -10%; height: 60%; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
-  background-image: linear-gradient(rgba(7, 120, 166, 0.13) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 120, 166, 0.13) 1px, transparent 1px); background-size: 46px 46px;
-  mask-image: linear-gradient(transparent, #000 60%); -webkit-mask-image: linear-gradient(transparent, #000 60%); }
 .cover-glow { position: absolute; left: 50%; bottom: 8%; width: 60%; height: 26%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(43, 217, 240, 0.35), transparent); }
 .cover-dev { position: relative; transition: transform 0.25s ease-out;
   transform: translateY(calc((1 - var(--p)) * 60px)) rotateX(calc(26deg - var(--p) * 18deg + var(--ty) * -6deg)) rotateY(calc(-30deg + var(--p) * 18deg + var(--tx) * 10deg)) scale(calc(0.86 + var(--p) * 0.14)); }
@@ -186,9 +180,6 @@ h1, h2, h3 { font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
 
 /* ---------- night sections (dark, neon spotlight follows the pointer) ---------- */
 .night { --mx: 70%; --my: 30%; position: relative; background: radial-gradient(600px circle at var(--mx) var(--my), rgba(43, 217, 240, 0.12), transparent 60%), linear-gradient(180deg, var(--night), var(--night-2)); color: var(--on-night); overflow: hidden; }
-.night::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
-  background-image: linear-gradient(rgba(43, 217, 240, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(43, 217, 240, 0.06) 1px, transparent 1px); background-size: 56px 56px;
-  mask-image: radial-gradient(70% 70% at 50% 40%, #000, transparent); -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000, transparent); }
 .night > * { position: relative; }
 .night h1, .night h2, .night h3 { color: #fff; }
 .night .lead, .night p { color: var(--on-night); }
