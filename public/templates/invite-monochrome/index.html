@@ -99,7 +99,7 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.line > span,.names .kh{transform:none;opacity:1}}
 </style>
 </head>
-<body>
+<body data-music="mono">
 <main>
   <section class="hero" style="border:0">
     <div class="top"><span>Wedding invitation</span><span>For <span data-field="guest">you</span></span></div>
@@ -193,6 +193,7 @@
   <footer><span><span data-field="a">Lina</span> &amp; <span data-field="b">Rithy</span>, <span data-date="yyyy">2027</span></span><a class="made" href="/" target="_top"><img src="../invite-eucalyptus/assets/camboweb-logo-neon-horizontal.png" alt="Made by CamboWeb"></a></footer>
 </main>
 <script src="../shared/invite.js"></script>
+<script src="../shared/music.js"></script>
 <script>
   const out = document.getElementById('guests')
   document.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('click', () => {

@@ -34,21 +34,25 @@ export default function ContactForm() {
     <form className="contact" onSubmit={send}>
       <fieldset className="chip-set">
         <legend>What do you need?</legend>
-        {NEEDS.map((n) => (
-          <span key={n}>
-            <input type="radio" name="need" id={`need-${n}`} checked={need === n} onChange={() => setNeed(n)} />
-            <label htmlFor={`need-${n}`}>{n}</label>
-          </span>
-        ))}
+        <div className="chip-row">
+          {NEEDS.map((n) => (
+            <span key={n} className="chip">
+              <input type="radio" name="need" id={`need-${n}`} checked={need === n} onChange={() => setNeed(n)} />
+              <label htmlFor={`need-${n}`}>{n}</label>
+            </span>
+          ))}
+        </div>
       </fieldset>
       <fieldset className="chip-set">
         <legend>Budget (optional)</legend>
-        {BUDGETS.map((b) => (
-          <span key={b}>
-            <input type="radio" name="budget" id={`b-${b}`} checked={budget === b} onChange={() => setBudget(b)} />
-            <label htmlFor={`b-${b}`}>{b}</label>
-          </span>
-        ))}
+        <div className="chip-row">
+          {BUDGETS.map((b) => (
+            <span key={b} className="chip">
+              <input type="radio" name="budget" id={`b-${b}`} checked={budget === b} onChange={() => setBudget(b)} />
+              <label htmlFor={`b-${b}`}>{b}</label>
+            </span>
+          ))}
+        </div>
       </fieldset>
       <label className="field">Your name
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" required />

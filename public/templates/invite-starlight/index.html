@@ -86,7 +86,7 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
-<body>
+<body data-music="starlight">
 <canvas id="sky" aria-hidden="true"></canvas>
 <main>
   <section class="hero">
@@ -177,6 +177,7 @@
 </main>
 
 <script src="../shared/invite.js"></script>
+<script src="../shared/music.js"></script>
 <script>
   // Starry sky with occasional shooting stars
   const cv = document.getElementById('sky'), ctx = cv.getContext('2d')

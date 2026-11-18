@@ -57,9 +57,36 @@ export const invitations = [
 ]
 
 export const websites = [
-  { name: 'Restaurant', blurb: 'Menu in USD and riel, table booking and opening hours.', img: '/img/tpl-restaurant.jpg' },
-  { name: 'Barber & salon', blurb: 'Services and prices, barber profiles and online booking slots.', img: '/img/tpl-barber.jpg' },
-  { name: 'Bar & lounge', blurb: 'Cocktail list, events calendar and happy-hour times.', img: '/img/tpl-bar.jpg' },
+  {
+    slug: 'site-restaurant',
+    name: 'Restaurant',
+    title: 'Kampot Table',
+    domain: 'kampottable.com',
+    img: '/img/tpl-restaurant.jpg',
+    swatch: ['#14110f', '#d99a3d'],
+    blurb: 'A warm, cinematic site for a restaurant. Guests browse the menu in USD or riel and book a table in a few taps.',
+    highlights: ['Table booking', 'Menu in USD & riel', 'Open-now status', 'Add to calendar'],
+  },
+  {
+    slug: 'site-barber',
+    name: 'Barbershop',
+    title: 'Sharp & Co.',
+    domain: 'sharpandco.com',
+    img: '/img/tpl-barber.jpg',
+    swatch: ['#0f0f0f', '#c39a5b'],
+    blurb: 'Bold and confident. Clients pick a service, a barber and a free time slot, then get a booking code.',
+    highlights: ['4-step booking', 'Choose your barber', 'Live free slots', 'Price list'],
+  },
+  {
+    slug: 'site-bar',
+    name: 'Bar & lounge',
+    title: 'Lantern Rooftop',
+    domain: 'lanternrooftop.com',
+    img: '/img/tpl-bar.jpg',
+    swatch: ['#170c1c', '#f2a65a'],
+    blurb: 'Moody and glowing. A live happy-hour clock, a cocktail menu you can filter, weekly events and table reservations.',
+    highlights: ['Event reservations', 'Happy-hour clock', 'Cocktail filters', 'Floating lanterns'],
+  },
 ]
 
 export const templateUrl = (slug, fields = {}) => {
@@ -72,3 +99,5 @@ export const templateUrl = (slug, fields = {}) => {
   const qs = q.toString()
   return `/templates/${slug}/index.html${qs ? `?${qs}` : ''}`
 }
+
+export const siteUrl = (slug, name) => `/templates/${slug}/index.html${name ? `?name=${encodeURIComponent(name)}` : ''}`

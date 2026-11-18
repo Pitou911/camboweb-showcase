@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#170c1c">
+<title>Lantern Rooftop · Bar Website Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--plum:#170c1c;--plum-2:#24132b;--plum-3:#331b3b;--amber:#f2a65a;--amber-2:#ffc98a;--rose:#e86a92;--cream:#f7e9dc;--muted:#b9a3b5;--line:rgba(247,233,220,.12);
+    --display:'Italiana',Georgia,serif;--text:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--plum);color:var(--cream);font:300 16px/1.65 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button,input,select,textarea{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:.01em}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:99px;border:1px solid transparent;background:transparent;font-weight:500;font-size:15px;letter-spacing:.04em;cursor:pointer;transition:all .25s}
+  .btn:active{transform:scale(.97)}
+  .btn-amber{background:linear-gradient(135deg,var(--amber-2),var(--amber) 60%,#e88a4a);color:var(--plum)}
+  .btn-amber:hover{box-shadow:0 0 0 4px rgba(242,166,90,.18),0 10px 40px rgba(242,166,90,.4)}
+  .btn-line{border-color:rgba(247,233,220,.3)}
+  .btn-line:hover{border-color:var(--amber);color:var(--amber-2)}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .brand{display:flex;align-items:center;gap:12px;font:400 26px var(--display);letter-spacing:.06em}
+  .lamp{width:16px;height:22px;border-radius:8px 8px 6px 6px;background:radial-gradient(circle at 50% 60%,#fff3d6,var(--amber) 55%,#c4612c);box-shadow:0 0 18px var(--amber),0 0 40px rgba(242,166,90,.5);animation:flick 3s ease-in-out infinite}
+  @keyframes flick{40%{opacity:.85}45%{opacity:1}70%{opacity:.92}}
+  .links{display:flex;align-items:center;gap:30px;font-size:15px;letter-spacing:.04em}
+  .links a:not(.btn){color:var(--muted);transition:color .2s}
+  .links a:not(.btn):hover{color:var(--cream)}
+  body.scrolled .nav{background:rgba(23,12,28,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:min(100svh,900px);display:grid;place-items:center;text-align:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('img/hero.jpg') center/cover;filter:saturate(1.1);transform:scale(1.06);animation:kb 20s ease-out forwards}
+  @keyframes kb{to{transform:scale(1)}}
+  .hero::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(70% 60% at 50% 40%,rgba(23,12,28,.35),rgba(23,12,28,.92)),linear-gradient(180deg,rgba(23,12,28,.4),var(--plum))}
+  .lanterns{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .lanterns i{position:absolute;bottom:-60px;width:var(--s);height:calc(var(--s) * 1.35);border-radius:40% 40% 30% 30%;background:radial-gradient(circle at 50% 60%,#fff1d0,var(--amber) 50%,rgba(232,106,146,.6));box-shadow:0 0 calc(var(--s) * .8) var(--amber);opacity:.0;filter:blur(var(--b));animation:float var(--t) linear infinite;animation-delay:var(--d)}
+  @keyframes float{0%{transform:translate(0,0);opacity:0}10%{opacity:var(--o)}90%{opacity:var(--o)}100%{transform:translate(var(--x),-115vh);opacity:0}}
+  .hero-in{position:relative;z-index:2;padding:120px 20px 80px}
+  .status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:99px;background:rgba(247,233,220,.08);border:1px solid var(--line);backdrop-filter:blur(10px);font-size:14px}
+  .status i{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
+  .status.live i{background:#7be495;box-shadow:0 0 10px #7be495}
+  .status b{font-weight:600;font-variant-numeric:tabular-nums}
+  .hero h1{font-size:clamp(64px,11vw,168px);margin-top:22px;text-shadow:0 0 60px rgba(242,166,90,.35)}
+  .hero h1 span{display:block;font-size:.42em;letter-spacing:.32em;color:var(--amber-2);margin-top:6px}
+  .hero p{max-width:46ch;margin:20px auto 0;color:var(--muted);font-size:18px}
+  .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .scroll{position:absolute;z-index:2;bottom:28px;left:50%;width:1px;height:46px;background:linear-gradient(var(--amber),transparent);animation:drop 2s ease-in-out infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  section{padding:110px 0}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+  .head h2{font-size:clamp(48px,6vw,88px)}
+  .head h2 em{font-style:normal;color:var(--amber-2)}
+  .head p{max-width:40ch;color:var(--muted)}
+  .over{font-size:13px;font-weight:500;letter-spacing:.3em;color:var(--rose)}
+
+  /* ---------- cocktails ---------- */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .filters button{padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:14px;color:var(--muted);transition:all .2s}
+  .filters button:hover{border-color:var(--amber);color:var(--cream)}
+  .filters button[aria-pressed=true]{background:var(--cream);border-color:var(--cream);color:var(--plum);font-weight:500}
+  .drinks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .drink{position:relative;display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:var(--plum-2);border:1px solid var(--line);transition:transform .4s var(--ease),border-color .3s,opacity .3s}
+  .drink:hover{transform:translateY(-6px);border-color:rgba(242,166,90,.45)}
+  .drink .ph{aspect-ratio:4/3;overflow:hidden}
+  .drink .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .drink:hover .ph img{transform:scale(1.06)}
+  .drink .b{padding:20px 22px 22px;display:grid;gap:6px}
+  .drink .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .drink h3{font-size:30px}
+  .drink .p{color:var(--amber-2);font-weight:500;font-size:18px}
+  .drink p{color:var(--muted);font-size:14px}
+  .notes{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .notes span{padding:3px 10px;border-radius:99px;background:rgba(232,106,146,.12);color:#f6a9c2;font-size:12px}
+  .drink.hide{display:none}
+
+  /* ---------- happy hour band ---------- */
+  .band{position:relative;overflow:hidden;padding:70px 0;background:linear-gradient(110deg,#3a1838,#6d2a4a 40%,#c4612c 85%,var(--amber))}
+  .band .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+  .band h2{font-size:clamp(46px,6vw,84px)}
+  .band p{color:rgba(247,233,220,.85);max-width:40ch;margin-top:8px}
+  .clock{display:flex;gap:10px}
+  .clock div{min-width:84px;padding:14px 10px;border-radius:18px;background:rgba(23,12,28,.35);text-align:center;backdrop-filter:blur(6px)}
+  .clock b{display:block;font:400 44px/1 var(--display);font-variant-numeric:tabular-nums}
+  .clock small{font-size:12px;letter-spacing:.2em;color:rgba(247,233,220,.75)}
+
+  /* ---------- events ---------- */
+  .events{display:grid;gap:12px}
+  .ev{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;padding:20px 24px;border-radius:22px;background:var(--plum-2);border:1px solid var(--line);transition:border-color .3s,background .3s}
+  .ev:hover{border-color:rgba(242,166,90,.45);background:var(--plum-3)}
+  .ev .d{text-align:center;border-right:1px solid var(--line);padding-right:20px}
+  .ev .d b{display:block;font:400 44px/1 var(--display);color:var(--amber-2)}
+  .ev .d small{font-size:12px;letter-spacing:.2em;color:var(--muted)}
+  .ev h3{font-size:34px}
+  .ev p{color:var(--muted);font-size:14px}
+  .ev .kind{display:inline-block;margin-bottom:4px;padding:2px 10px;border-radius:99px;background:rgba(242,166,90,.14);color:var(--amber-2);font-size:12px;letter-spacing:.1em}
+
+  /* ---------- reserve ---------- */
+  .reserve{background:radial-gradient(60% 50% at 80% 0%,rgba(232,106,146,.15),transparent 70%),var(--plum-2)}
+  .res{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:24px;align-items:start}
+  .glass{border-radius:28px;padding:30px;background:rgba(247,233,220,.04);border:1px solid var(--line)}
+  .q{margin-bottom:26px}
+  .q > span{display:block;margin-bottom:12px;font-size:13px;letter-spacing:.2em;color:var(--rose)}
+  .nights{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+  .night{flex:none;width:96px;padding:12px 8px;border-radius:18px;border:1px solid var(--line);background:transparent;text-align:center;cursor:pointer;transition:all .2s}
+  .night small{display:block;font-size:12px;color:var(--muted)}
+  .night b{display:block;font:400 30px/1.1 var(--display)}
+  .night em{display:block;font-style:normal;font-size:11px;color:var(--amber-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .night[aria-pressed=true]{background:var(--cream);color:var(--plum);border-color:var(--cream)}
+  .night[aria-pressed=true] small,.night[aria-pressed=true] em{color:#7a4a64}
+  .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .area{position:relative;padding:18px;border-radius:20px;border:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;transition:all .2s}
+  .area svg{width:34px;height:34px;stroke:var(--amber-2);fill:none;stroke-width:1.4;margin-bottom:10px}
+  .area b{display:block;font-weight:500}
+  .area small{color:var(--muted);font-size:13px}
+  .area .left{position:absolute;top:14px;right:14px;font-size:11px;color:var(--rose)}
+  .area[aria-pressed=true]{border-color:var(--amber);background:rgba(242,166,90,.08);box-shadow:0 0 30px rgba(242,166,90,.12)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stepper{display:flex;align-items:center;justify-content:space-between;padding:8px;border-radius:99px;border:1px solid var(--line)}
+  .stepper button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(247,233,220,.08);font-size:20px;cursor:pointer}
+  .stepper button:hover{background:rgba(242,166,90,.2)}
+  .stepper output{font:400 30px var(--display)}
+  select,.fields input{width:100%;padding:13px 16px;border-radius:99px;border:1px solid var(--line);background:var(--plum);color:var(--cream);font-size:15px}
+  select:focus,.fields input:focus{outline:none;border-color:var(--amber)}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pass{position:sticky;top:100px;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,var(--plum-3),var(--plum));border:1px solid rgba(242,166,90,.3);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  .pass-top{padding:26px 28px;background:linear-gradient(110deg,#6d2a4a,#c4612c)}
+  .pass-top small{letter-spacing:.3em;font-size:12px;opacity:.85}
+  .pass-top h3{font-size:40px;margin-top:4px}
+  .pass dl{display:grid;gap:12px;padding:24px 28px}
+  .pass dl div{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+  .pass dt{color:var(--muted);font-size:14px}
+  .pass dd{font-weight:500;text-align:right}
+  .pass .go{padding:0 28px 28px}
+  .pass .go .btn{width:100%}
+  .pass .fine{margin-top:12px;font-size:13px;color:var(--muted)}
+  .confirmed{display:none;padding:0 28px 28px;text-align:center}
+  .pass.ok .confirmed{display:block;animation:fade .5s var(--ease)}
+  .pass.ok .go{display:none}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}}
+  .qr{width:140px;margin:6px auto 12px;padding:8px;border-radius:14px;background:#fff}
+  .confirmed b{display:block;font:400 28px var(--display);color:var(--amber-2);letter-spacing:.1em}
+
+  /* ---------- gallery + info ---------- */
+  .strip{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px;height:420px}
+  .strip img{width:100%;height:100%;object-fit:cover;border-radius:24px}
+  .strip .stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;min-height:0}
+  .strip .stack img{min-height:0}
+  .info{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}
+  .info div{padding:26px;border-radius:24px;background:var(--plum-2);border:1px solid var(--line)}
+  .info h3{font-size:32px;margin-bottom:8px}
+  .info p{color:var(--muted)}
+  footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .made{display:inline-flex;padding:6px 13px;border-radius:99px;background:#001820;border:1px solid rgba(43,217,240,.3)}
+  .made img{height:15px}
+
+  [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  [data-reveal].in{opacity:1;transform:none}
+  @media (max-width:960px){
+    .links a:not(.btn){display:none}
+    .drinks{grid-template-columns:1fr 1fr}
+    .res{grid-template-columns:minmax(0,1fr)}
+    .pass{position:static}
+    .strip{grid-template-columns:1fr 1fr;height:auto}
+    .strip > img{grid-column:1/-1;height:260px}
+    .strip .stack img{height:180px}
+    .info{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    section{padding:76px 0}
+    .drinks,.areas,.row2,.fields{grid-template-columns:1fr}
+    .ev{grid-template-columns:70px 1fr;gap:16px}
+    .ev .btn{grid-column:1/-1}
+    .glass{padding:20px}
+    .clock div{min-width:70px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}.lanterns{display:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="lamp" aria-hidden="true"></span><span data-field="name">Lantern Rooftop</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#drinks">Drinks</a><a href="#events">Events</a><a href="#visit">Visit</a>
+      <a class="btn btn-amber" href="#reserve">Reserve</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top" style="padding:0">
+  <div class="hero-bg" role="img" aria-label="The bar at night"></div>
+  <div class="lanterns" id="lanterns" aria-hidden="true"></div>
+  <div class="hero-in">
+    <span class="status" id="status"><i></i><span id="status-text">Happy hour starts at 17:00</span></span>
+    <h1 data-field="name">Lantern Rooftop</h1>
+    <p>Cocktails above the Mekong, live music four nights a week and the best sunset in Phnom Penh. Level 18, Riverside.</p>
+    <div class="cta"><a class="btn btn-amber" href="#reserve">Reserve a table</a><a class="btn btn-line" href="#drinks">See the drinks</a></div>
+  </div>
+  <span class="scroll" aria-hidden="true"></span>
+</section>
+
+<section id="drinks">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="over">THE BAR</p><h2>Signature <em>cocktails</em></h2></div><p>Made with Cambodian rice spirits, palm sugar, fresh herbs and fruit from the market every morning.</p></div>
+    <div class="filters" id="filters" role="group" aria-label="Filter drinks by flavour"></div>
+    <div class="drinks" id="drink-list"></div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <div><h2 id="hh-title">Happy hour</h2><p id="hh-sub">Every day 17:00 to 19:00. Two-for-one on signatures and draught beer.</p></div>
+    <div class="clock" aria-live="off"><div><b id="c-h">00</b><small>HRS</small></div><div><b id="c-m">00</b><small>MIN</small></div><div><b id="c-s">00</b><small>SEC</small></div></div>
+  </div>
+</div>
+
+<section id="events">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="over">THIS WEEK</p><h2>Live on the <em>roof</em></h2></div><p>Tap a night to reserve a table for it. Sofas go fast on Fridays.</p></div>
+    <div class="events" id="ev-list"></div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="over">RESERVATIONS</p><h2>Save your <em>spot</em></h2></div><p>Tables are held for 20 minutes. Lounge sofas have a $60 minimum spend.</p></div>
+    <div class="res">
+      <form class="glass" id="res-form">
+        <div class="q"><span>WHICH NIGHT</span><div class="nights" id="nights"></div></div>
+        <div class="q"><span>WHERE</span>
+          <div class="areas" id="areas">
+            <button type="button" class="area" data-v="Rooftop table" aria-pressed="true"><span class="left">4 left</span><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2M2 12h20"/></svg><b>Rooftop table</b><small>Open-air, river view</small></button>
+            <button type="button" class="area" data-v="Lounge sofa" aria-pressed="false"><span class="left">2 left</span><svg viewBox="0 0 24 24"><path d="M3 11V8a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3M2 11h20v6H2zM5 17v2M19 17v2"/></svg><b>Lounge sofa</b><small>Groups, $60 min spend</small></button>
+            <button type="button" class="area" data-v="Bar seats" aria-pressed="false"><span class="left">6 left</span><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7H9zM12 10v11M8 21h8"/></svg><b>Bar seats</b><small>Watch the bartenders</small></button>
+          </div>
+        </div>
+        <div class="q row2">
+          <div><span style="display:block;margin-bottom:12px;font-size:13px;letter-spacing:.2em;color:var(--rose)">GUESTS</span><div class="stepper"><button type="button" id="minus" aria-label="Fewer guests">−</button><output id="guests">2</output><button type="button" id="plus" aria-label="More guests">+</button></div></div>
+          <div><span style="display:block;margin-bottom:12px;font-size:13px;letter-spacing:.2em;color:var(--rose)">ARRIVAL</span><select id="arrive" aria-label="Arrival time"><option>17:00 (sunset)</option><option>18:00</option><option selected>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option></select></div>
+        </div>
+        <div class="q" style="margin:0"><span>YOUR DETAILS</span>
+          <div class="fields"><input id="f-name" required placeholder="Your name" autocomplete="name" aria-label="Your name"><input id="f-phone" required type="tel" placeholder="Phone or Telegram" autocomplete="tel" aria-label="Phone or Telegram"></div>
+        </div>
+      </form>
+      <aside class="pass" id="pass" aria-live="polite">
+        <div class="pass-top"><small>RESERVATION</small><h3 id="p-night">Tonight</h3></div>
+        <dl>
+          <div><dt>Event</dt><dd id="p-event">—</dd></div>
+          <div><dt>Where</dt><dd id="p-area">Rooftop table</dd></div>
+          <div><dt>Guests</dt><dd id="p-guests">2</dd></div>
+          <div><dt>Arrival</dt><dd id="p-time">19:00</dd></div>
+        </dl>
+        <div class="go"><button class="btn btn-amber" type="submit" form="res-form">Confirm reservation</button><p class="fine">Demo only: nothing is sent.</p></div>
+        <div class="confirmed"><img class="qr" src="../invite-eucalyptus/assets/demo-qr.svg" alt="Demo entry code"><b id="p-ref"></b><p class="fine">Show this at the lift. See you on the roof.</p><button class="btn btn-line" type="button" id="p-again" style="margin-top:14px">Make another</button></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="strip" data-reveal>
+      <img src="img/bar.jpg" alt="The bar counter" loading="lazy">
+      <div class="stack"><img src="img/pour.jpg" alt="A bartender pouring" loading="lazy"><img src="img/trio.jpg" alt="Three cocktails" loading="lazy"></div>
+      <div class="stack"><img src="img/oldfashioned.jpg" alt="An old fashioned" loading="lazy"><img src="img/berry.jpg" alt="A berry cocktail" loading="lazy"></div>
+    </div>
+    <div class="info">
+      <div data-reveal><h3>Hours</h3><p>Every day 16:00 – 01:00<br>Kitchen until 23:00</p></div>
+      <div data-reveal><h3>Find us</h3><p>Level 18, Riverside Tower<br>Sisowath Quay, Phnom Penh</p></div>
+      <div data-reveal><h3>Dress code</h3><p>Smart casual. No flip-flops<br>or sleeveless shirts after 20:00.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© <span data-field="name">Lantern Rooftop</span>. Please drink responsibly. A CamboWeb template.</span><a class="made" href="/" target="_top"><img src="../invite-eucalyptus/assets/camboweb-logo-neon-horizontal.png" alt="Made by CamboWeb"></a></div></footer>
+
+<script src="../shared/site.js"></script>
+<script>
+  const $ = (s) => document.querySelector(s)
+  const pad = (n) => String(n).padStart(2, '0')
+
+  // lanterns drifting up through the hero
+  const L = $('#lanterns')
+  for (let i = 0; i < 22; i++) {
+    const el = document.createElement('i'), near = i % 4 === 0
+    el.style.cssText = `left:${Math.random() * 100}%;--s:${near ? 26 + Math.random() * 14 : 8 + Math.random() * 10}px;--b:${near ? 3 : 0}px;--o:${near ? .5 : .85};--t:${14 + Math.random() * 14}s;--d:${-Math.random() * 26}s;--x:${(Math.random() - .5) * 140}px`
+    L.appendChild(el)
+  }
+
+  // happy hour: 17:00 – 19:00 every day
+  function hh() {
+    const now = new Date(), start = new Date(now), end = new Date(now)
+    start.setHours(17, 0, 0, 0); end.setHours(19, 0, 0, 0)
+    const live = now >= start && now < end
+    let target = live ? end : start
+    if (now >= end) target = new Date(start.getTime() + 864e5)
+    let s = Math.max(0, Math.floor((target - now) / 1000))
+    const h = Math.floor(s / 3600); s -= h * 3600; const m = Math.floor(s / 60); s -= m * 60
+    $('#c-h').textContent = pad(h); $('#c-m').textContent = pad(m); $('#c-s').textContent = pad(s)
+    $('#status').classList.toggle('live', live)
+    $('#status-text').innerHTML = live ? `Happy hour now, ends in <b>${h}:${pad(m)}:${pad(s)}</b>` : `Happy hour starts in <b>${h}:${pad(m)}:${pad(s)}</b>`
+    $('#hh-title').textContent = live ? 'Happy hour is on' : 'Happy hour'
+    $('#hh-sub').textContent = live ? 'Two-for-one on signatures and draught beer until 19:00.' : 'Every day 17:00 to 19:00. Two-for-one on signatures and draught beer.'
+  }
+  hh(); setInterval(hh, 1000)
+
+  // cocktails with flavour filters
+  const DRINKS = [
+    { n: 'Mekong Sunset', p: 8, img: 'img/spritz.jpg', d: 'Sombai rice spirit, passion fruit, Aperol, prosecco', tags: ['Fruity', 'Bubbly'] },
+    { n: 'Kampot Old Fashioned', p: 10, img: 'img/oldfashioned.jpg', d: 'Bourbon, Kampot red pepper, palm sugar, orange', tags: ['Strong', 'Bitter'] },
+    { n: 'Lantern Berry', p: 9, img: 'img/berry.jpg', d: 'Gin, blackberry, lime leaf, hibiscus', tags: ['Fruity', 'Sour'] },
+    { n: 'Rooftop Trio', p: 22, img: 'img/trio.jpg', d: 'Three mini signatures to share. Perfect for sunset.', tags: ['Fruity', 'Sharing'] },
+    { n: 'Smoke & Honey', p: 11, img: 'img/pour.jpg', d: 'Mezcal, wild honey, lemon, smoked salt', tags: ['Strong', 'Sour'] },
+    { n: 'Lemongrass Cooler', p: 5, img: 'img/bar.jpg', d: 'Lemongrass, lime, ginger, soda. No alcohol.', tags: ['Zero-proof', 'Fresh'] },
+  ]
+  const FLAVOURS = ['All', 'Fruity', 'Sour', 'Strong', 'Bitter', 'Zero-proof']
+  let flav = 'All'
+  $('#drink-list').innerHTML = DRINKS.map((x) => `<article class="drink" data-tags="${x.tags.join(',')}"><div class="ph"><img src="${x.img}" alt="${x.n}" loading="lazy"></div><div class="b"><div class="row"><h3>${x.n}</h3><span class="p">$${x.p}</span></div><p>${x.d}</p><div class="notes">${x.tags.map((t) => `<span>${t}</span>`).join('')}</div></div></article>`).join('')
+  function filters() {
+    $('#filters').innerHTML = FLAVOURS.map((f) => `<button type="button" aria-pressed="${f === flav}">${f}</button>`).join('')
+    document.querySelectorAll('#filters button').forEach((b) => b.onclick = () => { flav = b.textContent; filters() })
+    document.querySelectorAll('.drink').forEach((d) => d.classList.toggle('hide', flav !== 'All' && !d.dataset.tags.split(',').includes(flav)))
+  }
+  filters()
+
+  // events this week
+  const EVENTS = { 2: ['Acoustic sunset', 'Live music', 'Khmer and English acoustic covers from 19:00'], 4: ['Jazz on the roof', 'Live music', 'The Riverside Quartet, two sets from 20:00'], 5: ['Friday DJ: deep house', 'DJ night', 'Resident DJs from 21:00. Sofas recommended'], 6: ['Saturday sessions', 'DJ night', 'Guest DJ and fire show at 22:00'], 0: ['Sunday sundowner', 'Special', 'Free canapés with any cocktail, 17:00 to 19:00'] }
+  const days = CW.days(7)
+  const S = { night: 0, area: 'Rooftop table', guests: 2 }
+  const dayName = (d, i) => i === 0 ? 'Tonight' : i === 1 ? 'Tomorrow' : d.toLocaleDateString('en-GB', { weekday: 'long' })
+  $('#ev-list').innerHTML = days.map((d, i) => [d, i]).filter(([d]) => EVENTS[d.getDay()]).map(([d, i]) => {
+    const [t, k, desc] = EVENTS[d.getDay()]
+    return `<article class="ev" data-reveal><div class="d"><b>${d.getDate()}</b><small>${d.toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase()}</small></div><div><span class="kind">${k}</span><h3>${t}</h3><p>${dayName(d, i)}. ${desc}</p></div><button class="btn btn-line" type="button" data-n="${i}">Reserve this night</button></article>`
+  }).join('')
+  document.querySelectorAll('[data-n]').forEach((b) => b.onclick = () => { S.night = +b.dataset.n; render(); $('#reserve').scrollIntoView({ behavior: 'smooth' }) })
+  document.querySelectorAll('.ev').forEach((el) => el.classList.add('in'))
+
+  function render() {
+    $('#nights').innerHTML = days.map((d, i) => `<button type="button" class="night" aria-pressed="${i === S.night}" data-i="${i}"><small>${i === 0 ? 'Tonight' : d.toLocaleDateString('en-GB', { weekday: 'short' })}</small><b>${d.getDate()}</b><em>${EVENTS[d.getDay()] ? EVENTS[d.getDay()][0] : 'Chill night'}</em></button>`).join('')
+    document.querySelectorAll('.night').forEach((b) => b.onclick = () => { S.night = +b.dataset.i; render() })
+    document.querySelectorAll('.area').forEach((a) => a.setAttribute('aria-pressed', a.dataset.v === S.area))
+    $('#guests').textContent = S.guests
+    const d = days[S.night]
+    $('#p-night').textContent = dayName(d, S.night) + (S.night > 1 ? ' ' + d.getDate() : '')
+    $('#p-event').textContent = EVENTS[d.getDay()] ? EVENTS[d.getDay()][0] : 'Chill night'
+    $('#p-area').textContent = S.area
+    $('#p-guests').textContent = S.guests
+    $('#p-time').textContent = $('#arrive').value.split(' ')[0]
+  }
+  document.querySelectorAll('.area').forEach((a) => a.onclick = () => { S.area = a.dataset.v; render() })
+  $('#minus').onclick = () => { S.guests = Math.max(1, S.guests - 1); render() }
+  $('#plus').onclick = () => { S.guests = Math.min(12, S.guests + 1); render(); if (S.guests > 6 && S.area !== 'Lounge sofa') CW.toast('For groups over 6 we recommend a lounge sofa.') }
+  $('#arrive').onchange = render
+  $('#res-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    if (!$('#res-form').reportValidity()) return
+    $('#p-ref').textContent = CW.ref('LR')
+    $('#pass').classList.add('ok')
+  })
+  $('#p-again').onclick = () => { $('#pass').classList.remove('ok'); $('#res-form').reset(); S.guests = 2; render() }
+  render()
+</script>
+</body>
+</html>

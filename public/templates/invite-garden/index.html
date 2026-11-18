@@ -126,7 +126,7 @@
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.vine path{stroke-dashoffset:0}.vine .leaf,.vine .bloom{opacity:1}}
 </style>
 </head>
-<body class="locked">
+<body class="locked" data-music="garden">
 <div class="wash" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <div class="cover" id="cover">
@@ -240,6 +240,7 @@
 </main>
 
 <script src="../shared/invite.js"></script>
+<script src="../shared/music.js"></script>
 <script>
   const cover = document.getElementById('cover')
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches

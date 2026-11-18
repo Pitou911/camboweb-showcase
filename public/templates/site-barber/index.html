@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f0f0f">
+<title>Sharp &amp; Co. · Barbershop Website Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0f0f0f;--coal:#191918;--coal-2:#232321;--bone:#ebe5d9;--bone-2:#bfb8aa;--brass:#c39a5b;--brass-2:#e0bb7f;--red:#b3261e;--blue:#1f3b73;--line:rgba(235,229,217,.12);
+    --display:'Big Shoulders Display',Impact,sans-serif;--text:'DM Sans',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--black);color:var(--bone);font:400 16px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button,input,select,textarea{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:.01em}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;padding:15px 28px;border:1px solid transparent;border-radius:4px;font:700 14px var(--text);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+  .btn:active{transform:scale(.97)}
+  .btn-brass{background:var(--brass);color:var(--black)}
+  .btn-brass:hover{background:var(--brass-2);box-shadow:0 10px 30px rgba(195,154,91,.3)}
+  .btn-line{border-color:rgba(235,229,217,.3)}
+  .btn-line:hover{border-color:var(--bone)}
+
+  /* barber pole stripe: the signature detail */
+  .pole{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,var(--bone) 14px 28px,var(--blue) 28px 42px,var(--bone) 42px 56px);background-size:79.2px 100%;animation:pole 2.4s linear infinite}
+  @keyframes pole{to{background-position:79.2px 0}}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(15,15,15,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font:900 28px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+  .brand span{color:var(--brass)}
+  .links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+  .links a:not(.btn){color:var(--bone-2);transition:color .2s}
+  .links a:not(.btn):hover{color:var(--bone)}
+  .links .btn{padding:11px 20px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;min-height:min(calc(100svh - 82px),860px)}
+  .hero-l{display:flex;flex-direction:column;justify-content:center;padding:60px 6vw 60px max(20px,calc((100vw - 1200px)/2))}
+  .tagline{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+  .tagline::before{content:'';width:34px;height:2px;background:var(--brass)}
+  .hero h1{font-size:clamp(76px,11vw,170px);margin-top:20px}
+  .hero h1 .o{-webkit-text-stroke:2px var(--bone);color:transparent}
+  .hero p{margin-top:22px;max-width:40ch;color:var(--bone-2);font-size:18px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .proof{display:flex;gap:34px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+  .proof b{display:block;font:800 40px/1 var(--display);color:var(--bone)}
+  .proof span{font-size:13px;color:var(--bone-2)}
+  .hero-r{position:relative;overflow:hidden}
+  .hero-r img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.05)}
+  .hero-r::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--black),transparent 30%)}
+  .live{position:absolute;right:24px;bottom:24px;z-index:1;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:6px;background:rgba(15,15,15,.8);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:14px}
+  .live i{width:10px;height:10px;border-radius:50%;background:#5fd27a;box-shadow:0 0 0 0 rgba(95,210,122,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(95,210,122,0)}}
+
+  /* ---------- ticker ---------- */
+  .ticker{overflow:hidden;background:var(--brass);color:var(--black);padding:14px 0}
+  .ticker div{display:flex;width:max-content;animation:tick 30s linear infinite}
+  .ticker span{font:800 26px var(--display);text-transform:uppercase;padding-right:40px;white-space:nowrap}
+  .ticker span::after{content:'✦';margin-left:40px;font-size:18px;vertical-align:middle}
+  @keyframes tick{to{transform:translateX(-50%)}}
+
+  section{padding:110px 0}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+  .head h2{font-size:clamp(54px,7vw,104px)}
+  .head p{max-width:40ch;color:var(--bone-2)}
+  .num{font:800 14px var(--display);color:var(--brass);letter-spacing:.2em}
+
+  /* ---------- services ---------- */
+  .services{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .svc{display:grid;grid-template-columns:1fr auto;gap:4px 20px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding .3s var(--ease)}
+  .svc:hover{padding-left:12px}
+  .svc h3{font-size:32px}
+  .svc .pr{font:800 32px var(--display);color:var(--brass)}
+  .svc p{color:var(--bone-2);font-size:15px}
+  .svc small{font-size:13px;color:var(--bone-2);text-align:right}
+
+  /* ---------- barbers ---------- */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .barber{position:relative;border-radius:6px;overflow:hidden;background:var(--coal)}
+  .barber .ph{aspect-ratio:4/5;overflow:hidden}
+  .barber img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s,transform 1s var(--ease)}
+  .barber:hover img{filter:grayscale(0);transform:scale(1.05)}
+  .barber .meta{padding:20px 22px 24px}
+  .barber h3{font-size:38px}
+  .barber .role{color:var(--brass);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .barber .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+  .barber .tags span{padding:4px 10px;border-radius:3px;background:var(--coal-2);font-size:12px;color:var(--bone-2)}
+  .barber .stars{position:absolute;top:14px;right:14px;padding:6px 10px;border-radius:3px;background:rgba(15,15,15,.75);font-size:13px;font-weight:700;backdrop-filter:blur(6px)}
+
+  /* ---------- booking wizard ---------- */
+  .booking{background:var(--coal)}
+  .wiz{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:24px;align-items:start}
+  .panel{background:var(--black);border:1px solid var(--line);border-radius:8px;padding:30px}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:30px}
+  .steps button{display:grid;gap:8px;text-align:left;padding:0;border:0;background:none;cursor:pointer;color:var(--bone-2);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .steps button::before{content:'';height:4px;border-radius:2px;background:var(--coal-2);transition:background .3s}
+  .steps button.done::before,.steps button.cur::before{background:var(--brass)}
+  .steps button.cur{color:var(--bone)}
+  .steps button:disabled{cursor:default}
+  .pane{display:none;animation:fadein .4s var(--ease)}
+  .pane.on{display:block}
+  @keyframes fadein{from{opacity:0;transform:translateX(16px)}}
+  .pane h3{font-size:40px;margin-bottom:20px}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border:1px solid var(--line);border-radius:6px;background:var(--coal);text-align:left;cursor:pointer;transition:all .2s}
+  .opt:hover{border-color:rgba(195,154,91,.6)}
+  .opt[aria-pressed=true]{border-color:var(--brass);background:rgba(195,154,91,.1)}
+  .opt b{display:block;font-weight:700}
+  .opt small{color:var(--bone-2);font-size:13px}
+  .opt .pr{font:800 24px var(--display);color:var(--brass)}
+  .opt img{width:52px;height:52px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+  .opt[aria-pressed=true] img{filter:none}
+  .who{display:flex;align-items:center;gap:14px}
+  .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:18px;scrollbar-width:thin}
+  .day{flex:none;width:70px;padding:12px 0;border:1px solid var(--line);border-radius:6px;background:var(--coal);text-align:center;cursor:pointer;transition:all .2s}
+  .day small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--bone-2);text-transform:uppercase}
+  .day b{display:block;font:800 30px/1.1 var(--display)}
+  .day[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--black)}
+  .day[aria-pressed=true] small{color:var(--black)}
+  .day:disabled{opacity:.35;cursor:not-allowed}
+  .times{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+  .t{padding:11px 0;border:1px solid var(--line);border-radius:4px;background:var(--coal);font-weight:700;cursor:pointer;transition:all .2s}
+  .t:hover:not(:disabled){border-color:var(--brass)}
+  .t[aria-pressed=true]{background:var(--bone);color:var(--black);border-color:var(--bone)}
+  .t:disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fields label{display:grid;gap:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-2)}
+  .fields .full{grid-column:1/-1}
+  .fields input,.fields textarea{padding:14px;border:1px solid var(--line);border-radius:4px;background:var(--coal);font-size:15px;text-transform:none;letter-spacing:0;color:var(--bone)}
+  .fields input:focus,.fields textarea:focus{outline:none;border-color:var(--brass)}
+  .nav-btns{display:flex;justify-content:space-between;gap:12px;margin-top:28px}
+  .ticket{position:sticky;top:96px;background:var(--bone);color:var(--black);border-radius:8px;overflow:hidden}
+  .ticket .pole{height:8px}
+  .ticket .in{padding:26px}
+  .ticket h3{font-size:34px}
+  .ticket dl{display:grid;gap:12px;margin:20px 0}
+  .ticket dl div{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px dashed rgba(15,15,15,.2)}
+  .ticket dt{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6e6a62}
+  .ticket dd{font-weight:700;text-align:right}
+  .ticket .total{display:flex;justify-content:space-between;align-items:baseline;font:800 40px var(--display)}
+  .ticket .total small{font:700 13px var(--text);letter-spacing:.08em;text-transform:uppercase;color:#6e6a62}
+  .done-card{text-align:center;padding:20px 0}
+  .done-card .ok{width:72px;height:72px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--brass);color:var(--black);font:900 36px var(--display);animation:pop .5s var(--ease)}
+  @keyframes pop{from{transform:scale(.4);opacity:0}}
+  .done-card h3{font-size:56px}
+  .done-card p{color:var(--bone-2);margin-top:10px}
+  .code{display:inline-block;margin-top:18px;padding:10px 18px;border:1px dashed var(--brass);border-radius:4px;font:800 28px var(--display);letter-spacing:.12em;color:var(--brass)}
+
+  /* ---------- work + hours ---------- */
+  .work{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:12px}
+  .work img{width:100%;height:100%;object-fit:cover;border-radius:6px;filter:grayscale(.3);transition:filter .5s}
+  .work img:hover{filter:none}
+  .work img:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .hours{width:100%;border-collapse:collapse;font-size:17px}
+  .hours td{padding:14px 0;border-bottom:1px solid var(--line)}
+  .hours td:last-child{text-align:right;color:var(--bone-2)}
+  .hours tr.today td{color:var(--brass);font-weight:700}
+  .walk{padding:34px;border-radius:8px;background:var(--coal);border:1px solid var(--line)}
+  .walk h3{font-size:48px}
+  .walk p{color:var(--bone-2);margin:12px 0 24px}
+  footer{padding:36px 0;border-top:1px solid var(--line);color:var(--bone-2);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .made{display:inline-flex;padding:6px 13px;border-radius:99px;background:#001820;border:1px solid rgba(43,217,240,.3)}
+  .made img{height:15px}
+
+  [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  [data-reveal].in{opacity:1;transform:none}
+  @media (max-width:960px){
+    .links a:not(.btn){display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-l{padding:56px 20px}
+    .hero-r{height:380px;order:-1}
+    .hero-r::after{background:linear-gradient(0deg,var(--black),transparent 50%)}
+    .services,.wiz,.info{grid-template-columns:minmax(0,1fr)}
+    .team{grid-template-columns:1fr 1fr}
+    .ticket{position:static}
+    .work{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  }
+  @media (max-width:560px){
+    section{padding:76px 0}
+    .team,.opts,.fields{grid-template-columns:1fr}
+    .panel{padding:20px}
+    .steps button{font-size:10px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="pole" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" data-field="name">Sharp &amp; Co.</a>
+    <nav class="links" aria-label="Main">
+      <a href="#services">Services</a><a href="#team">Barbers</a><a href="#visit">Visit</a>
+      <a class="btn btn-brass" href="#book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top" style="padding:0">
+  <div class="hero-l">
+    <span class="tagline">Barbershop · BKK1, Phnom Penh</span>
+    <h1>Sharp<br><span class="o">cuts.</span><br>No wait.</h1>
+    <p>Classic cuts, skin fades and hot-towel shaves from barbers who take their time. Book online in 30 seconds.</p>
+    <div class="cta"><a class="btn btn-brass" href="#book">Book an appointment</a><a class="btn btn-line" href="#services">See prices</a></div>
+    <div class="proof">
+      <div><b>4.9★</b><span>860 Google reviews</span></div>
+      <div><b>12k+</b><span>Cuts since 2020</span></div>
+      <div><b>3</b><span>Master barbers</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <img src="img/hero.jpg" alt="A barber styling a client’s hair">
+    <div class="live"><i></i><span id="next-free">Next free chair today at 15:30</span></div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>Skin fades</span><span>Hot-towel shave</span><span>Beard sculpting</span><span>Kids cuts</span><span>Hair &amp; beard combo</span><span>Grey blending</span>
+  <span>Skin fades</span><span>Hot-towel shave</span><span>Beard sculpting</span><span>Kids cuts</span><span>Hair &amp; beard combo</span><span>Grey blending</span>
+</div></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="num">01 / SERVICES</p><h2>Prices</h2></div><p>Every service includes a consultation, a hot towel and a styling finish. Tap one to book it.</p></div>
+    <div class="services" id="svc-list"></div>
+  </div>
+</section>
+
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="num">02 / BARBERS</p><h2>The chairs</h2></div><p>Pick your barber, or choose “any” for the earliest slot.</p></div>
+    <div class="team" id="team-list"></div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="num">03 / BOOKING</p><h2>Book a chair</h2></div><p>Four quick steps. You’ll get a booking code to show at the door.</p></div>
+    <div class="wiz">
+      <div class="panel">
+        <div class="steps" id="steps"></div>
+        <div class="pane" data-pane="0"><h3>Choose a service</h3><div class="opts" id="o-svc"></div></div>
+        <div class="pane" data-pane="1"><h3>Choose a barber</h3><div class="opts" id="o-barber"></div></div>
+        <div class="pane" data-pane="2"><h3>Pick a time</h3><div class="days" id="o-days"></div><div class="times" id="o-times"></div></div>
+        <form class="pane" data-pane="3" id="o-form"><h3>Your details</h3>
+          <div class="fields">
+            <label>Name<input id="f-name" required autocomplete="name"></label>
+            <label>Phone<input id="f-phone" type="tel" required autocomplete="tel" placeholder="012 345 678"></label>
+            <label class="full">Notes for your barber<textarea id="f-note" rows="2" placeholder="e.g. Low fade, keep length on top"></textarea></label>
+          </div>
+        </form>
+        <div class="pane" data-pane="4"><div class="done-card"><div class="ok">✓</div><h3>See you soon</h3><p id="d-text"></p><div class="code" id="d-code"></div><p style="font-size:14px">Demo only: no booking was sent.</p><div class="nav-btns" style="justify-content:center"><button class="btn btn-line" type="button" id="again">Book another</button></div></div></div>
+        <div class="nav-btns" id="nav-btns"><button class="btn btn-line" type="button" id="back">Back</button><button class="btn btn-brass" type="button" id="next">Continue</button></div>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <div class="pole"></div>
+        <div class="in">
+          <h3>Your appointment</h3>
+          <dl>
+            <div><dt>Service</dt><dd id="t-svc">—</dd></div>
+            <div><dt>Barber</dt><dd id="t-barber">—</dd></div>
+            <div><dt>When</dt><dd id="t-when">—</dd></div>
+            <div><dt>Duration</dt><dd id="t-dur">—</dd></div>
+          </dl>
+          <div class="total"><small>Total</small><span id="t-total">$0</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head" data-reveal><div><p class="num">04 / WORK</p><h2>Fresh cuts</h2></div><p>Follow us on Instagram for the week’s best fades.</p></div>
+    <div class="work" data-reveal>
+      <img src="img/shop.jpg" alt="Inside the shop" loading="lazy">
+      <img src="img/fade.jpg" alt="Skin fade" loading="lazy">
+      <img src="img/cut.jpg" alt="Scissor cut" loading="lazy">
+      <img src="img/tools.jpg" alt="Clippers and tools" loading="lazy">
+      <img src="img/chair.jpg" alt="Barber chair" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:0">
+  <div class="wrap info">
+    <div data-reveal><p class="num">05 / HOURS</p><h2 style="font-size:clamp(54px,7vw,104px);margin:8px 0 24px">Visit</h2><table class="hours" id="hours"></table></div>
+    <div class="walk" data-reveal>
+      <h3>Walk-ins welcome</h3>
+      <p>No booking? Come by and we’ll fit you in between appointments. Street 278, BKK1, next to the corner café.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-brass" href="https://maps.google.com/?q=Phnom+Penh" target="_blank" rel="noopener">Get directions</a><a class="btn btn-line" href="#book">Book instead</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© <span data-field="name">Sharp &amp; Co.</span> A CamboWeb template.</span><a class="made" href="/" target="_top"><img src="../invite-eucalyptus/assets/camboweb-logo-neon-horizontal.png" alt="Made by CamboWeb"></a></div></footer>
+<div class="pole" aria-hidden="true"></div>
+
+<script src="../shared/site.js"></script>
+<script>
+  const $ = (s) => document.querySelector(s)
+  const SERVICES = [
+    { n: 'Classic cut', d: 'Scissor or clipper cut, wash and style', m: 40, p: 8 },
+    { n: 'Skin fade', d: 'Bald to blended, sharp line-up', m: 50, p: 10 },
+    { n: 'Hot-towel shave', d: 'Straight razor, hot towels, balm', m: 35, p: 9 },
+    { n: 'Beard sculpt', d: 'Shape, line-up and beard oil', m: 25, p: 6 },
+    { n: 'Hair & beard', d: 'Any cut plus a beard sculpt', m: 70, p: 15 },
+    { n: 'Kids cut', d: 'Under 12, with a lollipop', m: 30, p: 5 },
+  ]
+  const BARBERS = [
+    { n: 'Rithy', r: 'Owner, master barber', img: 'img/fade.jpg', s: '4.9', tags: ['Skin fades', 'Line-ups', 'English'] },
+    { n: 'Vanna', r: 'Senior barber', img: 'img/cut.jpg', s: '4.9', tags: ['Scissor work', 'Long hair', 'Khmer'] },
+    { n: 'Dara', r: 'Shave specialist', img: 'img/shave.jpg', s: '4.8', tags: ['Hot towel', 'Beards', 'Chinese'] },
+  ]
+  const TIMES = ['09:00', '09:45', '10:30', '11:15', '13:00', '13:45', '14:30', '15:15', '16:00', '16:45', '17:30', '18:15', '19:00']
+  const days = CW.days(10)
+  const S = { step: 0, svc: null, barber: null, day: 0, time: '' }
+
+  // services list (also a shortcut into the wizard)
+  $('#svc-list').innerHTML = SERVICES.map((s, i) => `<div class="svc" role="button" tabindex="0" data-i="${i}"><h3>${s.n}</h3><span class="pr">$${s.p}</span><p>${s.d}</p><small>${s.m} min</small></div>`).join('')
+  document.querySelectorAll('.svc').forEach((el) => {
+    const go = () => { S.svc = +el.dataset.i; S.step = 1; render(); $('#book').scrollIntoView({ behavior: 'smooth' }) }
+    el.onclick = go; el.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go() } }
+  })
+  $('#team-list').innerHTML = BARBERS.map((b, i) => `<article class="barber"><span class="stars">★ ${b.s}</span><div class="ph"><img src="${b.img}" alt="${b.n}" loading="lazy"></div><div class="meta"><p class="role">${b.r}</p><h3>${b.n}</h3><div class="tags">${b.tags.map((t) => `<span>${t}</span>`).join('')}</div><button class="btn btn-line" style="margin-top:18px;width:100%" data-b="${i}">Book with ${b.n}</button></div></article>`).join('')
+  document.querySelectorAll('[data-b]').forEach((b) => b.onclick = () => { S.barber = +b.dataset.b; S.step = S.svc == null ? 0 : 2; render(); $('#book').scrollIntoView({ behavior: 'smooth' }) })
+
+  const LABELS = ['Service', 'Barber', 'Time', 'Details']
+  const ok = (i) => [S.svc != null, S.barber != null, !!S.time, true][i]
+  function render() {
+    $('#steps').innerHTML = LABELS.map((l, i) => `<button type="button" class="${i < S.step || (S.step === 4) ? 'done' : ''} ${i === S.step ? 'cur' : ''}" ${i > S.step && !ok(i - 1) ? 'disabled' : ''} data-s="${i}">${i + 1}. ${l}</button>`).join('')
+    document.querySelectorAll('[data-s]').forEach((b) => b.onclick = () => { if (S.step === 4) return; const t = +b.dataset.s; if (t <= S.step || [0, 1, 2].slice(0, t).every(ok)) { S.step = t; render() } })
+    document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('on', +p.dataset.pane === S.step))
+    $('#nav-btns').style.display = S.step === 4 ? 'none' : 'flex'
+    $('#back').style.visibility = S.step === 0 ? 'hidden' : 'visible'
+    $('#next').textContent = S.step === 3 ? 'Confirm booking' : 'Continue'
+
+    $('#o-svc').innerHTML = SERVICES.map((s, i) => `<button type="button" class="opt" aria-pressed="${S.svc === i}" data-i="${i}"><span><b>${s.n}</b><small>${s.m} min</small></span><span class="pr">$${s.p}</span></button>`).join('')
+    document.querySelectorAll('#o-svc .opt').forEach((b) => b.onclick = () => { S.svc = +b.dataset.i; render() })
+    $('#o-barber').innerHTML = [{ n: 'Any barber', r: 'Earliest available', img: '' }, ...BARBERS].map((b, i) => `<button type="button" class="opt" aria-pressed="${S.barber === i - 1}" data-i="${i - 1}"><span class="who">${b.img ? `<img src="${b.img}" alt="">` : '<span style="width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#232321;font-weight:700">★</span>'}<span><b>${b.n}</b><small>${b.r}</small></span></span></button>`).join('')
+    document.querySelectorAll('#o-barber .opt').forEach((b) => b.onclick = () => { S.barber = +b.dataset.i; render() })
+
+    $('#o-days').innerHTML = days.map((d, i) => `<button type="button" class="day" aria-pressed="${i === S.day}" data-i="${i}" ${d.getDay() === 0 ? 'disabled' : ''}><small>${i === 0 ? 'Today' : d.toLocaleDateString('en-GB', { weekday: 'short' })}</small><b>${d.getDate()}</b><small>${d.getDay() === 0 ? 'Closed' : d.toLocaleDateString('en-GB', { month: 'short' })}</small></button>`).join('')
+    document.querySelectorAll('#o-days .day').forEach((b) => b.onclick = () => { S.day = +b.dataset.i; S.time = ''; render() })
+    const now = new Date(), isToday = S.day === 0
+    $('#o-times').innerHTML = TIMES.map((t) => {
+      const [h, m] = t.split(':').map(Number)
+      const past = isToday && (h * 60 + m) <= now.getHours() * 60 + now.getMinutes()
+      const off = past || CW.taken(days[S.day], t + (S.barber ?? 9))
+      return `<button type="button" class="t" aria-pressed="${t === S.time}" ${off ? 'disabled' : ''} data-t="${t}">${t}</button>`
+    }).join('')
+    document.querySelectorAll('#o-times .t').forEach((b) => b.onclick = () => { S.time = b.dataset.t; render() })
+
+    const svc = SERVICES[S.svc]
+    $('#t-svc').textContent = svc ? svc.n : '—'
+    $('#t-barber').textContent = S.barber == null ? '—' : S.barber === -1 ? 'Any barber' : BARBERS[S.barber].n
+    $('#t-when').textContent = S.time ? `${days[S.day].toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}, ${S.time}` : '—'
+    $('#t-dur').textContent = svc ? svc.m + ' min' : '—'
+    $('#t-total').textContent = '$' + (svc ? svc.p : 0)
+  }
+  $('#back').onclick = () => { S.step = Math.max(0, S.step - 1); render() }
+  $('#next').onclick = () => {
+    if (S.step < 3) {
+      if (!ok(S.step)) { CW.toast(['Choose a service to continue.', 'Choose a barber to continue.', 'Pick a time to continue.'][S.step]); return }
+      S.step++; render(); return
+    }
+    if (!$('#o-form').reportValidity()) return
+    const b = S.barber === -1 ? 'the first free barber' : BARBERS[S.barber].n
+    $('#d-text').textContent = `${$('#f-name').value.split(' ')[0]}, your ${SERVICES[S.svc].n.toLowerCase()} with ${b} is booked for ${$('#t-when').textContent}.`
+    $('#d-code').textContent = CW.ref('SC')
+    S.step = 4; render()
+  }
+  $('#o-form').addEventListener('submit', (e) => { e.preventDefault(); $('#next').click() })
+  $('#again').onclick = () => { Object.assign(S, { step: 0, svc: null, barber: null, day: 0, time: '' }); $('#o-form').reset(); render() }
+  render()
+
+  // hours + next free chair
+  const HOURS = [['Monday', '9:00 – 20:00'], ['Tuesday', '9:00 – 20:00'], ['Wednesday', '9:00 – 20:00'], ['Thursday', '9:00 – 20:00'], ['Friday', '9:00 – 21:00'], ['Saturday', '8:00 – 21:00'], ['Sunday', 'Closed']]
+  const ti = (new Date().getDay() + 6) % 7
+  $('#hours').innerHTML = HOURS.map(([d, h], i) => `<tr class="${i === ti ? 'today' : ''}"><td>${d}</td><td>${h}</td></tr>`).join('')
+  const nm = new Date().getHours() * 60 + new Date().getMinutes()
+  const free = TIMES.find((t) => { const [h, m] = t.split(':').map(Number); return h * 60 + m > nm && !CW.taken(days[0], t + 9) })
+  $('#next-free').textContent = new Date().getDay() === 0 ? 'Closed today, open tomorrow at 9:00' : free ? `Next free chair today at ${free}` : 'Fully booked today, book for tomorrow'
+</script>
+</body>
+</html>
