@@ -1,7 +1,7 @@
 /* CamboWeb showcase
    One surface per theme (light or dark). Ink for text and actions; the neon C is the only colour,
    used for the logo, the 3D hero floor, focus rings and the one "active" marker.
-   Type: Familjen Grotesk for headings, Onest for text; Khmer in both falls back to Kantumruy Pro. */
+   Type: Instrument Serif for headings, DM Sans for text; Khmer in both falls back to Kantumruy Pro. */
 :root {
   --paper: #f7f9f9;
   --raised: #ffffff;
@@ -14,8 +14,8 @@
   --neon: #2bd9f0;
   --ring: rgba(43, 217, 240, 0.45);
   --link: #08698f;
-  --font: 'Onest', 'Kantumruy Pro', system-ui, sans-serif;
-  --display: 'Familjen Grotesk', 'Kantumruy Pro', system-ui, sans-serif;
+  --font: 'DM Sans', 'Kantumruy Pro', system-ui, sans-serif;
+  --display: 'Instrument Serif', 'Kantumruy Pro', Georgia, serif;
   --on-ink: #ffffff;
   --ink-hover: #12404f;
   --nav-bg: rgba(247, 249, 249, 0.86);
@@ -641,3 +641,47 @@ h3 { letter-spacing: -0.02em; line-height: 1.2; }
 .floor { display: none; }
 .fl { display: none !important; }
 @media (min-width: 1520px) { .fl { display: block !important; } }
+
+/* calmer heading sizes */
+.page-hero h1, .h-page, .hero h1 { font-size: clamp(36px, 4.4vw, 62px); letter-spacing: -0.035em; line-height: 1.04; }
+.home-hero h1 { font-size: clamp(40px, 5vw, 70px); }
+.h-section { font-size: clamp(28px, 3.2vw, 44px); letter-spacing: -0.03em; }
+.footer-band h2 { font-size: clamp(30px, 3.4vw, 46px); }
+.chapter h3 { font-size: clamp(24px, 2.4vw, 34px); }
+.steps li::before { font-size: clamp(40px, 4vw, 56px); }
+.features h3 { font-size: 20px; }
+.row > h2, .contact-side h2 { font-size: 22px; }
+.panel h3, .site-info h3 { font-size: 26px; }
+:root[data-lang='kh'] .hero h1, :root[data-lang='kh'] .page-hero h1, :root[data-lang='kh'] .h-page { font-size: clamp(30px, 3.6vw, 48px); }
+:root[data-lang='kh'] .h-section, :root[data-lang='kh'] .footer-band h2 { font-size: clamp(24px, 2.8vw, 36px); }
+
+/* ---------- Instrument Serif headings (single weight: never fake-bold it) ---------- */
+h1, h2, h3, .h-section, .h-page, .chapter h3, .features h3, .steps h3, .problems summary, .row > h2,
+.contact-side h2, .footer-band h2, .custom-title, .panel h3, .site-info h3, .next strong, .facts-wide dd,
+.steps li::before, .work-card h3, .pick b {
+  font-family: var(--display); font-weight: 400; font-synthesis: none; letter-spacing: -0.01em;
+}
+h1, h2, h3 { line-height: 1.06; }
+.page-hero h1, .h-page, .hero h1 { font-size: clamp(40px, 4.8vw, 68px); letter-spacing: -0.02em; }
+.home-hero h1 { font-size: clamp(44px, 5.4vw, 76px); }
+.h-section { font-size: clamp(32px, 3.6vw, 50px); letter-spacing: -0.015em; }
+.footer-band h2 { font-size: clamp(32px, 3.6vw, 50px); }
+.chapter h3 { font-size: clamp(28px, 2.8vw, 38px); }
+.features h3, .steps h3 { font-size: 24px; }
+.problems summary { font-size: 22px; }
+.row > h2, .contact-side h2 { font-size: 26px; }
+.panel h3, .site-info h3 { font-size: 30px; }
+.custom-title { font-size: 22px; }
+.work-card h3 { font-size: 26px; }
+.pick b { font-family: var(--font); font-weight: 600; font-synthesis: auto; letter-spacing: 0; }
+.steps li::before { opacity: 0.22; }
+.lead, .head-row p { font-weight: 400; }
+/* Khmer headings: Kantumruy Pro carries real weights, so use one */
+:root[data-lang='kh'] h1, :root[data-lang='kh'] h2, :root[data-lang='kh'] h3, :root[data-lang='kh'] .problems summary { font-weight: 600; font-synthesis: none; letter-spacing: 0; line-height: 1.45; }
+
+/* intro sits close under the menu */
+.page-hero { padding-block: clamp(36px, 4.5vw, 64px) clamp(28px, 4vw, 48px); }
+.home-hero { padding-top: clamp(24px, 3vw, 40px); }
+.home-hero .page-hero-grid { align-items: center; }
+.hs { aspect-ratio: 1.3; }
+.hero { padding-block: clamp(24px, 3vw, 40px) clamp(16px, 3vw, 32px); min-height: 0; }
