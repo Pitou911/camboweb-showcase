@@ -89,7 +89,7 @@ function InviteStudio() {
             <a className="btn btn-neon" href={fullUrl} target="_blank" rel="noreferrer">Open full screen</a>
             <a className="btn btn-glass" href="#contact">Order this invitation</a>
           </div>
-          <p className="fine">When you order, every guest gets their own link with their name on the cover, plus your real KHQR, your song and RSVPs sent to you.</p>
+          <p className="fine">When you order, every guest gets their own link with their name on the cover plus your real KHQR and your own song.</p>
         </form>
       </div>
     </div>
@@ -174,7 +174,7 @@ export default function Templates() {
         <div className="wrap">
           <div className="studio-head">
             <h2>E-invitations</h2>
-            <p>Weddings, engagements and birthdays. Khmer and English, music, countdown, map, KHQR gift and RSVP.</p>
+            <p>Weddings, engagements and birthdays. Khmer and English, music, countdown, map and KHQR gift.</p>
           </div>
           <InviteStudio />
         </div>

@@ -49,17 +49,12 @@
   /* ---------- arch hero ---------- */
   .hero{position:relative;padding:44px 28px 30px;text-align:center}
   .arch{position:relative;width:78%;margin:0 auto;aspect-ratio:3/4}
+  .arch::before{content:'';position:absolute;inset:-12px;border:1px solid var(--rose);border-radius:999px 999px 20px 20px;opacity:.55}
   .arch .ph{position:absolute;inset:0;border-radius:999px 999px 14px 14px;overflow:hidden;box-shadow:0 20px 40px rgba(156,85,96,.18)}
   .arch .ph img{width:100%;height:100%;object-fit:cover;animation:zoom 14s ease-in-out infinite alternate}
   @keyframes zoom{to{transform:scale(1.08)}}
-  .vine{position:absolute;inset:-9% -14% -4%;width:128%;height:113%;pointer-events:none;overflow:visible}
-  .vine path{fill:none;stroke:var(--sage-d);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s ease forwards .4s}
-  .vine .leaf{fill:var(--sage);opacity:0;animation:pop .6s ease forwards}
-  .vine .bloom{fill:var(--blush);stroke:var(--rose);stroke-width:1;opacity:0;animation:pop .6s ease forwards}
-  .vine .heart{fill:var(--rose)}
   @keyframes draw{to{stroke-dashoffset:0}}
   @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
-  .vine .leaf,.vine .bloom{transform-box:fill-box;transform-origin:center}
   .hero .kt{margin-top:26px;font:400 18px/2 'Moul',serif;color:var(--rose-d)}
   .hero .names{font:400 58px/1.05 'Pinyon Script',cursive}
   .hero .names i{display:block;font:400 26px 'Marcellus',serif;font-style:normal;color:var(--rose)}
@@ -123,7 +118,7 @@
   footer{padding:24px 0 34px;text-align:center}
   .made{display:inline-flex;padding:6px 13px;border-radius:99px;background:#001820}
   .made img{height:15px}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.vine path{stroke-dashoffset:0}.vine .leaf,.vine .bloom{opacity:1}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body class="locked" data-music="garden">
@@ -142,24 +137,6 @@
   <section class="hero">
     <div class="arch">
       <div class="ph"><img src="img/couple.jpg" alt="The couple"></div>
-      <svg class="vine" viewBox="0 0 128 113" aria-hidden="true">
-        <path pathLength="1" d="M8 112 C4 80 10 52 22 34 C36 13 54 6 64 6 C74 6 92 13 106 34 C118 52 124 80 120 112"/>
-        <g>
-          <ellipse class="leaf" cx="10" cy="92" rx="4" ry="1.8" transform="rotate(-60 10 92)" style="animation-delay:.9s"/>
-          <ellipse class="leaf" cx="13" cy="70" rx="4" ry="1.8" transform="rotate(-40 13 70)" style="animation-delay:1.2s"/>
-          <ellipse class="leaf" cx="20" cy="48" rx="4" ry="1.8" transform="rotate(-20 20 48)" style="animation-delay:1.5s"/>
-          <ellipse class="leaf" cx="36" cy="22" rx="4" ry="1.8" transform="rotate(20 36 22)" style="animation-delay:1.9s"/>
-          <ellipse class="leaf" cx="92" cy="22" rx="4" ry="1.8" transform="rotate(-20 92 22)" style="animation-delay:2.2s"/>
-          <ellipse class="leaf" cx="108" cy="48" rx="4" ry="1.8" transform="rotate(20 108 48)" style="animation-delay:2.5s"/>
-          <ellipse class="leaf" cx="115" cy="70" rx="4" ry="1.8" transform="rotate(40 115 70)" style="animation-delay:2.8s"/>
-          <ellipse class="leaf" cx="118" cy="92" rx="4" ry="1.8" transform="rotate(60 118 92)" style="animation-delay:3.1s"/>
-          <circle class="bloom" cx="16" cy="60" r="3.4" style="animation-delay:1.4s"/>
-          <circle class="bloom" cx="26" cy="32" r="2.6" style="animation-delay:1.8s"/>
-          <circle class="bloom" cx="102" cy="32" r="2.6" style="animation-delay:2.4s"/>
-          <circle class="bloom" cx="112" cy="60" r="3.4" style="animation-delay:2.7s"/>
-          <path class="heart" d="M64 9 C62 5 57 6 58 10 C59 13 64 15 64 15 C64 15 69 13 70 10 C71 6 66 5 64 9Z" style="stroke:none;stroke-dasharray:none;animation:pop .6s ease 2s both"/>
-        </g>
-      </svg>
     </div>
     <div class="kt">ពិធីភ្ជាប់ពាក្យ</div>
     <div class="names"><span data-field="a">Sokha</span><i>&amp;</i><span data-field="b">Nary</span></div>
@@ -217,19 +194,6 @@
     <img class="qr" src="../invite-eucalyptus/assets/demo-qr.svg" alt="Demo KHQR code">
   </section>
 
-  <section class="tint" data-reveal>
-    <h2>ឆ្លើយតប</h2><p class="en">RSVP</p>
-    <form data-rsvp>
-      <label>ឈ្មោះ · Your name<input name="name" required autocomplete="name"></label>
-      <div class="choice">
-        <div><input type="radio" id="y" name="go" value="yes" checked><label for="y">ចូលរួម · Yes</label></div>
-        <div><input type="radio" id="n" name="go" value="no"><label for="n">មិនបាន · No</label></div>
-      </div>
-      <label>ចំនួនភ្ញៀវ · Guests<select name="guests"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
-      <button class="btn" type="submit">ផ្ញើ · Send</button>
-    </form>
-    <div data-thanks hidden><p>Thank you, <span data-who></span></p><p class="body">យើងខ្ញុំបានទទួលការឆ្លើយតបរបស់អ្នកហើយ។</p></div>
-  </section>
 
   <section class="thanks">
     <img src="img/hands.jpg" alt="" loading="lazy">

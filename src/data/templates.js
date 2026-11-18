@@ -39,8 +39,8 @@ export const invitations = [
     occasion: 'Wedding',
     style: 'Modern editorial',
     swatch: ['#ffffff', '#000000'],
-    blurb: 'Big type, black and white photography and a clean RSVP. For couples who like things simple and sharp.',
-    highlights: ['Editorial type', 'Dress code', 'Guest counter'],
+    blurb: 'Big type, black and white photography and plenty of room to breathe. For couples who like things simple and sharp.',
+    highlights: ['Editorial type', 'Dress code', 'Scrolling ticker'],
     defaults: { a: 'Lina', b: 'Rithy', guest: 'you', date: '2027-03-21', venue: 'The White Villa' },
   },
   {

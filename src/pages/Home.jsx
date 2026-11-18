@@ -99,7 +99,7 @@ export default function Home() {
             </p>
             <ul className="ticks">
               <li>Khmer and English</li>
-              <li>Countdown, map, KHQR gift and RSVP</li>
+              <li>Countdown, map and KHQR gift</li>
               <li>A personal link for each guest</li>
             </ul>
             <Link className="btn btn-neon" to="/templates">Try the templates</Link>

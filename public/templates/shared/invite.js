@@ -6,7 +6,7 @@
 //   [data-date="d|dd|mm|yy|yyyy|month|mon|weekday"] -> formatted from date
 //   [data-countdown="ISO"] keeps its time of day, takes the new date
 // Other helpers:
-//   form[data-rsvp] demo RSVP (shows [data-thanks]); [data-reveal] gets .in on scroll
+//   [data-reveal] gets .in on scroll
 (function () {
   const pad = (n) => String(n).padStart(2, '0')
   const counters = []
@@ -79,28 +79,6 @@
   window.addEventListener('message', (e) => {
     if (e.origin !== location.origin) return
     if (e.data && e.data.type === 'cw-fields') apply(e.data.fields || {})
-  })
-
-  // ---------- RSVP (demo only, nothing is sent) ----------
-  document.querySelectorAll('form[data-rsvp]').forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-      const name = (new FormData(form).get('name') || '').toString().trim()
-      const thanks = form.parentElement.querySelector('[data-thanks]')
-      if (thanks) {
-        const who = thanks.querySelector('[data-who]')
-        if (who) who.textContent = name || 'friend'
-        if (!thanks.querySelector('.cw-demo-note')) {
-          const note = document.createElement('p')
-          note.className = 'cw-demo-note'
-          note.style.cssText = 'margin-top:10px;font-size:12px;opacity:.7'
-          note.textContent = 'This is a demo, so your reply was not sent.'
-          thanks.appendChild(note)
-        }
-        form.hidden = true
-        thanks.hidden = false
-      }
-    })
   })
 
   // ---------- reveal on scroll ----------

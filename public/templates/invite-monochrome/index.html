@@ -170,36 +170,11 @@
     </div>
   </section>
 
-  <section>
-    <div class="label"><span>RSVP by 1 March</span><span class="kh">ឆ្លើយតប</span></div>
-    <form data-rsvp>
-      <label class="field">Your name<input name="name" required autocomplete="name" placeholder="Full name"></label>
-      <div class="seg" role="radiogroup" aria-label="Attendance">
-        <input type="radio" id="yes" name="go" value="yes" checked><label for="yes">I’ll be there</label>
-        <input type="radio" id="no" name="go" value="no"><label for="no">Can’t make it</label>
-      </div>
-      <div class="field">Guests
-        <div class="stepper">
-          <button type="button" data-step="-1" aria-label="Fewer guests">−</button>
-          <output id="guests">1</output>
-          <button type="button" data-step="1" aria-label="More guests">+</button>
-        </div>
-      </div>
-      <button class="btn" type="submit">Send reply</button>
-    </form>
-    <div data-thanks hidden><p class="lead">Thank you, <em data-who></em>. See you there.</p></div>
-  </section>
 
   <footer><span><span data-field="a">Lina</span> &amp; <span data-field="b">Rithy</span>, <span data-date="yyyy">2027</span></span><a class="made" href="/" target="_top"><img src="../invite-eucalyptus/assets/camboweb-logo-neon-horizontal.png" alt="Made by CamboWeb"></a></footer>
 </main>
 <script src="../shared/invite.js"></script>
 <script src="../shared/music.js"></script>
-<script>
-  const out = document.getElementById('guests')
-  document.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('click', () => {
-    out.value = out.textContent = Math.min(8, Math.max(1, +out.textContent + +b.dataset.step))
-  }))
-</script>
 <script src="../shared/ribbon.js"></script>
 </body>
 </html>
