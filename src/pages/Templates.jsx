@@ -30,7 +30,6 @@ function Picker({ items, active, onPick, label, sub }) {
 function InviteStudio() {
   const [active, setActive] = useState(invitations[0])
   const [fields, setFields] = useState(EMPTY)
-  const [copied, setCopied] = useState(false)
   const frame = useRef(null)
 
   // Only what the visitor typed is sent; the template keeps its own demo text otherwise.
@@ -42,13 +41,6 @@ function InviteStudio() {
 
   const set = (k) => (e) => setFields((f) => ({ ...f, [k]: e.target.value }))
   const fullUrl = templateUrl(active.slug, typed)
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(new URL(fullUrl, window.location.origin).href)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1800)
-    } catch { /* clipboard blocked; the open link still works */ }
-  }
 
   return (
     <div className="studio">
@@ -95,9 +87,9 @@ function InviteStudio() {
           </div>
           <div className="panel-actions">
             <a className="btn btn-neon" href={fullUrl} target="_blank" rel="noreferrer">Open full screen</a>
-            <button type="button" className="btn btn-glass" onClick={copy}>{copied ? 'Link copied' : 'Copy guest link'}</button>
+            <a className="btn btn-glass" href="#contact">Order this invitation</a>
           </div>
-          <p className="fine">Each guest gets their own link with their name on the cover.</p>
+          <p className="fine">When you order, every guest gets their own link with their name on the cover, plus your real KHQR, your song and RSVPs sent to you.</p>
         </form>
       </div>
     </div>

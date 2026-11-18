@@ -90,6 +90,13 @@
       if (thanks) {
         const who = thanks.querySelector('[data-who]')
         if (who) who.textContent = name || 'friend'
+        if (!thanks.querySelector('.cw-demo-note')) {
+          const note = document.createElement('p')
+          note.className = 'cw-demo-note'
+          note.style.cssText = 'margin-top:10px;font-size:12px;opacity:.7'
+          note.textContent = 'This is a demo, so your reply was not sent.'
+          thanks.appendChild(note)
+        }
         form.hidden = true
         thanks.hidden = false
       }

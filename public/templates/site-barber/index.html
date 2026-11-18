@@ -392,5 +392,6 @@
   const free = TIMES.find((t) => { const [h, m] = t.split(':').map(Number); return h * 60 + m > nm && !CW.taken(days[0], t + 9) })
   $('#next-free').textContent = new Date().getDay() === 0 ? 'Closed today, open tomorrow at 9:00' : free ? `Next free chair today at ${free}` : 'Fully booked today, book for tomorrow'
 </script>
+<script src="../shared/ribbon.js"></script>
 </body>
 </html>

@@ -31,7 +31,7 @@
       if (!toastEl) {
         toastEl = document.createElement('div')
         toastEl.setAttribute('role', 'status')
-        toastEl.style.cssText = 'position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,20px);opacity:0;padding:12px 20px;border-radius:99px;background:rgba(20,20,20,.92);color:#fff;font:500 14px system-ui,sans-serif;transition:all .35s;pointer-events:none;max-width:90vw;text-align:center'
+        toastEl.style.cssText = 'position:fixed;left:50%;bottom:84px;z-index:100;transform:translate(-50%,20px);opacity:0;padding:12px 20px;border-radius:99px;background:rgba(20,20,20,.92);color:#fff;font:500 14px system-ui,sans-serif;transition:all .35s;pointer-events:none;max-width:90vw;text-align:center'
         document.body.appendChild(toastEl)
       }
       toastEl.textContent = msg
