@@ -88,7 +88,7 @@
         entries.forEach((en) => {
           if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target) }
         })
-      }, { threshold: 0.18 })
+      }, { threshold: 0, rootMargin: '0px 0px -6% 0px' })
     : null
   document.querySelectorAll('[data-reveal]').forEach((el) => (io ? io.observe(el) : el.classList.add('in')))
 })()
