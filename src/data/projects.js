@@ -57,7 +57,7 @@ export const projects = [
     cover: 'saravoan',
     accent: '#d7262e',
     logo: '/img/saravoan_logo.png',
-    screenshot: '/img/saravoan-template-editor.png',
+    screenshot: '/img/saravoan-register.jpg',
     testimonial: null, // TODO: add client quote
     goal:
       'Small labs in Cambodia often run on paper request forms, hand-written receipts and spreadsheets, and internet access isn’t always reliable. The goal was a single Windows app the lab can unzip and run, covering the whole day: register, pick tests, take payment, print tube labels, enter results and print a bilingual Khmer/English report, fully offline.',
