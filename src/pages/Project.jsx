@@ -10,7 +10,7 @@ export default function Project() {
     return (
       <section className="wrap section">
         <h1 className="h-page">We couldn’t find that project.</h1>
-        <p className="lead"><Link className="text-link" to="/#work">See all client work</Link></p>
+        <p className="lead"><Link className="text-link" to="/work">See all client work</Link></p>
       </section>
     )
   }
@@ -20,7 +20,7 @@ export default function Project() {
   return (
     <article className="project">
       <header className="wrap project-head">
-        <Link to="/#work" className="back">All work</Link>
+        <Link to="/work" className="back">All work</Link>
         <h1 className="h-page">{p.name}</h1>
         <p className="lead">{p.tagline}</p>
         <dl className="facts facts-wide">

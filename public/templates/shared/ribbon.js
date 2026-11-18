@@ -19,7 +19,7 @@
     document.head.appendChild(css)
     const bar = document.createElement('div')
     bar.className = 'cw-demo'
-    bar.innerHTML = `<i aria-hidden="true"></i><span>Demo by CamboWeb</span><a target="_top" href="/templates#contact">${label}</a>`
+    bar.innerHTML = `<i aria-hidden="true"></i><span>Demo by CamboWeb</span><a target="_top" href="/contact?need=${document.body.dataset.music ? "E-invitation" : "Website"}&template=${encodeURIComponent(document.title.split(" · ")[0].trim())}">${label}</a>`
     document.body.appendChild(bar)
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount)

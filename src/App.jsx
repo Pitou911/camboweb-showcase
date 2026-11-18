@@ -1,9 +1,11 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+import Work from './pages/Work'
 import Project from './pages/Project'
+import About from './pages/About'
+import Contact from './pages/Contact'
 import FbCover from './pages/FbCover'
-import Templates from './pages/Templates'
 
 export default function App() {
   return (
@@ -12,9 +14,12 @@ export default function App() {
         {import.meta.env.DEV && <Route path="fb-cover" element={<FbCover />} />}
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="work" element={<Work />} />
           <Route path="work/:slug" element={<Project />} />
-          <Route path="templates" element={<Templates />} />
-          <Route path="*" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="templates" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

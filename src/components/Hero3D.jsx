@@ -59,7 +59,7 @@ export default function Hero3D() {
           <Link to="/work/lori-pos" className="obj obj-tablet" aria-label="LoRi POS case study">
             <div className="rise"><Tablet /></div>
           </Link>
-          <Link to="/templates" className="obj obj-phone" aria-label="Invitation templates">
+          <Link to="/#invitations" className="obj obj-phone" aria-label="Invitation templates">
             <div className="rise"><Phone /></div>
           </Link>
         </div>

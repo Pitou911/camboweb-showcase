@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { site } from '../data/site'
 
 const NEEDS = ['Website', 'E-invitation', 'POS system', 'Business system', 'Something else']
@@ -6,10 +7,12 @@ const BUDGETS = ['Under $300', '$300 – $1,000', '$1,000 – $3,000', '$3,000+'
 
 // Builds a ready-to-send message and opens Telegram. Nothing is stored or sent by the site.
 export default function ContactForm() {
-  const [need, setNeed] = useState('Website')
+  // Template pages link here with ?need=…&template=… so the form arrives filled in.
+  const [params] = useSearchParams()
+  const [need, setNeed] = useState(NEEDS.includes(params.get('need')) ? params.get('need') : 'Website')
   const [budget, setBudget] = useState('')
   const [name, setName] = useState('')
-  const [details, setDetails] = useState('')
+  const [details, setDetails] = useState(params.get('template') ? `I like the ${params.get('template')} template.` : '')
   const [status, setStatus] = useState('')
 
   const message = [
@@ -61,7 +64,7 @@ export default function ContactForm() {
         <textarea rows="3" value={details} onChange={(e) => setDetails(e.target.value)} placeholder="e.g. A website for my café with a menu and table booking" />
       </label>
       <div className="actions">
-        <button className="btn btn-neon" type="submit">{site.telegram ? 'Send on Telegram' : 'Copy my message'}</button>
+        <button className="btn btn-ink" type="submit">{site.telegram ? 'Send on Telegram' : 'Copy my message'}</button>
       </div>
       <p className="note" aria-live="polite">{status || 'We reply within a day, in Khmer or English.'}</p>
     </form>

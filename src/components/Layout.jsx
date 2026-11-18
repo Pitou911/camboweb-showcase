@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import ContactForm from './ContactForm'
+import { site } from '../data/site'
 
 export function Logo() {
   return (
@@ -11,25 +11,8 @@ export function Logo() {
   )
 }
 
-// The neon spotlight in dark sections follows the pointer.
-function useSpotlight() {
-  useEffect(() => {
-    if (!window.matchMedia('(pointer: fine)').matches) return
-    const onMove = (e) => {
-      const el = e.target.closest?.('.night')
-      if (!el) return
-      const r = el.getBoundingClientRect()
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`)
-      el.style.setProperty('--my', `${e.clientY - r.top}px`)
-    }
-    window.addEventListener('pointermove', onMove, { passive: true })
-    return () => window.removeEventListener('pointermove', onMove)
-  }, [])
-}
-
 export default function Layout() {
   const { pathname, hash } = useLocation()
-  useSpotlight()
 
   useEffect(() => {
     if (hash) document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
@@ -43,10 +26,10 @@ export default function Layout() {
         <div className="wrap nav-inner">
           <Logo />
           <nav aria-label="Main">
-            <Link to="/#work">Work</Link>
-            <NavLink to="/templates">Templates</NavLink>
-            <Link to="/#process">How we work</Link>
-            <a className="btn btn-ink btn-sm" href="#contact">Start a project</a>
+            <NavLink to="/" end>Templates</NavLink>
+            <NavLink to="/work">Client work</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <Link className="btn btn-ink btn-sm" to="/contact">Start a project</Link>
           </nav>
         </div>
       </header>
@@ -55,18 +38,42 @@ export default function Layout() {
           <Outlet />
         </div>
       </main>
-      <footer className="footer night" id="contact">
-        <div className="wrap">
-          <div className="footer-top">
-            <div className="footer-cta">
-              <img className="footer-logo" src="/img/camboweb-logo-neon-horizontal.png" alt="CamboWeb" />
-              <h2>Tell us what your business needs.</h2>
-              <p>Pick what you need, add a line about it, and we’ll get back to you within a day.</p>
+      <footer className="footer">
+        {pathname !== '/contact' && (
+          <div className="wrap footer-band">
+            <h2>Have something in mind?</h2>
+            <div>
+              <p>Tell us about it in a few lines. We reply within a day, in Khmer or English.</p>
+              <Link className="btn btn-ink" to="/contact">Start a project</Link>
             </div>
-            <ContactForm />
           </div>
-          <p className="footer-small"><span>© {new Date().getFullYear()} CamboWeb, Phnom Penh</span><span>Websites, apps and business systems</span></p>
+        )}
+        <div className="wrap footer-grid">
+          <div className="footer-brand">
+            <Logo />
+            <p>Websites, e-invitations and business systems, built in Phnom Penh.</p>
+          </div>
+          <nav aria-label="Templates">
+            <h3>Templates</h3>
+            <Link to="/#invitations">E-invitations</Link>
+            <Link to="/#websites">Websites</Link>
+            <Link to="/#pos">POS system</Link>
+          </nav>
+          <nav aria-label="Studio">
+            <h3>Studio</h3>
+            <Link to="/work">Client work</Link>
+            <Link to="/about">About us</Link>
+            <Link to="/about#process">How we work</Link>
+          </nav>
+          <nav aria-label="Contact">
+            <h3>Contact</h3>
+            <Link to="/contact">Contact us</Link>
+            {site.telegram && <a href={`https://t.me/${site.telegram}`} target="_blank" rel="noreferrer">Telegram</a>}
+            {site.phone && <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>}
+            {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+          </nav>
         </div>
+        <p className="wrap footer-small">© {new Date().getFullYear()} CamboWeb, Phnom Penh, Cambodia</p>
       </footer>
     </>
   )

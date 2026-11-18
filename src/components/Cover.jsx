@@ -25,7 +25,6 @@ export default function Cover({ project, large = false }) {
 
   return (
     <div ref={ref} className={`cover cover-${project.cover} ${large ? 'cover-lg' : ''}`} onPointerMove={onMove} onPointerLeave={onLeave}>
-      <div className="cover-glow" />
       <div className="cover-dev">{device}</div>
     </div>
   )

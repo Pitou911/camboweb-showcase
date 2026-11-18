@@ -1,35 +1,167 @@
-import { useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { projects } from '../data/projects'
-import { invitations, templateUrl } from '../data/templates'
-import Cover from '../components/Cover'
-import Hero3D from '../components/Hero3D'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { invitations, siteUrl, templateUrl, websites } from '../data/templates'
 import LiveFrame from '../components/LiveFrame'
-import useScrollProgress from '../components/useScrollProgress'
+import { Link } from 'react-router-dom'
+import { Tablet } from '../components/Devices'
+import Cover from '../components/Cover'
+import { projects } from '../data/projects'
 
-const STEPS = [
-  ['Clickable prototype', 'Within the first week you can tap through a working prototype and tell us what to change.'],
-  ['Build in small releases', 'New features arrive every few days, so you see progress and steer it as we go.'],
-  ['Test on your own devices', 'We test on your tablet, your printer and your phones before anything goes live.'],
-  ['Go live, then keep improving', 'Your data and hosting stay in your name. We keep shipping fixes from your feedback.'],
-]
+const EMPTY = { a: '', b: '', guest: '', date: '', venue: '' }
 
-const MARQUEE = ['POS systems', 'Lab software', 'Wedding invitations', 'Restaurant websites', 'Booking systems', 'Khmer & English', 'Android apps', 'Offline desktop apps']
-
-const FAN = ['invite-garden', 'invite-golden-lotus', 'invite-starlight'].map((s) => invitations.find((t) => t.slug === s))
-
-function InviteFan() {
-  const ref = useRef(null)
-  useScrollProgress(ref)
+function Picker({ items, active, onPick, label, sub }) {
   return (
-    <div className="fan" ref={ref}>
-      {FAN.map((t, i) => (
-        <Link key={t.slug} to="/templates" className={`fan-phone fan-${i}`} aria-label={`${t.name} template`}>
-          <div className="phone">
-            <div className="phone-notch" />
-            <LiveFrame src={templateUrl(t.slug)} title={`${t.name} preview`} interactive={false} />
+    <div className="picker" role="tablist" aria-label={label}>
+      {items.map((t) => (
+        <button
+          key={t.slug}
+          role="tab"
+          aria-selected={t.slug === active.slug}
+          className={`pick ${t.slug === active.slug ? 'on' : ''}`}
+          onClick={() => onPick(t)}
+        >
+          <span className="sw" style={{ background: `linear-gradient(135deg, ${t.swatch[0]} 50%, ${t.swatch[1]} 50%)` }} />
+          <span>
+            <b>{t.title || t.name}</b>
+            <small>{sub(t)}</small>
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function InviteStudio() {
+  const [active, setActive] = useState(invitations[0])
+  const [fields, setFields] = useState(EMPTY)
+  const frame = useRef(null)
+
+  // Only what the visitor typed is sent; the template keeps its own demo text otherwise.
+  const typed = useMemo(() => Object.fromEntries(Object.entries(fields).filter(([, v]) => v.trim())), [fields])
+  const push = useCallback(() => {
+    frame.current?.contentWindow?.postMessage({ type: 'cw-fields', fields: typed }, window.location.origin)
+  }, [typed])
+  useEffect(() => { push() }, [push])
+
+  const set = (k) => (e) => setFields((f) => ({ ...f, [k]: e.target.value }))
+  const fullUrl = templateUrl(active.slug, typed)
+
+  return (
+    <div className="studio">
+      <Picker items={invitations} active={active} onPick={setActive} label="Invitation templates" sub={(t) => `${t.occasion}, ${t.style.toLowerCase()}`} />
+
+      <div className="phone-stage">
+        <div className="phone">
+          <div className="phone-notch" />
+          <LiveFrame key={active.slug} ref={frame} src={templateUrl(active.slug)} title={`${active.name} invitation template, live preview`} onLoad={push} />
+        </div>
+        <p className="phone-hint">This is the real invitation. Tap it to open it, with music.</p>
+      </div>
+
+      <div className="panel">
+        <h3>{active.name}</h3>
+        <p className="panel-blurb">{active.blurb}</p>
+        <ul className="hl">{active.highlights.map((h) => <li key={h}>{h}</li>)}<li>Background music</li></ul>
+
+        <form className="custom" onSubmit={(e) => e.preventDefault()}>
+          <p className="custom-title">Make it yours</p>
+          <div className="pair">
+            <label>{active.single ? 'Name' : 'First name'}
+              <input value={fields.a} onChange={set('a')} placeholder={active.defaults.a} />
+            </label>
+            {!active.single && (
+              <label>Second name
+                <input value={fields.b} onChange={set('b')} placeholder={active.defaults.b} />
+              </label>
+            )}
           </div>
-          <span className="fan-label">{t.name}</span>
+          <label>Guest’s name on the invitation
+            <input value={fields.guest} onChange={set('guest')} placeholder="e.g. Mr. Song Dara" />
+          </label>
+          <div className="pair">
+            <label>Date
+              <input type="date" value={fields.date} onChange={set('date')} />
+            </label>
+            {!active.noVenue && (
+              <label>Venue
+                <input value={fields.venue} onChange={set('venue')} placeholder={active.defaults.venue} />
+              </label>
+            )}
+          </div>
+          <div className="panel-actions">
+            <a className="btn btn-ink" href={fullUrl} target="_blank" rel="noreferrer">Open full screen</a>
+            <Link className="btn btn-line" to={`/contact?need=E-invitation&template=${encodeURIComponent(active.name)}`}>Order this invitation</Link>
+          </div>
+          <p className="fine">When you order, every guest gets their own link with their name on the cover plus your real KHQR and your own song.</p>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+function SiteStudio() {
+  const [active, setActive] = useState(websites[0])
+  const [device, setDevice] = useState('desktop')
+  const [name, setName] = useState('')
+  const frame = useRef(null)
+
+  const push = useCallback(() => {
+    frame.current?.contentWindow?.postMessage({ type: 'cw-fields', fields: { name } }, window.location.origin)
+  }, [name])
+  useEffect(() => { push() }, [push])
+
+  const src = siteUrl(active.slug)
+  const domain = name.trim() ? `${name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '')}.com` : active.domain
+
+  return (
+    <div className="site-studio">
+      <div className="site-bar">
+        <Picker items={websites} active={active} onPick={setActive} label="Website templates" sub={(t) => t.name} />
+        <div className="site-controls">
+          <label className="biz">Your business name
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder={active.title} />
+          </label>
+          <div className="seg" role="group" aria-label="Preview size">
+            <button type="button" aria-pressed={device === 'desktop'} onClick={() => setDevice('desktop')}>Desktop</button>
+            <button type="button" aria-pressed={device === 'mobile'} onClick={() => setDevice('mobile')}>Mobile</button>
+          </div>
+        </div>
+      </div>
+
+      <div className={`site-view ${device}`}>
+        {device === 'desktop' ? (
+          <div className="browser">
+            <div className="browser-bar"><i /><i /><i /><span className="url">{domain}</span></div>
+            <LiveFrame key={active.slug + device} ref={frame} src={src} width={1280} height={800} title={`${active.title} website template, live preview`} onLoad={push} />
+          </div>
+        ) : (
+          <div className="phone site-phone">
+            <div className="phone-notch" />
+            <LiveFrame key={active.slug + device} ref={frame} src={src} title={`${active.title} website template, mobile preview`} onLoad={push} />
+          </div>
+        )}
+        <aside className="site-info">
+          <h3>{active.title}</h3>
+          <p>{active.blurb}</p>
+          <ul className="hl">{active.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
+          <div className="panel-actions">
+            <a className="btn btn-ink" href={siteUrl(active.slug, name.trim())} target="_blank" rel="noreferrer">Open full screen</a>
+            <Link className="btn btn-line" to={`/contact?need=Website&template=${encodeURIComponent(active.title)}`}>Use this template</Link>
+          </div>
+          <p className="fine">Try the booking. It’s fully working, just not connected to a real business yet.</p>
+        </aside>
+      </div>
+    </div>
+  )
+}
+
+function WorkStrip() {
+  return (
+    <div className="work-strip">
+      {projects.map((p) => (
+        <Link key={p.slug} to={`/work/${p.slug}`} className="work-card">
+          <Cover project={p} />
+          <h3>{p.name}</h3>
+          <p>{p.type}</p>
         </Link>
       ))}
     </div>
@@ -39,85 +171,70 @@ function InviteFan() {
 export default function Home() {
   return (
     <>
-      <section className="hero wrap">
-        <div className="hero-text">
-          <p className="kicker"><span className="dot" />Web studio in Phnom Penh</p>
-          <h1>We build the software Cambodian businesses run on.</h1>
-          <p className="lead">
-            A bar’s tablet POS, a medical lab’s desktop app, invitations every guest opens on their phone.
-            Each one is in daily use by a real client.
-          </p>
-          <div className="actions">
-            <a className="btn btn-ink" href="#work">See the work</a>
-            <Link className="btn btn-line" to="/templates">Try our templates</Link>
-          </div>
-        </div>
-        <Hero3D />
-      </section>
-
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...MARQUEE, ...MARQUEE].map((m, i) => <span key={i}>{m}</span>)}
-        </div>
-      </div>
-
-      <section className="wrap section" id="work" aria-labelledby="work-h">
-        <div className="head-row">
-          <h2 id="work-h" className="h-section">Client work</h2>
-          <p className="muted">Built and shipped in 2026</p>
-        </div>
-        <div className="chapters">
-          {projects.map((p) => (
-            <article key={p.slug} className="chapter">
-              <Link to={`/work/${p.slug}`} className="chapter-cover" tabIndex={-1} aria-hidden="true">
-                <Cover project={p} />
-              </Link>
-              <div className="chapter-text">
-                <div>
-                  <h3><Link to={`/work/${p.slug}`}>{p.name}</Link></h3>
-                  <p>{p.tagline}</p>
-                  <Link className="text-link" to={`/work/${p.slug}`}>Read the case study</Link>
-                </div>
-                <dl className="facts">
-                  <div><dt>Client</dt><dd>{p.client}</dd></div>
-                  <div><dt>Built as</dt><dd>{p.type}</dd></div>
-                  <div><dt>Timeframe</dt><dd>{p.duration}</dd></div>
-                </dl>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="night teaser" aria-labelledby="tpl-h">
-        <div className="wrap teaser-grid">
-          <div className="teaser-text">
-            <h2 id="tpl-h">Invitations your guests open, tap and reply to.</h2>
-            <p>
-              Five ready-made designs for weddings, engagements and birthdays. Type your names, see it
-              change live, and send every guest a link with their own name on the cover.
+      <section className="page-hero home-hero">
+        <div className="wrap page-hero-grid">
+          <div>
+            <h1>Invitations and websites you can try before you buy.</h1>
+            <p className="lead">
+              We’re CamboWeb, a small studio in Phnom Penh. Every template here is live: open an invitation,
+              book a table, pick a barber. When you find the one, we make it yours.
             </p>
-            <ul className="ticks">
-              <li>Khmer and English</li>
-              <li>Countdown, map and KHQR gift</li>
-              <li>A personal link for each guest</li>
-            </ul>
-            <Link className="btn btn-neon" to="/templates">Try the templates</Link>
+            <nav className="tpl-tabs" aria-label="Template types">
+              <a href="#invitations">E-invitations <span>{invitations.length}</span></a>
+              <a href="#websites">Websites <span>{websites.length}</span></a>
+              <a href="#pos">POS <span>soon</span></a>
+            </nav>
           </div>
-          <InviteFan />
+          <div className="showcase" aria-hidden="true">
+            <figure className="sc-browser sc-back">
+              <div className="browser-bar"><i /><i /><i /><span className="url">sharpandco.com</span></div>
+              <img src="/img/shot-barber.jpg" alt="" />
+            </figure>
+            <figure className="sc-browser sc-front">
+              <div className="browser-bar"><i /><i /><i /><span className="url">kampottable.com</span></div>
+              <img src="/img/shot-restaurant.jpg" alt="" />
+            </figure>
+            <div className="sc-phone"><img src="/img/shot-golden-lotus.jpg" alt="" /></div>
+          </div>
         </div>
       </section>
 
-      <section className="wrap section" id="process" aria-labelledby="process-h">
-        <h2 id="process-h" className="h-section">How we work</h2>
-        <ol className="steps">
-          {STEPS.map(([t, d]) => (
-            <li key={t}>
-              <h3>{t}</h3>
-              <p>{d}</p>
-            </li>
-          ))}
-        </ol>
+      <section className="wrap section" id="invitations" aria-labelledby="inv-h">
+        <div className="head-row">
+          <h2 id="inv-h" className="h-section">E-invitations</h2>
+          <p>Weddings, engagements and birthdays. Khmer and English, music, countdown, map and KHQR gift.</p>
+        </div>
+        <InviteStudio />
+      </section>
+
+      <section className="wrap section" id="websites" aria-labelledby="web-h">
+        <div className="head-row">
+          <h2 id="web-h" className="h-section">Business websites</h2>
+          <p>Built for booking. Each one works on phones first, loads fast and shows prices in dollars and riel.</p>
+        </div>
+        <SiteStudio />
+      </section>
+
+      <section className="wrap section" id="pos" aria-labelledby="pos-h">
+        <div className="pos-soon">
+          <div>
+            <h2 id="pos-h" className="h-section">POS system</h2>
+            <p className="body-lg">
+              The tablet point-of-sale we built for LoRi, ready for your restaurant, bar or café: floor plan,
+              kitchen printing, bills in USD and riel, and nightly sales reports. Live preview coming soon.
+            </p>
+            <Link className="btn btn-ink" to="/contact?need=POS%20system">Ask for a demo</Link>
+          </div>
+          <div className="pos-dev"><Tablet /></div>
+        </div>
+      </section>
+
+      <section className="wrap section" aria-labelledby="clients-h">
+        <div className="head-row">
+          <h2 id="clients-h" className="h-section">Built for real clients</h2>
+          <p>Need something custom? These are in daily use. <Link className="text-link" to="/work">See all client work</Link></p>
+        </div>
+        <WorkStrip />
       </section>
     </>
   )
