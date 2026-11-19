@@ -284,11 +284,6 @@ export default function Home() {
         </div>
         <div className="hx-visual">
           <HeroStack />
-          <div className="hx-stat">
-            <Icon name="spark" size={26} />
-            <b>3</b>
-            <span>{t('client systems in daily use', 'ប្រព័ន្ធកំពុងប្រើប្រាស់ប្រចាំថ្ងៃ')}</span>
-          </div>
         </div>
       </section>
 
