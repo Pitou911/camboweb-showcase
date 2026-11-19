@@ -1,19 +1,18 @@
-import Hero3D from '../components/Hero3D'
+import HeroTech from '../components/HeroTech'
 
 // Dev-only page used to render the Facebook cover (1640 x 624).
-// Key content stays inside the centre ~1200px, which Facebook shows on every device.
+// Everything sits inside the centre ~1100px, which Facebook shows on phones and computers;
+// the lower-left corner stays quiet because the profile photo overlaps it on desktop.
 export default function FbCover() {
   return (
     <div className="fb">
       <div className="fb-text">
-        <div className="fb-logo">
-          <img src="/img/camboweb-pfp-neon-black.png" alt="" />
-          <span><b>cambo</b>web</span>
-        </div>
-        <h1>We build the software Cambodian businesses run on.</h1>
-        <p>Websites, apps and business systems, in Khmer and English.</p>
+        <p className="eyebrow">Web studio in Phnom Penh</p>
+        <h1>Software that helps your business <em>grow.</em></h1>
+        <p className="fb-sub">Websites, e-invitations and POS systems, in Khmer and English.</p>
+        <span className="fb-url">cambo-web.com</span>
       </div>
-      <div className="fb-stage"><Hero3D /></div>
+      <div className="fb-art"><HeroTech /></div>
     </div>
   )
 }
