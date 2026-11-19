@@ -902,3 +902,18 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
   .ht-sparks circle { opacity: 0.7; }
   .ht-pulses { display: none; }
 }
+
+/* hero illustration sits directly on the page: no panel; light-mode colours for the thin parts */
+.hx-visual { padding: 0; background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+:root { --ht-line: rgba(10, 127, 150, 0.6); --ht-node: #0a9fb8; --ht-label: #0a5566; --ht-tile: #ffffff; --ht-tile-l: #c4d6dc; --ht-tile-r: #dde9ed; --ht-tile-edge: rgba(10, 127, 150, 0.45); --ht-shadow: rgba(6, 32, 41, 0.18); }
+:root[data-theme='dark'] { --ht-line: rgba(43, 217, 240, 0.7); --ht-node: #2bd9f0; --ht-label: #bdeff7; --ht-tile: #e9f6fa; --ht-tile-l: #8fb3c1; --ht-tile-r: #b9d3dd; --ht-tile-edge: transparent; --ht-shadow: rgba(0, 0, 0, 0.45); }
+.ht-bars rect { stroke: var(--ht-line); }
+.ht-wires path { stroke: var(--ht-line); }
+.ht-nodes circle { fill: var(--ht-node); }
+.ht-label { fill: var(--ht-label); }
+.ht-tile-top { fill: var(--ht-tile); stroke: var(--ht-tile-edge); stroke-width: 1; }
+.ht-tile-l { fill: var(--ht-tile-l); }
+.ht-tile-r { fill: var(--ht-tile-r); }
+.ht-shadow { fill: var(--ht-shadow); }
+:root:not([data-theme='dark']) .ht-pulses circle { fill: #0a9fb8; filter: drop-shadow(0 0 4px rgba(43, 217, 240, 0.8)); }
+:root:not([data-theme='dark']) .ht-sparks circle { fill: #0a9fb8; }
