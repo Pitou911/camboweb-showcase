@@ -873,3 +873,32 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 [data-anim].in { opacity: 1; transform: none; }
 .proj-card:hover, .proj-card.in:hover { transform: none; translate: 0 -4px; }
 @media (prefers-reduced-motion: reduce) { [data-anim] { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- home hero: isometric tech illustration (HeroTech) ---------- */
+.hx-visual { padding: clamp(8px, 1.5vw, 20px); background: radial-gradient(90% 80% at 55% 35%, #0c4a66, #072a3d 55%, #051b28 100%); overflow: hidden; }
+.ht { display: block; width: 100%; height: auto; }
+.ht-bars rect { fill: none; stroke: rgba(43, 217, 240, 0.55); stroke-width: 1.4; }
+.ht-wires path { fill: none; stroke: rgba(43, 217, 240, 0.75); stroke-width: 1.6; }
+.ht-nodes circle { fill: #2bd9f0; }
+.ht-pulses circle { fill: #e6fdff; filter: drop-shadow(0 0 6px #2bd9f0); }
+.ht-tile-top { fill: #e9f6fa; }
+.ht-tile-l { fill: #8fb3c1; }
+.ht-tile-r { fill: #b9d3dd; }
+.ht-label { fill: #bdeff7; font: 600 13px var(--font); letter-spacing: 0.04em; }
+.ht-edge { stroke: rgba(43, 217, 240, 0.85); stroke-width: 1.6; stroke-linejoin: round; }
+.ht-glass { opacity: 0.9; }
+.ht-shadow { fill: rgba(0, 0, 0, 0.35); filter: blur(14px); }
+.ht-mark path { fill: none; stroke: #2bd9f0; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.ht-c circle { fill: #2bd9f0; }
+.ht-halo { fill: rgba(43, 217, 240, 0.22); }
+.ht-cube { animation: ht-float 6s ease-in-out infinite; transform-box: fill-box; }
+.ht-halo { animation: ht-breathe 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.ht-sparks circle { fill: #8ff0ff; opacity: 0; animation: ht-rise 4.2s ease-out infinite; transform-box: fill-box; }
+@keyframes ht-float { 50% { transform: translateY(-10px); } }
+@keyframes ht-breathe { 50% { transform: scale(1.25); opacity: 0.55; } }
+@keyframes ht-rise { 0% { opacity: 0; transform: translateY(20px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
+@media (prefers-reduced-motion: reduce) {
+  .ht-cube, .ht-halo, .ht-sparks circle { animation: none; }
+  .ht-sparks circle { opacity: 0.7; }
+  .ht-pulses { display: none; }
+}

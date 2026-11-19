@@ -4,7 +4,7 @@ import { invitations, posTemplates, siteUrl, templateUrl, websites } from '../da
 import { projects } from '../data/projects'
 import LiveFrame from '../components/LiveFrame'
 import Cover from '../components/Cover'
-import HeroStack from '../components/HeroStack'
+import HeroTech from '../components/HeroTech'
 import Icon from '../components/Icon'
 import SectionHead from '../components/SectionHead'
 import { usePrefs } from '../prefs'
@@ -283,7 +283,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hx-visual">
-          <HeroStack />
+          <HeroTech />
         </div>
       </section>
 
