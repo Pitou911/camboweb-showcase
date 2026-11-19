@@ -955,3 +955,32 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .ig-dark .ig-art .ht { width: 100%; }
 .ig-dark h2 { color: #fff; }
 .ig-dark .ig-sub { margin-top: 26px; }
+
+/* ---------- Instagram panorama (dev-only /ig/pano): 3240 x 1440, cut into 3 ---------- */
+.pano { position: relative; width: 3240px; height: 1440px; overflow: hidden; color: #e7f1f3;
+  background: radial-gradient(900px 700px at 1620px 760px, #0d4560, transparent 70%), radial-gradient(1400px 900px at 600px 200px, #0a2f44, transparent 70%), radial-gradient(1400px 900px at 2700px 1200px, #0a2f44, transparent 70%), #051a26; }
+.pano-wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pano-wires path { fill: none; stroke: rgba(43, 217, 240, 0.7); stroke-width: 3; }
+.pano-wires circle { fill: #2bd9f0; filter: drop-shadow(0 0 10px #2bd9f0); }
+.pano-art { position: absolute; left: 1100px; top: 330px; width: 1040px; }
+.pano-art .ht { width: 100%; }
+.pano .eyebrow { font-size: 24px; margin-bottom: 24px; color: #5cd3e8; }
+.pano-left { position: absolute; left: 100px; top: 110px; width: 880px; height: 860px; display: flex; flex-direction: column; justify-content: space-between; }
+.pano-left .ig-brand { color: #fff; }
+.pano-left h1 { font-size: 132px; font-weight: 800; line-height: 0.96; letter-spacing: -0.045em; color: #fff; }
+.pano-left h1 em { font-style: normal; color: #2bd9f0; }
+.pano .ig-sub { margin-top: 34px; font-size: 34px; color: #a9c2c9; max-width: 22ch; }
+.pano-right { position: absolute; left: 2256px; top: 130px; width: 884px; height: 1200px; display: flex; flex-direction: column; justify-content: space-between; }
+.pano-right h2 { font-size: 84px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: #fff; max-width: 12ch; }
+.pano-cards { position: absolute; left: 0; right: 0; top: 310px; display: grid; gap: 50px; }
+.pano-cards li { height: 190px; display: flex; align-items: center; gap: 30px; padding: 0 40px; border-radius: 36px; background: rgba(255, 255, 255, 0.06); border: 1.5px solid rgba(43, 217, 240, 0.45); backdrop-filter: blur(6px); }
+.pano-cards .svc-ico { width: 92px; height: 92px; flex: none; background: rgba(43, 217, 240, 0.14); color: #2bd9f0; }
+.pano-cards b { display: block; font-size: 42px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+.pano-cards div span { display: block; margin-top: 6px; font-size: 26px; color: #a9c2c9; }
+.pano-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.pano-foot b { font-size: 36px; font-weight: 700; color: #fff; }
+.pano .fb-url { margin: 0; padding: 20px 36px; font-size: 32px; background: #2bd9f0; color: #062029; }
+.pano-wires .rib { fill: none; stroke-linecap: round; }
+.pano-wires .rib-glow { fill: none; stroke: #2bd9f0; stroke-width: 26; opacity: 0.35; }
+.pano-wires .link { fill: none; stroke: rgba(43, 217, 240, 0.75); stroke-width: 3; stroke-linecap: round; }
+.pano-wires path:not(.rib):not(.rib-glow):not(.link) { display: none; }
