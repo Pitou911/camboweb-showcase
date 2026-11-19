@@ -3,6 +3,22 @@
 //  - [data-reveal] fades in on scroll; body.scrolled after 40px
 //  - CW.toast(msg), CW.ref(prefix) for demo booking references
 (function () {
+  // Menu bar on small screens: the booking button never wraps, and a long business name
+  // shrinks with "…" instead of squeezing the button.
+  const navFix = document.createElement('style')
+  navFix.textContent = `
+    .nav .wrap{gap:14px}
+    .nav .brand{min-width:0;flex:1 1 auto}
+    .nav .brand>span[data-field],.nav .brand[data-field]{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .nav .links{flex:none}
+    .nav .links .btn{white-space:nowrap}
+    @media (max-width:560px){
+      .nav .links .btn{padding:10px 16px;font-size:14px}
+      .nav .brand{font-size:20px;gap:9px}
+      .nav .brand svg{width:28px;height:28px}
+    }`
+  document.head.appendChild(navFix)
+
   const apply = (fields) => {
     if (fields.name && fields.name.trim()) {
       document.querySelectorAll('[data-field="name"]').forEach((n) => (n.textContent = fields.name.trim()))
