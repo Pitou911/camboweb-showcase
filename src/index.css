@@ -18,7 +18,7 @@
   --display: 'Instrument Serif', 'Kantumruy Pro', Georgia, serif;
   --on-ink: #ffffff;
   --ink-hover: #12404f;
-  --nav-bg: rgba(247, 249, 249, 0.86);
+  --nav-bg: rgba(247, 249, 249, 0.94);
   --placeholder: #7d9098;
   --cover-lori: #e6eee8;
   --cover-saravoan: #f1eaea;
@@ -43,7 +43,7 @@
   --link: #5cd3e8;
   --on-ink: #062029;
   --ink-hover: #ffffff;
-  --nav-bg: rgba(7, 19, 24, 0.84);
+  --nav-bg: rgba(7, 19, 24, 0.94);
   --placeholder: #66808a;
   --cover-lori: #10241a;
   --cover-saravoan: #241417;
@@ -683,3 +683,11 @@ h1, h2, h3 { line-height: 1.06; }
 .home-hero .page-hero-grid { align-items: center; }
 .hs { aspect-ratio: 1.3; }
 .hero { padding-block: clamp(24px, 3vw, 40px) clamp(16px, 3vw, 32px); min-height: 0; }
+
+/* iPhone browsers with see-through top bars: fill the gap above the sticky menu so the page never shows through */
+.nav::before { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 200px; background: var(--paper); pointer-events: none; }
+
+/* iPhone gives date fields a fixed minimum width: make them fit their column like the other fields */
+input[type='date'] { -webkit-appearance: none; appearance: none; display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 46px; line-height: 1.2; text-align: left; }
+input[type='date']::-webkit-date-and-time-value { text-align: left; }
+.pair > label, .custom label { min-width: 0; }
