@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { site } from '../data/site'
 import { usePrefs } from '../prefs'
 import Icon from './Icon'
+import useScrollAnim from './useScrollAnim'
 
 export function Logo() {
   return (
@@ -46,7 +47,8 @@ function Prefs() {
 
 export default function Layout() {
   const { pathname, hash } = useLocation()
-  const { t } = usePrefs()
+  const { t, lang } = usePrefs()
+  useScrollAnim(pathname + lang)
 
   useEffect(() => {
     if (hash) document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })

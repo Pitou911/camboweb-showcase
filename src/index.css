@@ -1,7 +1,7 @@
 /* CamboWeb showcase
    One surface per theme (light or dark). Ink for text and actions; the neon C is the only colour,
    used for the logo, the 3D hero floor, focus rings and the one "active" marker.
-   Type: Instrument Serif for headings, DM Sans for text; Khmer in both falls back to Kantumruy Pro. */
+   Type: Figtree throughout (bold headings, regular text), close to Airbnb Cereal; Khmer falls back to Kantumruy Pro. */
 :root {
   --paper: #f7f9f9;
   --raised: #ffffff;
@@ -14,8 +14,8 @@
   --neon: #2bd9f0;
   --ring: rgba(43, 217, 240, 0.45);
   --link: #08698f;
-  --font: 'DM Sans', 'Kantumruy Pro', system-ui, sans-serif;
-  --display: 'Instrument Serif', 'Kantumruy Pro', Georgia, serif;
+  --font: 'Figtree', 'Kantumruy Pro', system-ui, sans-serif;
+  --display: 'Figtree', 'Kantumruy Pro', system-ui, sans-serif;
   --on-ink: #ffffff;
   --ink-hover: #12404f;
   --nav-bg: rgba(247, 249, 249, 0.94);
@@ -837,3 +837,39 @@ input[type='date']::-webkit-date-and-time-value { text-align: left; }
   .hx { padding-bottom: 64px; }
 }
 @media (max-width: 560px) { .hx-visual .hs-chip.c3 { display: none; } }
+
+/* ---------- Figtree (Airbnb-like): bold, tight headings; regular text ---------- */
+h1, h2, h3, .h-section, .h-page, .chapter h3, .features h3, .steps h3, .problems summary, .row > h2,
+.contact-side h2, .footer-band h2, .custom-title, .panel h3, .site-info h3, .next strong, .facts-wide dd,
+.steps li::before, .work-card h3, .svc h3, .proj-meta h3, .cta-strip h2, .stats b, .hx-stat b {
+  font-family: var(--display); font-synthesis: auto; letter-spacing: -0.025em;
+}
+h1, .h-page { font-weight: 800; }
+h2, .h-section, .cta-strip h2, .footer-band h2, .next strong { font-weight: 700; }
+h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h2, .contact-side h2, .custom-title, .panel h3, .site-info h3, .chapter h3 { font-weight: 650; letter-spacing: -0.015em; }
+.stats b, .facts-wide dd, .steps li::before { font-weight: 700; }
+.hx h1 { font-size: clamp(40px, 4.6vw, 64px); line-height: 1.04; letter-spacing: -0.035em; }
+.page-hero h1, .h-page, .hero h1 { font-size: clamp(36px, 4vw, 56px); line-height: 1.06; letter-spacing: -0.035em; }
+.h-section, .sh .h-section, .head-row .h-section { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.03em; }
+.svc h3 { font-size: 19px; }
+.proj-meta h3 { font-size: 20px; }
+.features h3, .steps h3 { font-size: 19px; }
+.problems summary { font-size: 18px; }
+.row > h2, .contact-side h2 { font-size: 22px; }
+.panel h3, .site-info h3 { font-size: 24px; }
+.custom-title { font-size: 18px; }
+.chapter h3 { font-size: clamp(22px, 2.2vw, 30px); }
+.cta-strip h2 { font-size: clamp(22px, 2.2vw, 28px); }
+.stats b { font-size: 30px; }
+.steps li::before { font-size: clamp(36px, 3.6vw, 48px); }
+:root[data-lang='kh'] h1, :root[data-lang='kh'] h2, :root[data-lang='kh'] h3 { letter-spacing: 0; }
+
+/* ---------- scroll animations (useScrollAnim) ---------- */
+[data-anim] { opacity: 0; transition: opacity 0.7s var(--ease), transform 0.85s var(--ease); transition-delay: var(--d, 0ms); will-change: opacity, transform; }
+[data-anim='up'] { transform: translateY(44px); }
+[data-anim='right'] { transform: translateX(70px); }
+[data-anim='left'] { transform: translateX(-70px); }
+[data-anim='pop'] { transform: translateY(34px) scale(0.94); }
+[data-anim].in { opacity: 1; transform: none; }
+.proj-card:hover, .proj-card.in:hover { transform: none; translate: 0 -4px; }
+@media (prefers-reduced-motion: reduce) { [data-anim] { opacity: 1; transform: none; transition: none; } }
