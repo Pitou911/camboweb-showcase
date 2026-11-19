@@ -6,12 +6,14 @@ import Project from './pages/Project'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import FbCover from './pages/FbCover'
+import IgPost from './pages/IgPost'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         {import.meta.env.DEV && <Route path="fb-cover" element={<FbCover />} />}
+        {import.meta.env.DEV && <Route path="ig/:n" element={<IgPost />} />}
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />

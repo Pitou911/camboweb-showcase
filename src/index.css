@@ -931,3 +931,27 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .fb h1 { font-size: 60px; }
 .fb-sub { font-size: 20px; }
 .fb-art .ht { width: 470px; }
+
+/* ---------- Instagram posts (dev-only /ig/:n), 1080 x 1350 ---------- */
+.ig { width: 1080px; height: 1350px; padding: 100px 96px; display: flex; flex-direction: column; justify-content: space-between; background: var(--paper); color: var(--ink); overflow: hidden; }
+.ig .eyebrow { font-size: 22px; margin-bottom: 22px; }
+.ig h1 { font-size: 124px; font-weight: 800; line-height: 0.98; letter-spacing: -0.045em; }
+.ig h1 em { font-style: normal; color: var(--accent); }
+.ig h2 { font-size: 96px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+.ig-sub { font-size: 32px; line-height: 1.35; color: var(--ink-2); max-width: 24ch; }
+.ig-brand { display: flex; align-items: center; gap: 18px; font-family: Lexend, sans-serif; font-size: 40px; font-weight: 300; letter-spacing: -0.03em; }
+.ig-brand b { font-weight: 700; }
+.ig-brand img { width: 72px; height: 72px; border-radius: 18px; }
+.ig-foot { display: grid; gap: 34px; justify-items: start; }
+.ig .fb-url { margin: 0; padding: 20px 38px; font-size: 32px; }
+.ig-list { display: grid; gap: 26px; }
+.ig-list li { display: flex; align-items: center; gap: 30px; padding: 34px 36px; border-radius: 34px; background: var(--raised); border: 1px solid var(--line); }
+.ig-list .svc-ico { width: 84px; height: 84px; flex: none; }
+.ig-list b { display: block; font-size: 40px; font-weight: 700; letter-spacing: -0.02em; }
+.ig-list span span, .ig-list div span { display: block; margin-top: 4px; font-size: 26px; color: var(--ink-2); }
+.ig-chips { display: flex; gap: 14px; }
+.ig-chips span { padding: 14px 24px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 24px; font-weight: 600; }
+.ig-dark .ig-art { margin: -40px -30px; }
+.ig-dark .ig-art .ht { width: 100%; }
+.ig-dark h2 { color: #fff; }
+.ig-dark .ig-sub { margin-top: 26px; }
