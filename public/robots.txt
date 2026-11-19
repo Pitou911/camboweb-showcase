@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# Demo templates use made-up businesses; keep them out of search results.
+Disallow: /templates/
+
+Sitemap: https://cambo-web.com/sitemap.xml

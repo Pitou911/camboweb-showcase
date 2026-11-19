@@ -4,6 +4,7 @@ import { site } from '../data/site'
 import { usePrefs } from '../prefs'
 import Icon from './Icon'
 import useScrollAnim from './useScrollAnim'
+import usePageMeta from './usePageMeta'
 
 export function Logo() {
   return (
@@ -49,6 +50,7 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const { t, lang } = usePrefs()
   useScrollAnim(pathname + lang)
+  usePageMeta(pathname)
 
   useEffect(() => {
     if (hash) document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
