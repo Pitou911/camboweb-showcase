@@ -42,7 +42,10 @@ export default function Contact() {
     <>
       <section className="page-hero">
         <div className="wrap page-hero-grid">
-          <h1>{t('Start a project.', 'ចាប់ផ្តើមគម្រោង។')}</h1>
+          <div>
+            <p className="eyebrow">{t('Contact', 'ទំនាក់ទំនង')}</p>
+            <h1>{t('Start a project.', 'ចាប់ផ្តើមគម្រោង។')}</h1>
+          </div>
           <p className="lead">{t(
             'Tell us what you need in a few lines. A template, a custom website or a full system, we’ll reply within a day with honest advice and a next step.',
             'ប្រាប់យើងពីអ្វីដែលអ្នកត្រូវការបន្តិចបន្តួច។ មិនថាគំរូ គេហទំព័រធ្វើតាមតម្រូវការ ឬប្រព័ន្ធពេញលេញ យើងនឹងឆ្លើយតបក្នុងមួយថ្ងៃ ជាមួយដំបូន្មានស្មោះត្រង់ និងជំហានបន្ទាប់។',

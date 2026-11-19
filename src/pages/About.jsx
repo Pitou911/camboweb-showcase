@@ -42,7 +42,10 @@ export default function About() {
     <>
       <section className="page-hero">
         <div className="wrap page-hero-grid">
-          <h1>{t('A small studio building software for Cambodian businesses.', 'ស្ទូឌីយោតូចមួយ ដែលបង្កើតកម្មវិធីសម្រាប់អាជីវកម្មខ្មែរ។')}</h1>
+          <div>
+            <p className="eyebrow">{t('About us', 'អំពីយើង')}</p>
+            <h1>{t('A small studio building software for Cambodian businesses.', 'ស្ទូឌីយោតូចមួយ ដែលបង្កើតកម្មវិធីសម្រាប់អាជីវកម្មខ្មែរ។')}</h1>
+          </div>
           <div>
             <p className="lead">{t(
               'CamboWeb is based in Phnom Penh. We design and build websites, e-invitations and the systems businesses run on every day, from a bar’s tablet POS to a medical lab’s desktop app.',

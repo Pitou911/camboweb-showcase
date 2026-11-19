@@ -11,6 +11,7 @@ export default function Work() {
     <>
       <section className="hero wrap">
         <div className="hero-text">
+          <p className="eyebrow">{t('Our work', 'ស្នាដៃរបស់យើង')}</p>
           <h1>{t('We build the software Cambodian businesses run on.', 'យើងបង្កើតកម្មវិធីដែលអាជីវកម្មខ្មែរប្រើប្រាស់ប្រចាំថ្ងៃ។')}</h1>
           <p className="lead">{t(
             'A bar’s tablet POS, a medical lab’s desktop app, invitations every guest opens on their phone. Each one is in daily use by a real client.',

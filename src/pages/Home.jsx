@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { invitations, posTemplates, siteUrl, templateUrl, websites } from '../data/templates'
 import { projects } from '../data/projects'
 import LiveFrame from '../components/LiveFrame'
 import Cover from '../components/Cover'
 import HeroStack from '../components/HeroStack'
+import Icon from '../components/Icon'
+import SectionHead from '../components/SectionHead'
 import { usePrefs } from '../prefs'
-import Floater from '../components/Floater'
 
 const EMPTY = { a: '', b: '', guest: '', date: '', venue: '' }
 
@@ -211,93 +212,139 @@ function PosStudio() {
   )
 }
 
-function WorkStrip() {
-  const { pick } = usePrefs()
+// [icon, English title, Khmer title, English text, Khmer text, link]
+const SERVICES = [
+  ['globe', 'Business websites', 'គេហទំព័រអាជីវកម្ម', 'Fast, phone-first sites with booking, menus and prices in dollars and riel.', 'គេហទំព័រលឿន សម្រាប់ទូរស័ព្ទ មានការកក់ ម៉ឺនុយ និងតម្លៃជាដុល្លារ និងរៀល។', '/#websites'],
+  ['mail', 'E-invitations', 'ធៀបឌីជីថល', 'Weddings, engagements and birthdays, with each guest’s name on the cover.', 'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត មានឈ្មោះភ្ញៀវម្នាក់ៗនៅលើក្រប។', '/#invitations'],
+  ['pos', 'POS systems', 'ប្រព័ន្ធលក់ POS', 'Tablet point-of-sale for marts, cafés, bars and restaurants.', 'ប្រព័ន្ធលក់លើថេប្លេត សម្រាប់ម៉ាត ហាងកាហ្វេ បារ និងភោជនីយដ្ឋាន។', '/#pos'],
+  ['layers', 'Business systems', 'ប្រព័ន្ធអាជីវកម្ម', 'Stock, shifts, staff accounts and reports, built around how you work.', 'ស្តុក វេនការងារ គណនីបុគ្គលិក និងរបាយការណ៍ តាមរបៀបដែលអ្នកធ្វើការ។', '/work/lori-pos'],
+  ['desktop', 'Desktop & offline apps', 'កម្មវិធីកុំព្យូទ័រ', 'Software that keeps running when the internet doesn’t.', 'កម្មវិធីដែលនៅតែដំណើរការ ពេលអ៊ីនធឺណិតដាច់។', '/work/saravoan-labo'],
+]
+
+const TABS = ['invitations', 'websites', 'pos']
+
+function Templates() {
+  const { t } = usePrefs()
+  const { hash } = useLocation()
+  const [tab, setTab] = useState(() => (TABS.includes(hash.slice(1)) ? hash.slice(1) : 'invitations'))
+  useEffect(() => { if (TABS.includes(hash.slice(1))) setTab(hash.slice(1)) }, [hash])
+  const labels = {
+    invitations: [t('E-invitations', 'ធៀបឌីជីថល'), invitations.length],
+    websites: [t('Websites', 'គេហទំព័រ'), websites.length],
+    pos: [t('POS systems', 'ប្រព័ន្ធលក់ POS'), posTemplates.length],
+  }
   return (
-    <div className="work-strip">
-      {projects.map((raw) => {
-        const p = pick(raw)
-        return (
-          <Link key={p.slug} to={`/work/${p.slug}`} className="work-card">
-            <Cover project={raw} />
-            <h3>{p.name}</h3>
-            <p>{p.type}</p>
-          </Link>
-        )
-      })}
-    </div>
+    <section className="wrap section" id="templates" aria-labelledby="tpl-h">
+      {TABS.map((id) => <span key={id} id={id} className="anchor" />)}
+      <SectionHead
+        id="tpl-h"
+        eyebrow={t('Try before you buy', 'សាកល្បងមុនទិញ')}
+        title={t('Live templates you can play with', 'គំរូដែលអ្នកអាចសាកល្បងបានភ្លាមៗ')}
+        text={t('Every template here really works. Type your own names, book a table, ring up a sale.', 'គំរូនីមួយៗដំណើរការពិត។ វាយឈ្មោះរបស់អ្នក កក់តុ ឬសាកលក់។')}
+      />
+      <div className="tabs" role="tablist" aria-label={t('Template types', 'ប្រភេទគំរូ')}>
+        {TABS.map((id) => (
+          <button key={id} type="button" role="tab" aria-selected={tab === id} className={tab === id ? 'on' : ''} onClick={() => setTab(id)}>
+            {labels[id][0]} <span>{labels[id][1]}</span>
+          </button>
+        ))}
+      </div>
+      <div className="tab-panel" role="tabpanel">
+        {tab === 'invitations' && <InviteStudio />}
+        {tab === 'websites' && <SiteStudio />}
+        {tab === 'pos' && <PosStudio />}
+      </div>
+    </section>
   )
 }
 
 export default function Home() {
-  const { t } = usePrefs()
+  const { t, pick } = usePrefs()
+  const stats = [
+    ['check', '3', t('client systems live', 'ប្រព័ន្ធអតិថិជនកំពុងដំណើរការ')],
+    ['layers', '11', t('live templates', 'គំរូដែលសាកល្បងបាន')],
+    ['lang', '2', t('languages, Khmer & English', 'ភាសា ខ្មែរ និងអង់គ្លេស')],
+    ['shield', '~130', t('automated tests on LoRi POS', 'តេស្តស្វ័យប្រវត្តិលើ LoRi POS')],
+    ['bolt', t('7 wks', '៧ សប្តាហ៍'), t('from prototype to launch', 'ពីគំរូដល់ដំណើរការពិត')],
+  ]
   return (
     <>
-      <section className="page-hero home-hero">
-        <div className="wrap page-hero-grid">
-          <div>
-            <h1>{t('Try it before you buy.', 'សាកល្បងមុនទិញ។')}</h1>
-            <p className="lead">{t(
-              'Live invitations, websites and POS systems from a Phnom Penh studio.',
-              'ធៀបឌីជីថល គេហទំព័រ និងប្រព័ន្ធលក់ POS ដែលដំណើរការពិត ពីស្ទូឌីយោមួយនៅភ្នំពេញ។',
-            )}</p>
-            <nav className="tpl-tabs" aria-label={t('Template types', 'ប្រភេទគំរូ')}>
-              <a href="#invitations">{t('E-invitations', 'ធៀបឌីជីថល')} <span>{invitations.length}</span></a>
-              <a href="#websites">{t('Websites', 'គេហទំព័រ')} <span>{websites.length}</span></a>
-              <a href="#pos">POS <span>{posTemplates.length}</span></a>
-            </nav>
+      <section className="hx wrap">
+        <div className="hx-text">
+          <p className="eyebrow">{t('Web studio in Phnom Penh', 'ស្ទូឌីយោវេបនៅភ្នំពេញ')}</p>
+          <h1>{t(<>Software that helps your business <em>grow.</em></>, <>កម្មវិធីដែលជួយឱ្យអាជីវកម្មរបស់អ្នក<em>រីកចម្រើន។</em></>)}</h1>
+          <p className="lead">{t(
+            'Websites, e-invitations and POS systems you can try live before you buy.',
+            'គេហទំព័រ ធៀបឌីជីថល និងប្រព័ន្ធលក់ POS ដែលអ្នកអាចសាកល្បងផ្ទាល់ មុនពេលទិញ។',
+          )}</p>
+          <div className="hx-actions">
+            <a className="btn btn-ink" href="#templates">{t('Explore templates', 'មើលគំរូ')} <Icon name="arrow" size={18} /></a>
+            <Link className="play-link" to="/work"><span className="play"><Icon name="play" size={18} /></span>{t('See our work', 'មើលស្នាដៃ')}</Link>
           </div>
+        </div>
+        <div className="hx-visual">
           <HeroStack />
+          <div className="hx-stat">
+            <Icon name="spark" size={26} />
+            <b>3</b>
+            <span>{t('client systems in daily use', 'ប្រព័ន្ធកំពុងប្រើប្រាស់ប្រចាំថ្ងៃ')}</span>
+          </div>
         </div>
       </section>
 
-      <section className="wrap section" id="invitations" aria-labelledby="inv-h">
-        <Floater kind="ring" side="left" top="8%" />
-        <div className="head-row">
-          <h2 id="inv-h" className="h-section">{t('E-invitations', 'ធៀបឌីជីថល')}</h2>
-          <p>{t(
-            'Weddings, engagements and birthdays. Khmer and English, music, countdown, map and KHQR gift.',
-            'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត។ ភាសាខ្មែរ និងអង់គ្លេស តន្ត្រី រាប់ថយក្រោយ ផែនទី និង KHQR សម្រាប់ចំណងដៃ។',
-          )}</p>
-        </div>
-        <InviteStudio />
+      <section className="wrap section" aria-labelledby="svc-h">
+        <SectionHead
+          id="svc-h"
+          eyebrow={t('What we do', 'អ្វីដែលយើងធ្វើ')}
+          title={t('Services that drive real results', 'សេវាកម្មដែលផ្តល់លទ្ធផលពិត')}
+          text={t('Clean design and solid engineering, for software Cambodian businesses rely on.', 'ការរចនាស្អាត និងវិស្វកម្មរឹងមាំ សម្រាប់កម្មវិធីដែលអាជីវកម្មខ្មែរពឹងផ្អែកបាន។')}
+          action={<Link className="pill" to="/about">{t('About us', 'អំពីយើង')} <Icon name="arrow" size={16} /></Link>}
+        />
+        <ul className="svc">
+          {SERVICES.map(([icon, en, kh, d, dk, href]) => (
+            <li key={en}>
+              <Link to={href}>
+                <span className="svc-ico"><Icon name={icon} /></span>
+                <h3>{t(en, kh)}</h3>
+                <p>{t(d, dk)}</p>
+                <span className="more">{t('Learn more', 'ស្វែងយល់បន្ថែម')} <Icon name="arrow" size={16} /></span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className="wrap section band" id="websites" aria-labelledby="web-h">
-        <Floater kind="cube" side="right" top="10%" />
-        <div className="head-row">
-          <h2 id="web-h" className="h-section">{t('Business websites', 'គេហទំព័រអាជីវកម្ម')}</h2>
-          <p>{t(
-            'Built for booking. Each one works on phones first, loads fast and shows prices in dollars and riel.',
-            'រចនាសម្រាប់ការកក់។ ដំណើរការល្អលើទូរស័ព្ទ ផ្ទុកលឿន និងបង្ហាញតម្លៃជាដុល្លារ និងរៀល។',
-          )}</p>
+      <Templates />
+
+      <section className="wrap section" aria-labelledby="work-h">
+        <SectionHead
+          id="work-h"
+          eyebrow={t('Our work', 'ស្នាដៃរបស់យើង')}
+          title={t('Featured projects that make an impact', 'គម្រោងលេចធ្លោដែលបង្កើតភាពខុសគ្នា')}
+          action={<Link className="btn btn-ink btn-sm" to="/work">{t('View all projects', 'មើលគម្រោងទាំងអស់')} <Icon name="arrow" size={16} /></Link>}
+        />
+        <div className="proj">
+          {projects.map((raw) => {
+            const p = pick(raw)
+            return (
+              <Link key={p.slug} to={`/work/${p.slug}`} className="proj-card">
+                <Cover project={raw} />
+                <div className="proj-meta">
+                  <div><h3>{p.name}</h3><p>{p.type}</p></div>
+                  <span className="circle"><Icon name="arrow" size={18} /></span>
+                </div>
+              </Link>
+            )
+          })}
         </div>
-        <SiteStudio />
       </section>
 
-      <section className="wrap section" id="pos" aria-labelledby="pos-h">
-        <Floater kind="coin" side="left" top="14%" />
-        <div className="head-row">
-          <h2 id="pos-h" className="h-section">{t('POS systems', 'ប្រព័ន្ធលក់ POS')}</h2>
-          <p>
-            {t('Built on the tablet POS we made for ', 'ផ្អែកលើប្រព័ន្ធ POS ថេប្លេតដែលយើងបង្កើតសម្រាប់ ')}
-            <Link className="text-link" to="/work/lori-pos">LoRi</Link>
-            {t('. Prices in dollars and riel, KHQR, kitchen printing and daily reports.', '។ តម្លៃជាដុល្លារ និងរៀល KHQR ការព្រីនទៅផ្ទះបាយ និងរបាយការណ៍ប្រចាំថ្ងៃ។')}
-          </p>
-        </div>
-        <PosStudio />
-      </section>
-
-      <section className="wrap section" aria-labelledby="clients-h">
-        <Floater kind="ring" side="right" top="18%" size={64} />
-        <div className="head-row">
-          <h2 id="clients-h" className="h-section">{t('Built for real clients', 'បង្កើតសម្រាប់អតិថិជនពិត')}</h2>
-          <p>
-            {t('Need something custom? These are in daily use. ', 'ត្រូវការអ្វីដែលធ្វើតាមតម្រូវការ? ទាំងនេះកំពុងប្រើប្រាស់ជារៀងរាល់ថ្ងៃ។ ')}
-            <Link className="text-link" to="/work">{t('See all client work', 'មើលស្នាដៃទាំងអស់')}</Link>
-          </p>
-        </div>
-        <WorkStrip />
+      <section className="wrap stats-wrap" aria-label={t('CamboWeb in numbers', 'CamboWeb ជាលេខ')}>
+        <ul className="stats">
+          {stats.map(([icon, n, l]) => (
+            <li key={l}><Icon name={icon} size={30} /><div><b>{n}</b><span>{l}</span></div></li>
+          ))}
+        </ul>
       </section>
     </>
   )
