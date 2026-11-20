@@ -179,8 +179,56 @@ function Invite({ n }) {
   )
 }
 
+// ---------- Khmer template showcase row (light): one template per post ----------
+const TPLS = {
+  tpl1: {
+    offset: 0, img: '/img/ig/lotus.jpg', name: 'Golden Lotus', sw: ['#6e0b18', '#d9b26a'],
+    eyebrow: 'គំរូធៀបអាពាហ៍ពិពាហ៍', title: 'ធៀបការបែបខ្មែរបុរាណ',
+    text: 'ទ្វារពណ៌ក្រហម និងមាសបើកចេញជា 3D ជាមួយផ្កាធ្លាក់ចុះ។',
+    tags: ['ទ្វារបើកជា 3D', 'កម្មវិធីជាភាសាខ្មែរ', 'ឈ្មោះភ្ញៀវលើធៀប'],
+  },
+  tpl2: {
+    offset: 1080, img: '/img/ig/garden3.jpg', name: 'Garden', sw: ['#f2d4d2', '#c0727c'],
+    eyebrow: 'គំរូធៀបភ្ជាប់ពាក្យ', title: 'ធៀបភ្ជាប់ពាក្យជាមួយរូបថត',
+    text: 'រូបថតមុនរៀបការរបស់អ្នក ក្នុងស៊ុមផ្កាដ៏ស្រស់ស្អាត។',
+    tags: ['វិចិត្រសាលរូបថត', 'តន្ត្រីផ្ទៃខាងក្រោយ', 'ផែនទីទៅកាន់កម្មវិធី'],
+  },
+  tpl3: {
+    offset: 2160, img: '/img/ig/euca.jpg', name: 'Eucalyptus', sw: ['#e8e6df', '#6d8a6c'],
+    eyebrow: 'គំរូធៀបភ្ជាប់ពាក្យ', title: 'ស្រោមសំបុត្រដែលបើកបាន',
+    text: 'ចុចត្រាក្រមួន ស្រោមសំបុត្របើក ហើយកាតរុញឡើងមក។',
+    tags: ['ស្លឹកឈើជ្រុះ', 'រាប់ថយក្រោយផ្ទាល់', 'KHQR សម្រាប់ចំណងដៃ'],
+  },
+}
+function Showcase({ n }) {
+  const t = TPLS[n]
+  return (
+    <div className="ig inv kh-post">
+      <Soft offset={t.offset} />
+      <div>
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p className="kh-text">{t.text}</p>
+      </div>
+      <div className="kh-body">
+        <div className="kh-side">
+          <span className="kh-name"><i style={{ background: `linear-gradient(135deg, ${t.sw[0]} 50%, ${t.sw[1]} 50%)` }} />{t.name}</span>
+          <ul className="kh-tags">{t.tags.map((x) => <li key={x}><Icon name="check" size={26} />{x}</li>)}</ul>
+          <div className="kh-cta">
+            <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+            <span className="fb-url">cambo-web.com</span>
+          </div>
+        </div>
+        <Phone src={t.img} className="kh-phone" />
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && n.startsWith('tpl')) return <Showcase n={n} />
 
   if (n && n.startsWith('inv')) return <Invite n={n} />
 
