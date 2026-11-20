@@ -1077,3 +1077,10 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .web-browser { width: 700px; top: 0; }
 .web-phone.inv-phone { width: 226px; top: 24px; }
 .web-post h2 { font-size: 86px; }
+/* website posts: same Khmer fonts as the invitation posts (Moul + Battambang) */
+.web-post, .web-post .kh-text, .web-tags li { font-family: 'Battambang', serif; }
+.web-post .eyebrow { font-family: 'Battambang', serif; font-weight: 700; }
+.web-post h2 { font-family: 'Moul', serif; font-weight: 400; font-size: 60px; line-height: 1.5; max-width: 15ch; }
+.web-post .kh-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 32px; }
+.web-post .kh-text { font-size: 28px; line-height: 1.75; }
+.web-tags li { font-size: 23px; }

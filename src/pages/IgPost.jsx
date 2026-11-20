@@ -276,10 +276,10 @@ function DarkRibbon({ offset }) {
 function Web({ n }) {
   const t = WEBS[n]
   useEffect(() => {
-    if (document.getElementById('koulen-font')) return
+    if (document.getElementById('moul-font')) return
     const l = document.createElement('link')
-    l.id = 'koulen-font'; l.rel = 'stylesheet'
-    l.href = 'https://fonts.googleapis.com/css2?family=Koulen&family=Noto+Sans+Khmer:wght@400;600&display=swap'
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
     document.head.appendChild(l)
   }, [])
   return (
