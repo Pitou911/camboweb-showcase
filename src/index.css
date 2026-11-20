@@ -1190,3 +1190,10 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .story-points li { font-size: 31px; gap: 18px; }
 .story-points span { width: 56px; height: 56px; }
 .story-cta { bottom: 290px; }
+/* English story: website fonts instead of Moul */
+.story-en, .story-en .kh-text, .story-en .story-points li { font-family: "Figtree", sans-serif; }
+.story-en .eyebrow { font-family: "Figtree", sans-serif; font-size: 26px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.story-en h2 { font-family: "Figtree", sans-serif; font-weight: 800; font-size: 92px; line-height: 1.02; letter-spacing: -0.035em; }
+.story-en .kh-text { font-size: 34px; line-height: 1.45; margin-top: 22px; }
+.story-en .story-points li { font-size: 33px; font-weight: 500; }
+.story-en .story-cta b { font-family: "Figtree", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; }

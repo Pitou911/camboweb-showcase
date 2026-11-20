@@ -442,7 +442,21 @@ const STORY_WAVES = [
   ['M-100 1580 C 340 1780, 740 1300, 1180 1470', 2.5, 0.5],
   ['M-100 380 C 300 260, 700 520, 1180 360', 2, 0.35],
 ]
-function Story() {
+const STORY_TEXT = {
+  kh: {
+    eyebrow: 'គេហទំព័រអាជីវកម្ម', title: <>គេហទំព័រសម្រាប់<br />អាជីវកម្មរបស់អ្នក</>,
+    text: 'អតិថិជនរកឃើញអ្នកលើ Google ហើយកក់បានគ្រប់ពេល។',
+    points: ['គេហទំព័រលើទូរស័ព្ទ និងកុំព្យូទ័រ', 'កក់តុ ឬកក់ម៉ោងតាមអនឡាញ', 'តម្លៃជាដុល្លារ និងរៀល'], cta: 'សាកល្បងដោយឥតគិតថ្លៃ',
+  },
+  en: {
+    eyebrow: 'Business websites', title: <>We build websites<br />for your business.</>,
+    text: 'Customers find you on Google and book any time.',
+    points: ['Looks great on phone and computer', 'Online booking for tables and appointments', 'Prices in US dollars and riel'], cta: 'Try it free',
+  },
+}
+
+function Story({ lang = 'kh' }) {
+  const c = STORY_TEXT[lang]
   useEffect(() => {
     if (document.getElementById('moul-font')) return
     const l = document.createElement('link')
@@ -451,7 +465,7 @@ function Story() {
     document.head.appendChild(l)
   }, [])
   return (
-    <div className="story">
+    <div className={`story ${lang === 'en' ? 'story-en' : ''}`}>
       <svg className="story-waves" viewBox="0 0 1080 1920" aria-hidden="true">
         <defs>
           <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0">
@@ -468,9 +482,9 @@ function Story() {
 
       <div className="story-head">
         <div className="ig-brand"><img src="/img/camboweb-pfp-neon-black.png" alt="" /><span><b>cambo</b>web</span></div>
-        <p className="eyebrow">គេហទំព័រអាជីវកម្ម</p>
-        <h2>គេហទំព័រសម្រាប់<br />អាជីវកម្មរបស់អ្នក</h2>
-        <p className="kh-text">អតិថិជនរកឃើញអ្នកលើ Google ហើយកក់បានគ្រប់ពេល។</p>
+        <p className="eyebrow">{c.eyebrow}</p>
+        <h2>{c.title}</h2>
+        <p className="kh-text">{c.text}</p>
       </div>
 
       <div className="story-devices">
@@ -482,13 +496,11 @@ function Story() {
       </div>
 
       <ul className="story-points">
-        <li><span><Icon name="globe" size={30} /></span>គេហទំព័រលើទូរស័ព្ទ និងកុំព្យូទ័រ</li>
-        <li><span><Icon name="check" size={30} /></span>កក់តុ ឬកក់ម៉ោងតាមអនឡាញ</li>
-        <li><span><Icon name="layers" size={30} /></span>តម្លៃជាដុល្លារ និងរៀល</li>
+        {['globe', 'check', 'layers'].map((icon, i) => <li key={icon}><span><Icon name={icon} size={30} /></span>{c.points[i]}</li>)}
       </ul>
 
       <div className="story-cta">
-        <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+        <b>{c.cta}</b>
         <span className="story-url">cambo-web.com</span>
       </div>
     </div>
@@ -499,6 +511,7 @@ export default function IgPost() {
   const { n } = useParams()
 
   if (n === 'story') return <Story />
+  if (n === 'story-en') return <Story lang="en" />
 
   if (n && n.startsWith('fb')) return <FbPost n={n} />
 
