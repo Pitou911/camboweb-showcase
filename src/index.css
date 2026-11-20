@@ -1344,3 +1344,7 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .cs .cs-b2 { right: 0; }
 .cs-b1 { width: 700px !important; }
 .cs-b2 { width: 600px !important; top: 120px !important; }
+/* KhmerRooms phone in the Work hero: a real iPhone screenshot, shown whole */
+.wk-phone { aspect-ratio: auto; width: 22%; padding: clamp(5px, 0.55vw, 8px); }
+.wk-phone .wk-screen { height: auto; border-radius: clamp(18px, 2.1vw, 28px); }
+.wk-phone .wk-screen img { height: auto; object-fit: initial; }

@@ -37,7 +37,7 @@ export default function Work() {
             <span className="wk-tag">LoRi POS</span>
           </Link>
           <Link to="/work/khmerrooms" className="wk-item wk-phone" tabIndex={-1}>
-            <div className="wk-screen"><img src="/img/kr-web-mobile.jpg" alt="" /></div>
+            <div className="wk-screen"><img src="/img/kr-app-home.jpg" alt="" /></div>
             <span className="wk-tag">KhmerRooms</span>
           </Link>
         </div>
