@@ -11,8 +11,8 @@ const PAGES = {
     'CamboWeb is a website builder in Phnom Penh. We build business websites, booking systems and POS for Cambodian businesses, in Khmer and English. Try our live templates.',
   ],
   '/work': [
-    `Client work: booking platform, POS and lab software | ${BRAND}`,
-    'Case studies of software CamboWeb built in Cambodia: the KhmerRooms hotel booking platform and apps, a tablet POS for a bar, an offline lab system and a bilingual e-invitation.',
+    `Our projects: booking platform, POS and lab software | ${BRAND}`,
+    'Projects CamboWeb designed and built in Cambodia: the KhmerRooms hotel booking platform and apps, a tablet POS for a bar, an offline lab system and a bilingual e-invitation.',
   ],
   '/about': [
     `About us: a web studio in Phnom Penh | ${BRAND}`,
@@ -35,7 +35,7 @@ export default function usePageMeta(pathname) {
     const m = pathname.match(/^\/work\/([^/]+)$/)
     if (m) {
       const p = getProject(m[1])
-      if (p) [title, description] = [`${p.name}: ${p.type} case study | ${BRAND}`, p.tagline]
+      if (p) [title, description] = [`${p.name}: ${p.type} | ${BRAND}`, p.tagline]
     }
     const url = SITE + (pathname === '/' ? '/' : pathname)
     document.title = title

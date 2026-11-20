@@ -13,7 +13,7 @@ export default function Project() {
     return (
       <section className="wrap section">
         <h1 className="h-page">{t('We couldn’t find that project.', 'រកមិនឃើញគម្រោងនោះទេ។')}</h1>
-        <p className="lead"><Link className="text-link" to="/work">{t('See all client work', 'មើលស្នាដៃទាំងអស់')}</Link></p>
+        <p className="lead"><Link className="text-link" to="/work">{t('See all our projects', 'មើលគម្រោងទាំងអស់')}</Link></p>
       </section>
     )
   }
@@ -29,7 +29,7 @@ export default function Project() {
         <h1 className="h-page">{p.name}</h1>
         <p className="lead">{p.tagline}</p>
         <dl className="facts facts-wide">
-          <div><dt>{t('Client', 'អតិថិជន')}</dt><dd>{p.client}, {p.location}</dd></div>
+          <div><dt>{t('Built for', 'សម្រាប់')}</dt><dd>{p.client}, {p.location}</dd></div>
           <div><dt>{t('Built as', 'ប្រភេទ')}</dt><dd>{p.type}</dd></div>
           <div><dt>{t('Timeframe', 'រយៈពេល')}</dt><dd>{p.duration}, {p.year}</dd></div>
           {p.stats.map(([n, l]) => (

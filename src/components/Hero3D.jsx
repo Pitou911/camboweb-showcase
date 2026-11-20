@@ -53,10 +53,10 @@ export default function Hero3D() {
       <div className="stage">
         <div className="scene" ref={scene}>
           <div className="floor"><NeonC /></div>
-          <Link to="/work/saravoan-labo" className="obj obj-laptop" aria-label="Saravoan Labo case study">
+          <Link to="/work/saravoan-labo" className="obj obj-laptop" aria-label="Saravoan Labo project">
             <div className="rise"><Laptop src="/img/saravoan-register.jpg" /></div>
           </Link>
-          <Link to="/work/lori-pos" className="obj obj-tablet" aria-label="LoRi POS case study">
+          <Link to="/work/lori-pos" className="obj obj-tablet" aria-label="LoRi POS project">
             <div className="rise"><Tablet /></div>
           </Link>
           <Link to="/#invitations" className="obj obj-phone" aria-label="Invitation templates">

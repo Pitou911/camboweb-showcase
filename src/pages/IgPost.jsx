@@ -435,26 +435,26 @@ function FbPost({ n }) {
   )
 }
 
-// ---------- Portfolio row (dark, Khmer, Moul + Battambang): two case studies + "what we build" ----------
+// ---------- Portfolio row (dark, Khmer, Moul + Battambang): two of our projects + "what we build" ----------
 // Instagram: /ig/cs1..cs3 (1080 x 1440, one ribbon across the row). Facebook: /ig/fbcs1..fbcs3 (1080 x 1350).
 const CASES = {
   1: {
     offset: 0,
-    eyebrow: 'ករណីសិក្សា · វេទិកាកក់សណ្ឋាគារ',
+    eyebrow: 'គម្រោងរបស់យើង · វេទិកាកក់សណ្ឋាគារ',
     title: ['កក់សណ្ឋាគារ', 'បង់ប្រាក់តាម KHQR'],
     text: 'គេហទំព័រ កម្មវិធី iOS និង Android និងប្រព័ន្ធគ្រប់គ្រងសណ្ឋាគារ សម្រាប់ KhmerRooms។',
     name: 'KhmerRooms', sw: ['#1f5f4a', '#f5f0e6'],
     tags: ['វេប · iOS · Android', 'បង់ប្រាក់ KHQR', 'ខ្មែរ និងអង់គ្លេស'],
-    cta: 'មើលករណីសិក្សា', url: 'cambo-web.com/work',
+    cta: 'មើលគម្រោងផ្សេងទៀត', url: 'cambo-web.com/work',
   },
   2: {
     offset: 1080,
-    eyebrow: 'ករណីសិក្សា · មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ',
+    eyebrow: 'គម្រោងរបស់យើង · មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ',
     title: 'គេហទំព័រ និងប្រព័ន្ធស្នើសុំតេស្ត',
     text: 'វេជ្ជបណ្ឌិតស្នើសុំតេស្តតាមអនឡាញ ហើយមន្ទីរពិសោធន៍ទទួលដំណឹងតាម Telegram។',
     name: 'Saravoan Labo', sw: ['#2f7f9a', '#ffffff'],
     tags: ['គេហទំព័រពីរភាសា', 'ស្នើសុំតេស្តអនឡាញ', 'ជូនដំណឹង Telegram'],
-    cta: 'មើលករណីសិក្សា', url: 'cambo-web.com/work',
+    cta: 'មើលគម្រោងផ្សេងទៀត', url: 'cambo-web.com/work',
   },
   3: {
     offset: 2160,
