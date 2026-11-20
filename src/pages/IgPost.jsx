@@ -435,8 +435,70 @@ function FbPost({ n }) {
   )
 }
 
+// ---------- Telegram story (1080 x 1920, 9:16): websites first ----------
+// Top ~250px and bottom ~300px stay free for Telegram's header and reply bar.
+const STORY_WAVES = [
+  ['M-100 1500 C 300 1700, 700 1200, 1180 1380', 5, 0.85],
+  ['M-100 1580 C 340 1780, 740 1300, 1180 1470', 2.5, 0.5],
+  ['M-100 380 C 300 260, 700 520, 1180 360', 2, 0.35],
+]
+function Story() {
+  useEffect(() => {
+    if (document.getElementById('moul-font')) return
+    const l = document.createElement('link')
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
+    document.head.appendChild(l)
+  }, [])
+  return (
+    <div className="story">
+      <svg className="story-waves" viewBox="0 0 1080 1920" aria-hidden="true">
+        <defs>
+          <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#2bd9f0" stopOpacity="0" />
+            <stop offset="0.3" stopColor="#2bd9f0" />
+            <stop offset="0.7" stopColor="#5b8cff" />
+            <stop offset="1" stopColor="#2bd9f0" stopOpacity="0" />
+          </linearGradient>
+          <filter id="swg" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+        </defs>
+        <path d={STORY_WAVES[0][0]} stroke="#2bd9f0" strokeWidth="26" opacity="0.3" fill="none" filter="url(#swg)" />
+        {STORY_WAVES.map(([d, w, o]) => <path key={d} d={d} stroke="url(#sw)" strokeWidth={w} opacity={o} fill="none" strokeLinecap="round" />)}
+      </svg>
+
+      <div className="story-head">
+        <div className="ig-brand"><img src="/img/camboweb-pfp-neon-black.png" alt="" /><span><b>cambo</b>web</span></div>
+        <p className="eyebrow">គេហទំព័រអាជីវកម្ម</p>
+        <h2>គេហទំព័រសម្រាប់<br />អាជីវកម្មរបស់អ្នក</h2>
+        <p className="kh-text">អតិថិជនរកឃើញអ្នកលើ Google ហើយកក់បានគ្រប់ពេល។</p>
+      </div>
+
+      <div className="story-devices">
+        <div className="web-browser">
+          <div className="web-bar"><i /><i /><i /><span>kampottable.com</span></div>
+          <img src="/img/shot-restaurant.jpg" alt="" />
+        </div>
+        <div className="inv-phone web-phone"><img src="/img/ig/m-restaurant.jpg" alt="" /></div>
+      </div>
+
+      <ul className="story-points">
+        <li><span><Icon name="globe" size={30} /></span>គេហទំព័រលើទូរស័ព្ទ និងកុំព្យូទ័រ</li>
+        <li><span><Icon name="check" size={30} /></span>កក់តុ ឬកក់ម៉ោងតាមអនឡាញ</li>
+        <li><span><Icon name="layers" size={30} /></span>តម្លៃជាដុល្លារ និងរៀល</li>
+      </ul>
+
+      <div className="story-cta">
+        <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+        <span className="story-url">cambo-web.com</span>
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n === 'story') return <Story />
 
   if (n && n.startsWith('fb')) return <FbPost n={n} />
 
