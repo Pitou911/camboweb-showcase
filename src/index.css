@@ -1035,3 +1035,10 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .kh-cta b { font-size: 36px; font-weight: 700; }
 .kh-post .fb-url { font-family: 'Figtree', sans-serif; }
 .kh-phone { width: 380px; transform: rotate(3deg); }
+/* Khmer showcase posts: Moul headings + Battambang text (traditional wedding look) */
+.kh-post, .kh-post .kh-text, .kh-post .kh-tags li, .kh-post .kh-cta b { font-family: 'Battambang', serif; }
+.kh-post .eyebrow { font-family: 'Battambang', serif; font-weight: 700; }
+.kh-post h2 { font-family: 'Moul', serif; font-weight: 400; font-size: 60px; line-height: 1.5; max-width: 15ch; }
+.kh-post .kh-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 30px; }
+.kh-text { font-size: 30px; line-height: 1.75; }
+.kh-tags li { font-size: 30px; font-weight: 400; }

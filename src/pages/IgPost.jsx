@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import HeroTech from '../components/HeroTech'
 import Icon from '../components/Icon'
@@ -202,6 +203,14 @@ const TPLS = {
 }
 function Showcase({ n }) {
   const t = TPLS[n]
+  // Moul is only needed for these posts, so load it here instead of on the website
+  useEffect(() => {
+    if (document.getElementById('moul-font')) return
+    const l = document.createElement('link')
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
+    document.head.appendChild(l)
+  }, [])
   return (
     <div className="ig inv kh-post">
       <Soft offset={t.offset} />
