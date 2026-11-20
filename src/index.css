@@ -1106,3 +1106,59 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .pos-post .pos-tags { flex-wrap: nowrap; }
 .pos-post .pos-tags li { font-size: 22px; padding: 9px 18px; white-space: nowrap; }
 .pos-post .pos-tablet { top: 540px; width: 760px; }
+
+/* ---------- Facebook posts (dev-only /ig/fb1..3), 1080 x 1350 ---------- */
+.fbp { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #f6f8f8; color: var(--ink); font-family: 'Battambang', serif; }
+.fbp > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fbp-head { position: absolute; left: 90px; right: 90px; top: 86px; }
+.fbp .eyebrow { font-family: 'Battambang', serif; font-weight: 700; font-size: 28px; letter-spacing: 0; text-transform: none; margin-bottom: 14px; }
+.fbp h2 { font-family: 'Moul', serif; font-weight: 400; font-size: 58px; line-height: 1.5; letter-spacing: 0; max-width: 16ch; }
+.fbp .kh-text { margin-top: 8px; font-size: 27px; line-height: 1.7; color: var(--ink-2); max-width: 30ch; }
+.fbp-phones { position: absolute; left: 90px; right: 90px; top: 470px; height: 600px; }
+.fbp-ph { position: absolute; top: 0; width: 270px; margin: 0; text-align: center; }
+.fbp-ph .inv-phone { padding: 9px; border-radius: 44px; }
+.fbp-ph .inv-phone img { border-radius: 36px; }
+.fbp-ph figcaption, .fbp-tab figcaption { margin-top: 18px; font: 700 24px 'Figtree', sans-serif; }
+.fbp-ph.p0 { left: 0; top: 40px; transform: rotate(-5deg); }
+.fbp-ph.p1 { left: 50%; margin-left: -135px; z-index: 2; }
+.fbp-ph.p2 { right: 0; top: 40px; transform: rotate(5deg); }
+.fbp-tabs { position: absolute; left: 90px; right: 90px; top: 470px; height: 600px; }
+.fbp-tab { position: absolute; margin: 0; width: 600px; }
+.fbp-tab .pos-tablet { padding: 12px; border-radius: 30px; transform: none; }
+.fbp-tab .pos-tablet img { border-radius: 18px; }
+.fbp-tab figcaption { margin-top: 12px; }
+.fbp-tab.t0 { left: 0; top: 0; }
+.fbp-tab.t1 { right: 0; top: 120px; z-index: 2; }
+.fbp-tab.t2 { left: 70px; top: 300px; z-index: 3; }
+.fbp-tab.t2 figcaption, .fbp-tab.t0 figcaption { text-align: left; }
+.fbp-tab.t1 figcaption { text-align: right; }
+.fbp-foot { position: absolute; left: 90px; right: 90px; bottom: 80px; display: grid; gap: 24px; }
+.fbp .pos-tags { flex-wrap: wrap; }
+.fbp .pos-tags li { font-size: 22px; padding: 9px 18px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+.fbp .pos-cta { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; border-top: 1px solid var(--line); }
+.fbp .pos-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 30px; white-space: nowrap; }
+.fbp .fb-url { font-family: 'Figtree', sans-serif; white-space: nowrap; }
+.fbp-dark { background: radial-gradient(800px 700px at 540px 760px, #0d4560, transparent 70%), #051a26; color: #e7f1f3; }
+.fbp-dark .eyebrow { color: #5cd3e8; }
+.fbp-dark h2 { color: #fff; }
+.fbp-dark .kh-text { color: #a9c2c9; }
+.fbp-dark .pos-tags li { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.2); color: #dbe9ed; }
+.fbp-dark .pos-cta { border-top-color: rgba(255, 255, 255, 0.12); }
+.fbp-dark .pos-cta b { color: #fff; }
+.fbp-dark .fb-url { background: #2bd9f0; color: #062029; }
+.fbp-dark .fbp-ph figcaption { color: #fff; }
+.fbp-dark .inv-phone { border: 1px solid rgba(43, 217, 240, 0.35); }
+.fbp-phones { top: 450px; height: 560px; }
+.fbp-ph { width: 228px; }
+.fbp-ph.p0 { left: 30px; top: 36px; }
+.fbp-ph.p1 { margin-left: -114px; }
+.fbp-ph.p2 { right: 30px; top: 36px; }
+.fbp-ph figcaption { margin-top: 14px; font-size: 22px; }
+.fbp-tabs { top: 450px; height: 580px; }
+.fbp-tab { width: 520px; }
+.fbp-tab .pos-tablet { width: auto; margin: 0; padding: 10px; position: static; }
+.fbp-tab.t0 { left: 0; top: 0; }
+.fbp-tab.t1 { right: 0; top: 95px; }
+.fbp-tab.t2 { left: 110px; top: 215px; }
+.fbp-tab figcaption { font-size: 22px; margin-top: 10px; }
+.fbp-tab.t0 figcaption { position: absolute; left: calc(100% + 18px); top: 14px; margin: 0; white-space: nowrap; }

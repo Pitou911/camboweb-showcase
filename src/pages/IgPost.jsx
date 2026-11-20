@@ -364,8 +364,81 @@ function Pos({ n }) {
   )
 }
 
+// ---------- Facebook posts (1080 x 1350): one per product, all three templates in each ----------
+const FBS = {
+  fb1: {
+    dark: false, kind: 'phones',
+    eyebrow: 'ធៀបឌីជីថល', title: 'ធៀបស្អាតៗ សម្រាប់ថ្ងៃពិសេសរបស់អ្នក',
+    text: 'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត។ ភ្ញៀវម្នាក់ៗមានឈ្មោះផ្ទាល់ខ្លួនលើធៀប។',
+    items: [['/img/ig/lotus.jpg', 'Golden Lotus'], ['/img/ig/garden3.jpg', 'Garden'], ['/img/ig/euca.jpg', 'Eucalyptus']],
+    tags: ['ឈ្មោះភ្ញៀវលើធៀប', 'តន្ត្រី', 'ផែនទី', 'KHQR ចំណងដៃ'],
+  },
+  fb2: {
+    dark: true, kind: 'phones',
+    eyebrow: 'គេហទំព័រអាជីវកម្ម', title: 'គេហទំព័រដែលអតិថិជនកក់បាន',
+    text: 'សម្រាប់ភោជនីយដ្ឋាន ហាងកាត់សក់ និងបារ។ ដំណើរការល្អលើទូរស័ព្ទ។',
+    items: [['/img/ig/m-restaurant.jpg', 'Kampot Table'], ['/img/ig/m-barber.jpg', 'Sharp & Co.'], ['/img/ig/m-bar.jpg', 'Lantern Rooftop']],
+    tags: ['កក់តាមអនឡាញ', 'តម្លៃជាដុល្លារ និងរៀល', 'ផ្ទុកលឿន'],
+  },
+  fb3: {
+    dark: false, kind: 'tablets',
+    eyebrow: 'ប្រព័ន្ធលក់ POS', title: 'ប្រព័ន្ធលក់ POS សម្រាប់ហាងរបស់អ្នក',
+    text: 'សម្រាប់ម៉ាត ហាងកាហ្វេ និងភោជនីយដ្ឋាន។ ដំណើរការលើថេប្លេត។',
+    items: [['/img/ig/pos-mart.jpg', 'Sunrise Mart'], ['/img/ig/pos-cafe.jpg', 'Mekong Brew'], ['/img/ig/pos-restaurant.jpg', 'Riverside Kitchen']],
+    tags: ['ស្កេនបាកូដ', 'ផ្ញើទៅផ្ទះបាយ', 'KHQR និងសាច់ប្រាក់', 'USD និងរៀល'],
+  },
+}
+function FbPost({ n }) {
+  const t = FBS[n]
+  useEffect(() => {
+    if (document.getElementById('moul-font')) return
+    const l = document.createElement('link')
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
+    document.head.appendChild(l)
+  }, [])
+  return (
+    <div className={`fbp ${t.dark ? 'fbp-dark' : ''}`}>
+      {t.dark ? <DarkRibbon offset={0} /> : <Soft offset={1080} />}
+      <div className="fbp-head">
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p className="kh-text">{t.text}</p>
+      </div>
+      {t.kind === 'phones' ? (
+        <div className="fbp-phones">
+          {t.items.map(([src, name], i) => (
+            <figure key={name} className={`fbp-ph p${i}`}>
+              <div className="inv-phone"><img src={src} alt="" /></div>
+              <figcaption>{name}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <div className="fbp-tabs">
+          {t.items.map(([src, name], i) => (
+            <figure key={name} className={`fbp-tab t${i}`}>
+              <div className="pos-tablet"><img src={src} alt="" /></div>
+              <figcaption>{name}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+      <div className="fbp-foot">
+        <ul className="pos-tags">{t.tags.map((x) => <li key={x}>{x}</li>)}</ul>
+        <div className="kh-cta pos-cta">
+          <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+          <span className="fb-url">cambo-web.com</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && n.startsWith('fb')) return <FbPost n={n} />
 
   if (n && n.startsWith('pos')) return <Pos n={n} />
 
