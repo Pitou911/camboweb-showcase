@@ -91,8 +91,98 @@ function Pano() {
   )
 }
 
+// ---------- E-invitation row (light): one soft ribbon runs across all three posts ----------
+const SOFT = [
+  ['M-100 1240 C 600 1440, 1100 820, 1620 1000 S 2650 1380, 3340 900', 4, 0.55],
+  ['M-100 1320 C 640 1500, 1140 920, 1640 1090 S 2700 1440, 3340 1000', 2, 0.3],
+  ['M-100 160 C 600 20, 1100 300, 1620 200 S 2600 30, 3340 220', 2, 0.22],
+]
+function Soft({ offset }) {
+  return (
+    <svg className="inv-ribbon" viewBox={`${offset} 0 1080 1440`} aria-hidden="true">
+      <defs>
+        <linearGradient id={`soft${offset}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="3240" y2="0">
+          <stop offset="0" stopColor="#0a9fb8" stopOpacity="0" />
+          <stop offset="0.2" stopColor="#0a9fb8" />
+          <stop offset="0.6" stopColor="#5b8cff" />
+          <stop offset="0.9" stopColor="#0a9fb8" />
+          <stop offset="1" stopColor="#0a9fb8" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {SOFT.map(([d, w, o]) => <path key={d} d={d} stroke={`url(#soft${offset})`} strokeWidth={w} opacity={o} fill="none" strokeLinecap="round" />)}
+    </svg>
+  )
+}
+function Phone({ src, className = '' }) {
+  return <div className={`inv-phone ${className}`}><img src={src} alt="" /></div>
+}
+const FEATURES = [
+  ['user', 'Each guest’s name', 'on the cover'],
+  ['lang', 'Khmer & English', 'formal wording'],
+  ['music', 'Background music', 'starts on open'],
+  ['clock', 'Live countdown', 'to your big day'],
+  ['pin', 'Map & directions', 'one tap to the venue'],
+  ['qr', 'KHQR gifts', 'for guests far away'],
+]
+function Invite({ n }) {
+  if (n === 'inv2') {
+    return (
+      <div className="ig inv">
+        <Soft offset={1080} />
+        <div>
+          <p className="eyebrow">Personal for every guest</p>
+          <h2>Every guest sees their own name.</h2>
+        </div>
+        <div className="inv-fan">
+          <Phone src="/img/ig/garden1.jpg" className="f1" />
+          <Phone src="/img/ig/garden3.jpg" className="f2" />
+          <Phone src="/img/ig/garden2.jpg" className="f3" />
+        </div>
+        <p className="ig-sub inv-note">One link per guest, sent on Telegram or Messenger.</p>
+      </div>
+    )
+  }
+  if (n === 'inv3') {
+    return (
+      <div className="ig inv">
+        <Soft offset={2160} />
+        <div>
+          <p className="eyebrow">All in one link</p>
+          <h2>Everything your guests need.</h2>
+        </div>
+        <ul className="inv-feat">
+          {FEATURES.map(([icon, t, d]) => (
+            <li key={t}><span className="svc-ico"><Icon name={icon} size={34} /></span><b>{t}</b><span>{d}</span></li>
+          ))}
+        </ul>
+        <div className="inv-cta">
+          <b>Try 5 designs free</b>
+          <span className="fb-url">cambo-web.com</span>
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div className="ig inv">
+      <Soft offset={0} />
+      <div>
+        <p className="eyebrow">CamboWeb e-invitations</p>
+        <h2>Your invitation, on every guest’s phone.</h2>
+      </div>
+      <div className="inv-hero">
+        <Phone src="/img/ig/lotus.jpg" className="solo" />
+        <div className="inv-tags">
+          <span>Weddings</span><span>Engagements</span><span>Birthdays</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && n.startsWith('inv')) return <Invite n={n} />
 
   if (n === 'pano') return <Pano />
 

@@ -984,3 +984,37 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .pano-wires .rib-glow { fill: none; stroke: #2bd9f0; stroke-width: 26; opacity: 0.35; }
 .pano-wires .link { fill: none; stroke: rgba(43, 217, 240, 0.75); stroke-width: 3; stroke-linecap: round; }
 .pano-wires path:not(.rib):not(.rib-glow):not(.link) { display: none; }
+
+/* ---------- Instagram e-invitation row (dev-only /ig/inv1..3), light ---------- */
+.inv { position: relative; height: 1440px; background: #f6f8f8; }
+.inv > * { position: relative; z-index: 1; }
+.inv .inv-ribbon { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.inv h2 { font-size: 92px; max-width: 11ch; }
+.inv-phone { padding: 14px; border-radius: 64px; background: #10232a; box-shadow: 0 60px 90px -40px rgba(6, 32, 41, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06) inset; }
+.inv-phone img { display: block; width: 100%; border-radius: 52px; }
+.inv-hero { position: relative; display: flex; justify-content: center; }
+.inv-phone.solo { width: 470px; transform: rotate(-4deg); }
+.inv-tags { position: absolute; right: 0; bottom: 120px; display: grid; gap: 16px; justify-items: end; }
+.inv-tags span { padding: 16px 28px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 28px; font-weight: 600; box-shadow: 0 16px 30px -18px rgba(6, 32, 41, 0.35); }
+.inv-tags span:nth-child(2) { margin-right: 40px; }
+.inv-fan { position: relative; height: 820px; }
+.inv-fan .inv-phone { position: absolute; top: 40px; width: 370px; }
+.inv-fan .f1 { left: 0; transform: rotate(-8deg); top: 90px; }
+.inv-fan .f2 { left: 50%; margin-left: -185px; z-index: 2; top: 20px; }
+.inv-fan .f3 { right: 0; transform: rotate(8deg); top: 90px; }
+.inv-note { max-width: 26ch; }
+.inv-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.inv-feat li { display: grid; gap: 4px; padding: 32px 32px 30px; border-radius: 32px; background: #fff; border: 1px solid var(--line); }
+.inv-feat .svc-ico { width: 76px; height: 76px; margin-bottom: 14px; }
+.inv-feat b { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+.inv-feat li > span:last-child { font-size: 25px; color: var(--ink-2); }
+.inv-cta { display: flex; align-items: center; justify-content: space-between; }
+.inv-cta b { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; }
+.inv-phone.solo { width: 400px; margin-top: 10px; }
+.inv-tags { bottom: 90px; }
+.inv-fan { height: 760px; }
+.inv-fan .inv-phone { width: 320px; padding: 11px; border-radius: 52px; }
+.inv-fan .inv-phone img { border-radius: 42px; }
+.inv-fan .f1 { left: -6px; top: 100px; }
+.inv-fan .f2 { margin-left: -160px; top: 20px; }
+.inv-fan .f3 { right: -6px; top: 100px; }
