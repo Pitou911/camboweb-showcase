@@ -7,8 +7,8 @@ const BRAND = 'CamboWeb'
 // Title + description per route, so each page has its own entry in Google and in link previews.
 const PAGES = {
   '/': [
-    'CamboWeb | Websites, E-invitations & POS Systems in Phnom Penh, Cambodia',
-    'CamboWeb is a web studio in Phnom Penh building websites, e-invitations and POS systems for Cambodian businesses, in Khmer and English. Try our live templates.',
+    'CamboWeb | Business Websites & POS Systems in Phnom Penh, Cambodia',
+    'CamboWeb is a website builder in Phnom Penh. We build business websites, booking systems and POS for Cambodian businesses, in Khmer and English. Try our live templates.',
   ],
   '/work': [
     `Client work: POS, lab software and e-invitations | ${BRAND}`,
@@ -16,11 +16,11 @@ const PAGES = {
   ],
   '/about': [
     `About us: a web studio in Phnom Penh | ${BRAND}`,
-    'CamboWeb designs and builds websites, e-invitations and business systems for Cambodian businesses. How we work and what you can count on.',
+    'CamboWeb designs and builds business websites, POS and business systems for Cambodian businesses. How we work and what you can count on.',
   ],
   '/contact': [
     `Contact us: start a project | ${BRAND}`,
-    'Tell CamboWeb what you need: a website, an e-invitation, a POS or a custom system. We reply within a day, in Khmer or English.',
+    'Tell CamboWeb what you need: a business website, a POS or a custom system. We reply within a day, in Khmer or English.',
   ],
 }
 

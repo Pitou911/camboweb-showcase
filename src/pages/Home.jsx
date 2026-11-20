@@ -215,18 +215,18 @@ function PosStudio() {
 // [icon, English title, Khmer title, English text, Khmer text, link]
 const SERVICES = [
   ['globe', 'Business websites', 'គេហទំព័រអាជីវកម្ម', 'Fast, phone-first sites with booking, menus and prices in dollars and riel.', 'គេហទំព័រលឿន សម្រាប់ទូរស័ព្ទ មានការកក់ ម៉ឺនុយ និងតម្លៃជាដុល្លារ និងរៀល។', '/#websites'],
-  ['mail', 'E-invitations', 'ធៀបឌីជីថល', 'Weddings, engagements and birthdays, with each guest’s name on the cover.', 'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត មានឈ្មោះភ្ញៀវម្នាក់ៗនៅលើក្រប។', '/#invitations'],
   ['pos', 'POS systems', 'ប្រព័ន្ធលក់ POS', 'Tablet point-of-sale for marts, cafés, bars and restaurants.', 'ប្រព័ន្ធលក់លើថេប្លេត សម្រាប់ម៉ាត ហាងកាហ្វេ បារ និងភោជនីយដ្ឋាន។', '/#pos'],
   ['layers', 'Business systems', 'ប្រព័ន្ធអាជីវកម្ម', 'Stock, shifts, staff accounts and reports, built around how you work.', 'ស្តុក វេនការងារ គណនីបុគ្គលិក និងរបាយការណ៍ តាមរបៀបដែលអ្នកធ្វើការ។', '/work/lori-pos'],
   ['desktop', 'Desktop & offline apps', 'កម្មវិធីកុំព្យូទ័រ', 'Software that keeps running when the internet doesn’t.', 'កម្មវិធីដែលនៅតែដំណើរការ ពេលអ៊ីនធឺណិតដាច់។', '/work/saravoan-labo'],
+  ['mail', 'E-invitations', 'ធៀបឌីជីថល', 'Weddings, engagements and birthdays, with each guest’s name on the cover.', 'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត មានឈ្មោះភ្ញៀវម្នាក់ៗនៅលើក្រប។', '/#invitations'],
 ]
 
-const TABS = ['invitations', 'websites', 'pos']
+const TABS = ['websites', 'pos', 'invitations']
 
 function Templates() {
   const { t } = usePrefs()
   const { hash } = useLocation()
-  const [tab, setTab] = useState(() => (TABS.includes(hash.slice(1)) ? hash.slice(1) : 'invitations'))
+  const [tab, setTab] = useState(() => (TABS.includes(hash.slice(1)) ? hash.slice(1) : 'websites'))
   useEffect(() => { if (TABS.includes(hash.slice(1))) setTab(hash.slice(1)) }, [hash])
   const labels = {
     invitations: [t('E-invitations', 'ធៀបឌីជីថល'), invitations.length],
@@ -240,7 +240,7 @@ function Templates() {
         id="tpl-h"
         eyebrow={t('Try before you buy', 'សាកល្បងមុនទិញ')}
         title={t('Live templates you can play with', 'គំរូដែលអ្នកអាចសាកល្បងបានភ្លាមៗ')}
-        text={t('Every template here really works. Type your own names, book a table, ring up a sale.', 'គំរូនីមួយៗដំណើរការពិត។ វាយឈ្មោះរបស់អ្នក កក់តុ ឬសាកលក់។')}
+        text={t('Every template here really works. Book a table, ring up a sale, open an invitation.', 'គំរូនីមួយៗដំណើរការពិត។ កក់តុ សាកលក់ ឬបើកធៀប។')}
       />
       <div className="tabs" role="tablist" aria-label={t('Template types', 'ប្រភេទគំរូ')}>
         {TABS.map((id) => (
@@ -274,8 +274,8 @@ export default function Home() {
           <p className="eyebrow">{t('Web studio in Phnom Penh', 'ស្ទូឌីយោវេបនៅភ្នំពេញ')}</p>
           <h1>{t(<>Software that helps your business <em>grow.</em></>, <>កម្មវិធីដែលជួយឱ្យអាជីវកម្មរបស់អ្នក<em>រីកចម្រើន។</em></>)}</h1>
           <p className="lead">{t(
-            'Websites, e-invitations and POS systems you can try live before you buy.',
-            'គេហទំព័រ ធៀបឌីជីថល និងប្រព័ន្ធលក់ POS ដែលអ្នកអាចសាកល្បងផ្ទាល់ មុនពេលទិញ។',
+            'Business websites, POS systems and custom software you can try live before you buy.',
+            'គេហទំព័រអាជីវកម្ម ប្រព័ន្ធលក់ POS និងកម្មវិធីតាមតម្រូវការ ដែលអ្នកអាចសាកល្បងផ្ទាល់ មុនពេលទិញ។',
           )}</p>
           <div className="hx-actions">
             <a className="btn btn-ink" href="#templates">{t('Explore templates', 'មើលគំរូ')} <Icon name="arrow" size={18} /></a>

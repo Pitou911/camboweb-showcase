@@ -8,10 +8,6 @@ const BUILD = [
     'Restaurants, barbershops, bars and clinics. Customers see your menu or prices and book in a few taps.',
     'ភោជនីយដ្ឋាន ហាងកាត់សក់ បារ និងគ្លីនិក។ អតិថិជនមើលម៉ឺនុយ ឬតម្លៃ ហើយកក់បានក្នុងពីរបីជំហាន។',
     '/#websites', 'See website templates', 'មើលគំរូគេហទំព័រ'],
-  ['E-invitations', 'ធៀបឌីជីថល',
-    'Weddings, engagements and birthdays, in Khmer and English, with each guest’s name on the cover.',
-    'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត ជាភាសាខ្មែរ និងអង់គ្លេស ដែលមានឈ្មោះភ្ញៀវម្នាក់ៗនៅលើក្រប។',
-    '/#invitations', 'Try an invitation', 'សាកល្បងធៀប'],
   ['POS and business systems', 'ប្រព័ន្ធលក់ និងប្រព័ន្ធអាជីវកម្ម',
     'Tablet point-of-sale, kitchen printing, stock and nightly reports, built around how your staff work.',
     'ប្រព័ន្ធលក់លើថេប្លេត ការព្រីនទៅផ្ទះបាយ ស្តុក និងរបាយការណ៍ប្រចាំយប់ រចនាតាមរបៀបដែលបុគ្គលិករបស់អ្នកធ្វើការ។',
@@ -20,6 +16,10 @@ const BUILD = [
     'Software that keeps working when the internet doesn’t, like the lab system we built for Saravoan.',
     'កម្មវិធីដែលនៅតែដំណើរការពេលអ៊ីនធឺណិតដាច់ ដូចប្រព័ន្ធមន្ទីរពិសោធន៍ដែលយើងបង្កើតសម្រាប់ Saravoan។',
     '/work/saravoan-labo', 'Read the Saravoan story', 'អានរឿង Saravoan'],
+  ['E-invitations', 'ធៀបឌីជីថល',
+    'Weddings, engagements and birthdays, in Khmer and English, with each guest’s name on the cover.',
+    'អាពាហ៍ពិពាហ៍ ភ្ជាប់ពាក្យ និងខួបកំណើត ជាភាសាខ្មែរ និងអង់គ្លេស ដែលមានឈ្មោះភ្ញៀវម្នាក់ៗនៅលើក្រប។',
+    '/#invitations', 'Try an invitation', 'សាកល្បងធៀប'],
 ]
 
 const STEPS = [
@@ -48,7 +48,7 @@ export default function About() {
           </div>
           <div>
             <p className="lead">{t(
-              'CamboWeb is based in Phnom Penh. We design and build websites, e-invitations and the systems businesses run on every day, from a bar’s tablet POS to a medical lab’s desktop app.',
+              'CamboWeb is based in Phnom Penh. We design and build business websites and the systems businesses run on every day, from a bar’s tablet POS to a medical lab’s desktop app.',
               'CamboWeb មានទីតាំងនៅភ្នំពេញ។ យើងរចនា និងបង្កើតគេហទំព័រ ធៀបឌីជីថល និងប្រព័ន្ធដែលអាជីវកម្មប្រើប្រាស់ជារៀងរាល់ថ្ងៃ ចាប់ពីប្រព័ន្ធ POS ថេប្លេតរបស់បារ ដល់កម្មវិធីកុំព្យូទ័ររបស់មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ។',
             )}</p>
             <div className="actions">

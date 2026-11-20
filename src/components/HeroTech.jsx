@@ -7,7 +7,7 @@
 const WIRES = [
   { id: 'w1', d: 'M386 205 L452 167 L452 120 L486 100', tile: [486, 100], label: 'Web' },
   { id: 'w2', d: 'M430 290 L500 330 L548 302', tile: [548, 302], label: 'POS' },
-  { id: 'w3', d: 'M236 368 L170 406 L128 382 L92 403', tile: [92, 403], label: 'Invite' },
+  { id: 'w3', d: 'M236 368 L170 406 L128 382 L92 403', tile: [92, 403], label: 'Booking' },
   { id: 'w4', d: 'M352 384 L420 423 L420 470 L450 487', tile: [450, 487], label: 'KHQR' },
 ]
 
@@ -25,7 +25,7 @@ function Tile({ x, y, label }) {
 
 export default function HeroTech() {
   return (
-    <svg className="ht" viewBox="0 0 600 560" role="img" aria-label="CamboWeb builds websites, POS systems, e-invitations and KHQR payments">
+    <svg className="ht" viewBox="0 0 600 560" role="img" aria-label="CamboWeb builds websites, POS systems, booking and KHQR payments">
       <defs>
         <radialGradient id="ht-orb" cx="40%" cy="35%" r="65%">
           <stop offset="0" stopColor="#c9fbff" />

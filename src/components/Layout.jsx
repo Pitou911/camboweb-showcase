@@ -94,7 +94,7 @@ export default function Layout() {
         <div className="wrap footer-grid">
           <div className="footer-brand">
             <Logo />
-            <p>{t('We build websites, e-invitations and business systems for Cambodian businesses, from Phnom Penh.', 'យើងបង្កើតគេហទំព័រ ធៀបឌីជីថល និងប្រព័ន្ធអាជីវកម្ម សម្រាប់អាជីវកម្មខ្មែរ ពីភ្នំពេញ។')}</p>
+            <p>{t('We build websites, POS systems and business software for Cambodian businesses, from Phnom Penh.', 'យើងបង្កើតគេហទំព័រ ប្រព័ន្ធលក់ POS និងកម្មវិធីអាជីវកម្ម សម្រាប់អាជីវកម្មខ្មែរ ពីភ្នំពេញ។')}</p>
           </div>
           <nav aria-label={t('Quick links', 'តំណរហ័ស')}>
             <h3>{t('Quick links', 'តំណរហ័ស')}</h3>
@@ -105,9 +105,9 @@ export default function Layout() {
           </nav>
           <nav aria-label={t('Templates', 'គំរូ')}>
             <h3>{t('Templates', 'គំរូ')}</h3>
-            <Link to="/#invitations">{t('E-invitations', 'ធៀបឌីជីថល')}</Link>
             <Link to="/#websites">{t('Websites', 'គេហទំព័រ')}</Link>
             <Link to="/#pos">{t('POS systems', 'ប្រព័ន្ធលក់ POS')}</Link>
+            <Link to="/#invitations">{t('E-invitations', 'ធៀបឌីជីថល')}</Link>
           </nav>
           <nav aria-label={t('Company', 'ក្រុមហ៊ុន')}>
             <h3>{t('Company', 'ក្រុមហ៊ុន')}</h3>

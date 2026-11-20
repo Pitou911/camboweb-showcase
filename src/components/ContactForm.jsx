@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { site } from '../data/site'
 import { usePrefs } from '../prefs'
 
-const NEEDS = ['Website', 'E-invitation', 'POS system', 'Business system', 'Something else']
+const NEEDS = ['Website', 'POS system', 'Business system', 'E-invitation', 'Something else']
 const BUDGETS = ['Under $300', '$300 – $1,000', '$1,000 – $3,000', '$3,000+']
 const KH = {
   Website: 'គេហទំព័រ', 'E-invitation': 'ធៀបឌីជីថល', 'POS system': 'ប្រព័ន្ធលក់ POS', 'Business system': 'ប្រព័ន្ធអាជីវកម្ម',
