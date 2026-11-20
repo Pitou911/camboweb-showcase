@@ -311,8 +311,63 @@ function Web({ n }) {
   )
 }
 
+// ---------- POS templates row (light, Khmer, Moul + Battambang): one template per post ----------
+const POSS = {
+  pos1: {
+    offset: 0, img: '/img/ig/pos-mart.jpg', name: 'Sunrise Mart', sw: ['#0f4d32', '#ffc93c'],
+    eyebrow: 'ប្រព័ន្ធលក់សម្រាប់ម៉ាត', title: 'ស្កេនបាកូដ លក់បានលឿន',
+    text: 'មើលស្តុកពេលលក់ ហើយអាប់លុយជាដុល្លារ ឬរៀល។',
+    tags: ['ស្កេនបាកូដ', 'ស្តុកផ្ទាល់', 'អាប់លុយ USD និងរៀល'],
+  },
+  pos2: {
+    offset: 1080, img: '/img/ig/pos-cafe.jpg', name: 'Mekong Brew', sw: ['#2b1d14', '#c4692e'],
+    eyebrow: 'ប្រព័ន្ធលក់សម្រាប់ហាងកាហ្វេ', title: 'ទំហំ ស្ករ និងទឹកកក',
+    text: 'ជ្រើសតាមចិត្តអតិថិជន និងមានលេខរៀងសម្រាប់ជួររង់ចាំ។',
+    tags: ['លេខរៀងការកម្ម៉ង់', 'ញ៉ាំនៅហាង ឬខ្ចប់', 'KHQR និងសាច់ប្រាក់'],
+  },
+  pos3: {
+    offset: 2160, img: '/img/ig/pos-restaurant.jpg', name: 'Riverside Kitchen', sw: ['#141a26', '#e4572e'],
+    eyebrow: 'ប្រព័ន្ធលក់សម្រាប់ភោជនីយដ្ឋាន', title: 'មើលតុទាំងអស់ភ្លាមៗ',
+    text: 'ផ្ញើការកម្ម៉ង់ទៅផ្ទះបាយ ហើយព្រីនវិក្កយបត្រ។',
+    tags: ['ផ្ញើទៅផ្ទះបាយ', 'វិក្កយបត្រ និងបង់ប្រាក់', 'ឈ្មោះម្ហូបជាខ្មែរ'],
+  },
+}
+function Pos({ n }) {
+  const t = POSS[n]
+  useEffect(() => {
+    if (document.getElementById('moul-font')) return
+    const l = document.createElement('link')
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
+    document.head.appendChild(l)
+  }, [])
+  return (
+    <div className="ig inv kh-post pos-post">
+      <Soft offset={t.offset} />
+      <div>
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p className="kh-text">{t.text}</p>
+      </div>
+      <div className="pos-tablet"><img src={t.img} alt="" /></div>
+      <div className="pos-foot">
+        <div className="web-meta">
+          <span className="kh-name"><i style={{ background: `linear-gradient(135deg, ${t.sw[0]} 50%, ${t.sw[1]} 50%)` }} />{t.name}</span>
+          <ul className="pos-tags">{t.tags.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+        <div className="kh-cta pos-cta">
+          <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+          <span className="fb-url">cambo-web.com</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && n.startsWith('pos')) return <Pos n={n} />
 
   if (n && n.startsWith('web')) return <Web n={n} />
 

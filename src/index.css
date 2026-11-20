@@ -1084,3 +1084,25 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .web-post .kh-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 32px; }
 .web-post .kh-text { font-size: 28px; line-height: 1.75; }
 .web-tags li { font-size: 23px; }
+
+/* ---------- Instagram POS row (dev-only /ig/pos1..3), light, Moul + Battambang ---------- */
+.pos-tablet { padding: 18px; border-radius: 40px; background: #10232a; box-shadow: 0 60px 90px -45px rgba(6, 32, 41, 0.5); transform: perspective(2400px) rotateX(6deg); }
+.pos-tablet img { display: block; width: 100%; border-radius: 22px; }
+.pos-foot { display: grid; gap: 28px; }
+.pos-tags { display: flex; flex-wrap: wrap; gap: 12px; }
+.pos-tags li { padding: 10px 20px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-family: 'Battambang', serif; font-size: 23px; }
+.pos-post .pos-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; border-top: 1px solid var(--line); }
+.pos-post .pos-cta b, .pos-post .fb-url { white-space: nowrap; }
+.pos-post h2 { max-width: 16ch; }
+.pos-post > div:nth-child(2) { min-height: 390px; }
+.pos-tablet { margin-top: -20px; }
+.pos-post > div:nth-child(2) { min-height: 0; height: 420px; }
+.pos-tablet { width: 800px; margin: 0 auto; padding: 16px; }
+.pos-post { justify-content: flex-start; gap: 34px; }
+.pos-foot { margin-top: auto; }
+.pos-post .pos-tablet { position: absolute; top: 560px; left: 50%; margin: 0; transform: translateX(-50%) perspective(2400px) rotateX(6deg); z-index: 1; }
+.pos-post .pos-foot { position: absolute; left: 96px; right: 96px; bottom: 100px; margin: 0; }
+.pos-post .web-meta { display: grid; gap: 14px; justify-items: start; }
+.pos-post .pos-tags { flex-wrap: nowrap; }
+.pos-post .pos-tags li { font-size: 22px; padding: 9px 18px; white-space: nowrap; }
+.pos-post .pos-tablet { top: 540px; width: 760px; }
