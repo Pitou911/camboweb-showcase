@@ -11,8 +11,8 @@ const PAGES = {
     'CamboWeb is a website builder in Phnom Penh. We build business websites, booking systems and POS for Cambodian businesses, in Khmer and English. Try our live templates.',
   ],
   '/work': [
-    `Client work: POS, lab software and e-invitations | ${BRAND}`,
-    'Case studies of software CamboWeb built for Cambodian businesses: a tablet POS for a bar, an offline lab system and a bilingual e-invitation.',
+    `Client work: booking platform, POS and lab software | ${BRAND}`,
+    'Case studies of software CamboWeb built in Cambodia: the KhmerRooms hotel booking platform and apps, a tablet POS for a bar, an offline lab system and a bilingual e-invitation.',
   ],
   '/about': [
     `About us: a web studio in Phnom Penh | ${BRAND}`,

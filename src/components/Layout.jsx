@@ -112,6 +112,7 @@ export default function Layout() {
           <nav aria-label={t('Company', 'ក្រុមហ៊ុន')}>
             <h3>{t('Company', 'ក្រុមហ៊ុន')}</h3>
             <Link to="/about#process">{t('How we work', 'របៀបយើងធ្វើការ')}</Link>
+            <Link to="/work/khmerrooms">KhmerRooms</Link>
             <Link to="/work/lori-pos">LoRi POS</Link>
             <Link to="/work/saravoan-labo">Saravoan Labo</Link>
           </nav>

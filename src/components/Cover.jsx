@@ -18,6 +18,16 @@ export default function Cover({ project, large = false }) {
     ref.current.style.setProperty('--ty', 0)
   }
 
+  // A finished marketing image fills the whole cover, with no device frame.
+  if (project.coverImg) {
+    return (
+      <div ref={ref} className={`cover cover-${project.cover} cover-photo ${large ? 'cover-lg' : ''}`}>
+        <img className="cp-std" src={project.coverImg} alt="" />
+        {project.coverImgWide && <img className="cp-wide" src={project.coverImgWide} alt="" />}
+      </div>
+    )
+  }
+
   const device =
     project.cover === 'lori' ? <Tablet /> :
     project.cover === 'saravoan' ? <Laptop src={project.screenshot} /> :

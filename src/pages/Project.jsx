@@ -58,7 +58,7 @@ export default function Project() {
       {p.screens && (
         <section className="wrap row">
           <h2>{t('Real screens', 'អេក្រង់ពិត')}</h2>
-          <div className="screens">
+          <div className={`screens ${raw.screensLayout === 'phones' ? 'screens-phones' : ''}`}>
             {p.screens.map(([src, c]) => (
               <figure key={src}><img src={src} alt={c} loading="lazy" /><figcaption>{c}</figcaption></figure>
             ))}

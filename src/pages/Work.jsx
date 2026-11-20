@@ -14,8 +14,8 @@ export default function Work() {
           <p className="eyebrow">{t('Our work', 'ស្នាដៃរបស់យើង')}</p>
           <h1>{t('We build the software Cambodian businesses run on.', 'យើងបង្កើតកម្មវិធីដែលអាជីវកម្មខ្មែរប្រើប្រាស់ប្រចាំថ្ងៃ។')}</h1>
           <p className="lead">{t(
-            'A bar’s tablet POS, a medical lab’s desktop app, invitations every guest opens on their phone. Each one is in daily use by a real client.',
-            'ប្រព័ន្ធ POS ថេប្លេតរបស់បារ កម្មវិធីកុំព្យូទ័ររបស់មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ និងធៀបដែលភ្ញៀវបើកលើទូរស័ព្ទ។ ទាំងអស់កំពុងប្រើប្រាស់ពិតប្រាកដដោយអតិថិជន។',
+            'A hotel booking platform with iOS and Android apps, a bar’s tablet POS, a medical lab’s desktop app and invitations guests open on their phone. Each one is in daily use.',
+            'វេទិកាកក់សណ្ឋាគារ ជាមួយកម្មវិធី iOS និង Android ប្រព័ន្ធ POS ថេប្លេតរបស់បារ កម្មវិធីកុំព្យូទ័ររបស់មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ និងធៀបដែលភ្ញៀវបើកលើទូរស័ព្ទ។ ទាំងអស់កំពុងប្រើប្រាស់ពិតប្រាកដ។',
           )}</p>
           <div className="actions">
             <a className="btn btn-ink" href="#work">{t('See the case studies', 'មើលករណីសិក្សា')}</a>
@@ -31,8 +31,8 @@ export default function Work() {
         <div className="head-row">
           <h2 id="work-h" className="h-section">{t('Client work', 'ស្នាដៃ')}</h2>
           <p>{t(
-            'Three projects built and shipped in 2026, from a bar in Phnom Penh to a lab that works offline.',
-            'គម្រោងបីដែលបានបង្កើត និងដាក់ឱ្យប្រើក្នុងឆ្នាំ 2026 ចាប់ពីបារមួយនៅភ្នំពេញ ដល់មន្ទីរពិសោធន៍ដែលដំណើរការដោយគ្មានអ៊ីនធឺណិត។',
+            'Four projects built and shipped in 2026, from a nationwide booking platform to a lab that works offline.',
+            'គម្រោងបួនដែលបានបង្កើត និងដាក់ឱ្យប្រើក្នុងឆ្នាំ 2026 ចាប់ពីវេទិកាកក់ទូទាំងប្រទេស ដល់មន្ទីរពិសោធន៍ដែលដំណើរការដោយគ្មានអ៊ីនធឺណិត។',
           )}</p>
         </div>
         <div className="chapters">

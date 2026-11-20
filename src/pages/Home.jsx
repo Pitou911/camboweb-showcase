@@ -261,11 +261,11 @@ function Templates() {
 export default function Home() {
   const { t, pick } = usePrefs()
   const stats = [
-    ['check', '3', t('client systems live', 'ប្រព័ន្ធអតិថិជនកំពុងដំណើរការ')],
+    ['check', '4', t('client systems live', 'ប្រព័ន្ធអតិថិជនកំពុងដំណើរការ')],
     ['layers', '11', t('live templates', 'គំរូដែលសាកល្បងបាន')],
     ['lang', '2', t('languages, Khmer & English', 'ភាសា ខ្មែរ និងអង់គ្លេស')],
-    ['shield', '~130', t('automated tests on LoRi POS', 'តេស្តស្វ័យប្រវត្តិលើ LoRi POS')],
-    ['bolt', t('7 wks', '៧ សប្តាហ៍'), t('from prototype to launch', 'ពីគំរូដល់ដំណើរការពិត')],
+    ['shield', '~1,300', t('automated tests on KhmerRooms', 'តេស្តស្វ័យប្រវត្តិលើ KhmerRooms')],
+    ['bolt', '4', t('platforms: web, iOS, Android, desktop', 'វេទិកា៖ វេប iOS Android និងកុំព្យូទ័រ')],
   ]
   return (
     <>
@@ -319,7 +319,7 @@ export default function Home() {
           action={<Link className="btn btn-ink btn-sm" to="/work">{t('View all projects', 'មើលគម្រោងទាំងអស់')} <Icon name="arrow" size={16} /></Link>}
         />
         <div className="proj">
-          {projects.map((raw) => {
+          {projects.slice(0, 3).map((raw) => {
             const p = pick(raw)
             return (
               <Link key={p.slug} to={`/work/${p.slug}`} className="proj-card">

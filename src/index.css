@@ -1197,3 +1197,21 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .story-en .kh-text { font-size: 34px; line-height: 1.45; margin-top: 22px; }
 .story-en .story-points li { font-size: 33px; font-weight: 500; }
 .story-en .story-cta b { font-family: "Figtree", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em; }
+
+/* ---------- KhmerRooms: full-image cover, phone screenshots, 1 + 3 work layout ---------- */
+.cover-khmerrooms { background: #1f5f4a; }
+.cover-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.screens.screens-phones { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.screens-phones img { border-radius: 22px; }
+@media (max-width: 720px) { .screens.screens-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1081px) {
+  .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .chapter:not(:first-child) .chapter-text .facts { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+}
+.cover-photo .cp-wide { display: none; }
+.cover-lg .cp-wide, .chapter:first-child .cp-wide { display: block; }
+.cover-lg:has(.cp-wide) .cp-std, .chapter:first-child .cover:has(.cp-wide) .cp-std { display: none; }
+@media (max-width: 900px) {
+  .cover-lg .cp-wide, .chapter:first-child .cp-wide { display: none; }
+  .cover-lg .cp-std, .chapter:first-child .cover .cp-std { display: block !important; }
+}
