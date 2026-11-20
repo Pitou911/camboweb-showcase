@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getProject, projects } from '../data/projects'
 import Cover from '../components/Cover'
 import { usePrefs } from '../prefs'
+import Icon from '../components/Icon'
 
 export default function Project() {
   const { slug } = useParams()
@@ -111,8 +112,12 @@ export default function Project() {
 
       <div className="wrap">
         <Link to={`/work/${next.slug}`} className="next">
-          <span>{t('Next project', 'គម្រោងបន្ទាប់')}</span>
-          <strong>{next.name}</strong>
+          <div>
+            <span>{t('Next project', 'គម្រោងបន្ទាប់')}</span>
+            <strong>{next.name}</strong>
+            <em>{next.type}</em>
+          </div>
+          <span className="circle"><Icon name="arrow" size={20} /></span>
         </Link>
       </div>
     </article>

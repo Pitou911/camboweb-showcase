@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import Cover from '../components/Cover'
-import Hero3D from '../components/Hero3D'
 import { usePrefs } from '../prefs'
 import Floater from '../components/Floater'
 
@@ -9,20 +8,46 @@ export default function Work() {
   const { t, pick } = usePrefs()
   return (
     <>
-      <section className="hero wrap">
-        <div className="hero-text">
-          <p className="eyebrow">{t('Our work', 'ស្នាដៃរបស់យើង')}</p>
-          <h1>{t('We build the software Cambodian businesses run on.', 'យើងបង្កើតកម្មវិធីដែលអាជីវកម្មខ្មែរប្រើប្រាស់ប្រចាំថ្ងៃ។')}</h1>
-          <p className="lead">{t(
-            'A hotel booking platform with iOS and Android apps, a bar’s tablet POS, a medical lab’s desktop app and invitations guests open on their phone. Each one is in daily use.',
-            'វេទិកាកក់សណ្ឋាគារ ជាមួយកម្មវិធី iOS និង Android ប្រព័ន្ធ POS ថេប្លេតរបស់បារ កម្មវិធីកុំព្យូទ័ររបស់មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ និងធៀបដែលភ្ញៀវបើកលើទូរស័ព្ទ។ ទាំងអស់កំពុងប្រើប្រាស់ពិតប្រាកដ។',
+      <section className="wk-hero wrap">
+        <div className="wk-text">
+          <p className="eyebrow" data-anim="up">{t('Our work', 'ស្នាដៃរបស់យើង')}</p>
+          <h1 data-anim="up" style={{ '--d': '80ms' }}>{t(<>Software Cambodian businesses <em>run on.</em></>, <>កម្មវិធីដែលអាជីវកម្មខ្មែរ<em>ប្រើប្រាស់ប្រចាំថ្ងៃ។</em></>)}</h1>
+          <p className="lead" data-anim="up" style={{ '--d': '160ms' }}>{t(
+            'A hotel booking platform with its own apps, a bar’s tablet POS, and a medical lab’s web and desktop systems. Real projects, used every day.',
+            'វេទិកាកក់សណ្ឋាគារ ជាមួយកម្មវិធីទូរស័ព្ទផ្ទាល់ខ្លួន ប្រព័ន្ធ POS ថេប្លេតរបស់បារ និងប្រព័ន្ធវេប និងកុំព្យូទ័ររបស់មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ។ គម្រោងពិត ដែលប្រើប្រាស់រៀងរាល់ថ្ងៃ។',
           )}</p>
-          <div className="actions">
+          <div className="actions" data-anim="up" style={{ '--d': '240ms' }}>
             <a className="btn btn-ink" href="#work">{t('See the case studies', 'មើលករណីសិក្សា')}</a>
             <Link className="btn btn-line" to="/contact">{t('Start a project', 'ចាប់ផ្តើមគម្រោង')}</Link>
           </div>
         </div>
-        <Hero3D />
+
+        <div className="wk-visual" aria-hidden="true">
+          <svg className="wk-curve" viewBox="0 0 600 520" preserveAspectRatio="none">
+            <path d="M-20 430 C 140 520, 300 220, 620 300" />
+            <path d="M-20 470 C 170 540, 330 270, 620 350" />
+          </svg>
+          <Link to="/work/saravoan-labo" className="wk-item wk-window" data-anim="pop" tabIndex={-1}>
+            <div className="wk-bar"><i /><i /><i /></div>
+            <img src="/img/saravoan-web-home.jpg" alt="" />
+            <span className="wk-tag">Saravoan Labo</span>
+          </Link>
+          <Link to="/work/lori-pos" className="wk-item wk-tablet" data-anim="pop" style={{ '--d': '120ms' }} tabIndex={-1}>
+            <img src="/img/lori-floor.jpg" alt="" />
+            <span className="wk-tag">LoRi POS</span>
+          </Link>
+          <Link to="/work/khmerrooms" className="wk-item wk-phone" data-anim="pop" style={{ '--d': '240ms' }} tabIndex={-1}>
+            <div className="wk-screen"><img src="/img/kr-web-mobile.jpg" alt="" /></div>
+            <span className="wk-tag">KhmerRooms</span>
+          </Link>
+        </div>
+
+        <ul className="wk-stats" data-anim="up" style={{ '--d': '300ms' }}>
+          <li><b>4</b><span>{t('projects in daily use', 'គម្រោងកំពុងប្រើប្រាស់')}</span></li>
+          <li><b>{t('Web · iOS · Android', 'វេប · iOS · Android')}</b><span>{t('plus Windows desktop', 'និងកុំព្យូទ័រ Windows')}</span></li>
+          <li><b>327</b><span>{t('API endpoints on KhmerRooms', 'ចំណុចភ្ជាប់ API លើ KhmerRooms')}</span></li>
+          <li><b>{t('Khmer & English', 'ខ្មែរ និងអង់គ្លេស')}</b><span>{t('in every project', 'គ្រប់គម្រោង')}</span></li>
+        </ul>
       </section>
 
       <section className="wrap section" id="work" aria-labelledby="work-h">
