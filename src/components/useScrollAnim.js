@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 // they animate in when they enter the screen and back out when they leave it.
 // Cards in a group get a small stagger (--d). New elements (tab switches, route changes) are picked up too.
 const GROUPS = [
-  ['up', '.sh, .head-row, .hx-text, .page-hero-grid > *, .hero-text, .tabs, .studio, .site-studio, .row, .faq, .screens, .project-head, .next'],
-  ['right', '.hx-visual, .stage-box, .contact-side'],
+  ['up', '.sh, .head-row, .hx-text, .wk-text, .wk-stats, .page-hero-grid > *, .hero-text, .tabs, .studio, .site-studio, .row, .faq, .screens, .project-head, .next'],
+  ['right', '.hx-visual, .wk-visual, .stage-box, .contact-side'],
   ['left', '.contact'],
   ['pop', '.svc > li, .proj-card, .features > li, .steps > li, .chapter, .stats > li, .cta-strip, .work-card, .problems > details'],
 ]
