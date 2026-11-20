@@ -1355,3 +1355,10 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .cs-ph.p0 { left: 70px; transform: rotate(-6deg); }
 .cs-ph.p2 { right: 70px; transform: rotate(6deg); }
 .cs-fb .v1 { height: 500px; }
+/* Instagram KhmerRooms post with real app screens (1080 x 1440) */
+.cs-solo .v1 { height: 600px; }
+.cs-solo .cs-ph { width: 240px; top: 40px; border-radius: 44px; }
+.cs-solo .cs-ph img { border-radius: 36px; }
+.cs-solo .cs-ph.p1 { width: 262px; top: 0; }
+.cs-solo .cs-ph.p0 { left: 50px; }
+.cs-solo .cs-ph.p2 { right: 50px; }

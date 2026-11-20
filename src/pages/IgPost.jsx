@@ -472,7 +472,8 @@ const BUILDS = [
 ]
 function CasePost({ n }) {
   const fb = n.startsWith('fb')
-  const k = n.slice(-1)
+  const solo = n.endsWith('p') // standalone Instagram post with real app screens
+  const k = n.match(/\d/)[0]
   const t = CASES[k]
   useEffect(() => {
     if (document.getElementById('moul-font')) return
@@ -482,8 +483,8 @@ function CasePost({ n }) {
     document.head.appendChild(l)
   }, [])
   return (
-    <div className={`cs ${fb ? 'cs-fb' : ''}`}>
-      <DarkRibbon offset={fb ? 1080 : t.offset} stretch={fb} />
+    <div className={`cs ${fb ? 'cs-fb' : ''} ${solo ? 'cs-solo' : ''}`}>
+      <DarkRibbon offset={fb || solo ? 1080 : t.offset} stretch={fb} />
       <div className="cs-head">
         {fb && <Brand />}
         <p className="eyebrow">{t.eyebrow}</p>
@@ -492,14 +493,14 @@ function CasePost({ n }) {
       </div>
 
       <div className={`cs-visual v${k}`}>
-        {k === '1' && fb && (
+        {k === '1' && (fb || solo) && (
           <>
             <div className="cs-ph p0"><img src="/img/kr-app-home.jpg" alt="" /></div>
             <div className="cs-ph p2"><img src="/img/kr-app-pay.jpg" alt="" /></div>
             <div className="cs-ph p1"><img src="/img/kr-app-hotel.jpg" alt="" /></div>
           </>
         )}
-        {k === '1' && !fb && (
+        {k === '1' && !fb && !solo && (
           <>
             <img className="cs-shot s0" src="/img/kr-discount.jpg" alt="" />
             <img className="cs-shot s2" src="/img/kr-verified.jpg" alt="" />
