@@ -492,7 +492,14 @@ function CasePost({ n }) {
       </div>
 
       <div className={`cs-visual v${k}`}>
-        {k === '1' && (
+        {k === '1' && fb && (
+          <>
+            <div className="cs-ph p0"><img src="/img/kr-app-home.jpg" alt="" /></div>
+            <div className="cs-ph p2"><img src="/img/kr-app-pay.jpg" alt="" /></div>
+            <div className="cs-ph p1"><img src="/img/kr-app-hotel.jpg" alt="" /></div>
+          </>
+        )}
+        {k === '1' && !fb && (
           <>
             <img className="cs-shot s0" src="/img/kr-discount.jpg" alt="" />
             <img className="cs-shot s2" src="/img/kr-verified.jpg" alt="" />

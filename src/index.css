@@ -1348,3 +1348,10 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .wk-phone { aspect-ratio: auto; width: 22%; padding: clamp(5px, 0.55vw, 8px); }
 .wk-phone .wk-screen { height: auto; border-radius: clamp(18px, 2.1vw, 28px); }
 .wk-phone .wk-screen img { height: auto; object-fit: initial; }
+/* Facebook KhmerRooms post: three real iPhone screens */
+.cs-ph { position: absolute; top: 34px; width: 214px; padding: 8px; border-radius: 40px; background: #0b1a20; border: 1px solid rgba(43, 217, 240, 0.35); box-shadow: 0 50px 80px -36px rgba(0, 0, 0, 0.85); }
+.cs-ph img { display: block; width: 100%; border-radius: 32px; }
+.cs-ph.p1 { top: 0; left: 50%; width: 232px; transform: translateX(-50%); z-index: 2; }
+.cs-ph.p0 { left: 70px; transform: rotate(-6deg); }
+.cs-ph.p2 { right: 70px; transform: rotate(6deg); }
+.cs-fb .v1 { height: 500px; }
