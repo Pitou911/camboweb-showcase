@@ -1042,3 +1042,38 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .kh-post .kh-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 30px; }
 .kh-text { font-size: 30px; line-height: 1.75; }
 .kh-tags li { font-size: 30px; font-weight: 400; }
+
+/* ---------- Instagram website-template row (dev-only /ig/web1..3), dark, Khmer ---------- */
+.web-post { position: relative; height: 1440px; color: #e7f1f3; font-family: 'Noto Sans Khmer', 'Figtree', sans-serif;
+  background: radial-gradient(900px 700px at 540px 760px, #0d4560, transparent 70%), #051a26; }
+.web-post > * { position: relative; z-index: 1; }
+.web-post .inv-ribbon { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.web-post .eyebrow { font-family: 'Noto Sans Khmer', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: 0; text-transform: none; color: #5cd3e8; }
+.web-post h2 { font-family: 'Koulen', sans-serif; font-weight: 400; font-size: 92px; line-height: 1.3; letter-spacing: 0; color: #fff; max-width: 13ch; }
+.web-post .kh-text { font-family: 'Noto Sans Khmer', sans-serif; margin-top: 10px; font-size: 29px; line-height: 1.7; color: #a9c2c9; max-width: 26ch; }
+.web-devices { position: relative; height: 560px; }
+.web-browser { position: absolute; left: 0; top: 10px; width: 760px; border-radius: 22px; overflow: hidden; background: #0d1d23; border: 1px solid rgba(43, 217, 240, 0.3); box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.8); }
+.web-bar { display: flex; align-items: center; gap: 9px; padding: 14px 18px; background: #102429; }
+.web-bar i { width: 13px; height: 13px; border-radius: 50%; background: #2a434c; }
+.web-bar span { flex: 1; margin: 0 auto; max-width: 340px; padding: 6px 16px; border-radius: 99px; background: #071318; color: #8199a1; font: 500 19px 'Figtree', sans-serif; text-align: center; }
+.web-browser img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.web-phone.inv-phone { position: absolute; right: 0; top: 40px; width: 250px; padding: 9px; border-radius: 42px; border: 1px solid rgba(43, 217, 240, 0.35); }
+.web-phone.inv-phone img { border-radius: 34px; }
+.web-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
+.web-meta { display: grid; gap: 22px; }
+.web-post .kh-name { background: rgba(255, 255, 255, 0.08); border-color: rgba(43, 217, 240, 0.35); color: #fff; }
+.web-tags { display: flex; flex-wrap: wrap; gap: 12px; max-width: 560px; }
+.web-tags li { padding: 10px 20px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 24px; color: #dbe9ed; }
+.web-post .kh-cta { justify-items: end; }
+.web-post .kh-cta b { font-family: 'Koulen', sans-serif; font-weight: 400; font-size: 34px; color: #fff; }
+.web-post .fb-url { background: #2bd9f0; color: #062029; font-family: 'Figtree', sans-serif; }
+.web-foot { display: grid; gap: 28px; align-items: stretch; }
+.web-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.web-tags { max-width: none; }
+.web-post .kh-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.web-post .kh-cta b, .web-post .fb-url { white-space: nowrap; }
+.web-post .kh-cta b { font-size: 40px; }
+.web-devices { height: 500px; }
+.web-browser { width: 700px; top: 0; }
+.web-phone.inv-phone { width: 226px; top: 24px; }
+.web-post h2 { font-size: 86px; }

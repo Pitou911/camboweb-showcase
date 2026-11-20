@@ -234,8 +234,87 @@ function Showcase({ n }) {
   )
 }
 
+// ---------- Website templates row (dark, Khmer): one template per post ----------
+const WEBS = {
+  web1: {
+    offset: 0, desk: '/img/shot-restaurant.jpg', mob: '/img/ig/m-restaurant.jpg', name: 'Kampot Table', url: 'kampottable.com', sw: ['#14110f', '#d99a3d'],
+    eyebrow: 'គេហទំព័រភោជនីយដ្ឋាន', title: 'កក់តុបានក្នុងពីរបីជំហាន',
+    text: 'ម៉ឺនុយជាដុល្លារ និងរៀល និងការកក់តុតាមអនឡាញ។',
+    tags: ['កក់តុតាមអនឡាញ', 'ម៉ឺនុយ USD និងរៀល', 'ម៉ោងបើក'],
+  },
+  web2: {
+    offset: 1080, desk: '/img/shot-barber.jpg', mob: '/img/ig/m-barber.jpg', name: 'Sharp & Co.', url: 'sharpandco.com', sw: ['#0f0f0f', '#c39a5b'],
+    eyebrow: 'គេហទំព័រហាងកាត់សក់', title: 'ជ្រើសជាង និងម៉ោងទំនេរ',
+    text: 'អតិថិជនជ្រើសសេវា ជាងកាត់សក់ និងម៉ោង រួចទទួលលេខកូដកក់។',
+    tags: ['កក់ ៤ ជំហាន', 'ជ្រើសជាងកាត់សក់', 'បញ្ជីតម្លៃ'],
+  },
+  web3: {
+    offset: 2160, desk: '/img/shot-bar.jpg', mob: '/img/ig/m-bar.jpg', name: 'Lantern Rooftop', url: 'lanternrooftop.com', sw: ['#170c1c', '#f2a65a'],
+    eyebrow: 'គេហទំព័របារ និងឡោន', title: 'កក់តុសម្រាប់យប់នេះ',
+    text: 'នាឡិកាម៉ោងបញ្ចុះតម្លៃ ម៉ឺនុយស្រាក្រឡុក និងព្រឹត្តិការណ៍ប្រចាំសប្តាហ៍។',
+    tags: ['កក់ព្រឹត្តិការណ៍', 'ម៉ោងបញ្ចុះតម្លៃ', 'ម៉ឺនុយស្រាក្រឡុក'],
+  },
+}
+function DarkRibbon({ offset }) {
+  return (
+    <svg className="inv-ribbon" viewBox={`${offset} 0 1080 1440`} aria-hidden="true">
+      <defs>
+        <linearGradient id={`dr${offset}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="3240" y2="0">
+          <stop offset="0" stopColor="#2bd9f0" stopOpacity="0" />
+          <stop offset="0.2" stopColor="#2bd9f0" />
+          <stop offset="0.55" stopColor="#5b8cff" />
+          <stop offset="0.85" stopColor="#2bd9f0" />
+          <stop offset="1" stopColor="#2bd9f0" stopOpacity="0" />
+        </linearGradient>
+        <filter id={`drg${offset}`} x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+      </defs>
+      <path d={RIBBONS[0][0]} stroke="#2bd9f0" strokeWidth="26" opacity="0.3" fill="none" filter={`url(#drg${offset})`} />
+      {RIBBONS.map(([d, w, o]) => <path key={d} d={d} stroke={`url(#dr${offset})`} strokeWidth={w} opacity={o} fill="none" strokeLinecap="round" />)}
+    </svg>
+  )
+}
+function Web({ n }) {
+  const t = WEBS[n]
+  useEffect(() => {
+    if (document.getElementById('koulen-font')) return
+    const l = document.createElement('link')
+    l.id = 'koulen-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Koulen&family=Noto+Sans+Khmer:wght@400;600&display=swap'
+    document.head.appendChild(l)
+  }, [])
+  return (
+    <div className="ig web-post">
+      <DarkRibbon offset={t.offset} />
+      <div>
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p className="kh-text">{t.text}</p>
+      </div>
+      <div className="web-devices">
+        <div className="web-browser">
+          <div className="web-bar"><i /><i /><i /><span>{t.url}</span></div>
+          <img src={t.desk} alt="" />
+        </div>
+        <div className="inv-phone web-phone"><img src={t.mob} alt="" /></div>
+      </div>
+      <div className="web-foot">
+        <div className="web-meta">
+          <span className="kh-name"><i style={{ background: `linear-gradient(135deg, ${t.sw[0]} 50%, ${t.sw[1]} 50%)` }} />{t.name}</span>
+          <ul className="web-tags">{t.tags.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
+        <div className="kh-cta">
+          <b>សាកល្បងដោយឥតគិតថ្លៃ</b>
+          <span className="fb-url">cambo-web.com</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && n.startsWith('web')) return <Web n={n} />
 
   if (n && n.startsWith('tpl')) return <Showcase n={n} />
 
