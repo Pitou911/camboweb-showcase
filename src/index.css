@@ -1280,3 +1280,67 @@ h3, .features h3, .steps h3, .svc h3, .proj-meta h3, .problems summary, .row > h
 .wk-phone .wk-screen img { height: 100%; object-fit: cover; object-position: 30% top; }
 .wk-phone .wk-screen img { object-position: left top; }
 .cover-photo .cp-std { object-position: left center; }
+
+/* ---------- Portfolio posts (dev-only /ig/cs1..3, /ig/fbcs1..3) ---------- */
+.cs { position: relative; width: 1080px; height: 1440px; padding: 96px 90px 90px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; color: #e7f1f3; font-family: 'Battambang', serif;
+  background: radial-gradient(900px 700px at 540px 760px, #0d4560, transparent 70%), #051a26; }
+.cs-fb { height: 1350px; padding: 72px 84px 80px; }
+.cs > * { position: relative; z-index: 1; }
+.cs .inv-ribbon { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.cs .ig-brand { color: #fff; margin-bottom: 34px; font-size: 34px; }
+.cs .ig-brand img { width: 58px; height: 58px; }
+.cs .eyebrow { font-family: 'Battambang', serif; font-weight: 700; font-size: 28px; letter-spacing: 0; text-transform: none; color: #5cd3e8; margin-bottom: 14px; }
+.cs h2 { font-family: 'Moul', serif; font-weight: 400; font-size: 58px; line-height: 1.5; letter-spacing: 0; color: #fff; max-width: 16ch; }
+.cs .kh-text { margin-top: 10px; font-size: 28px; line-height: 1.75; color: #a9c2c9; max-width: 30ch; }
+.cs-fb h2 { font-size: 54px; }
+.cs-fb .kh-text { font-size: 27px; }
+
+.cs-visual { position: relative; height: 560px; flex: none; }
+.cs-fb .cs-visual { height: 500px; }
+
+/* KhmerRooms: three store screenshots, fanned */
+.cs-shot { position: absolute; top: 0; width: 270px; aspect-ratio: 1 / 2; border-radius: 30px; object-fit: cover; border: 1px solid rgba(43, 217, 240, 0.3); box-shadow: 0 50px 80px -36px rgba(0, 0, 0, 0.85); }
+.cs-shot.s1 { left: 50%; width: 280px; transform: translateX(-50%); z-index: 2; }
+.cs-shot.s0 { left: 40px; top: 30px; transform: rotate(-7deg); }
+.cs-shot.s2 { right: 40px; top: 30px; transform: rotate(7deg); }
+.cs-fb .cs-shot { width: 240px; }
+.cs-fb .cs-shot.s1 { width: 250px; }
+.cs-fb .cs-shot.s0 { left: 90px; }
+.cs-fb .cs-shot.s2 { right: 90px; }
+
+/* Saravoan: two browser windows */
+.cs .web-browser { width: auto; }
+.cs-b1 { left: 0; top: 0; width: 720px !important; z-index: 2; }
+.cs-b2 { right: 0; left: auto; top: 150px !important; width: 560px !important; opacity: 0.92; }
+.cs-fb .cs-b1 { width: 660px !important; }
+.cs-fb .cs-b2 { width: 520px !important; top: 130px !important; }
+
+/* What we build: 2 x 2 cards */
+.cs-builds { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; height: 100%; align-content: center; }
+.cs-builds li { display: grid; align-content: start; gap: 10px; padding: 32px 30px; border-radius: 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(43, 217, 240, 0.25); }
+.cs-ic { display: grid; place-items: center; width: 68px; height: 68px; margin-bottom: 8px; border-radius: 50%; background: rgba(43, 217, 240, 0.14); color: #2bd9f0; }
+.cs-builds b { font-size: 32px; font-weight: 700; color: #fff; }
+.cs-builds em { font-style: normal; font: 600 22px 'Figtree', sans-serif; color: #8fb3bd; }
+.cs-fb .cs-builds li { padding: 26px 28px; }
+
+.cs-foot { display: grid; gap: 26px; }
+.cs .kh-name { background: rgba(255, 255, 255, 0.08); border-color: rgba(43, 217, 240, 0.35); color: #fff; }
+.cs .web-tags li { font-family: 'Battambang', serif; font-size: 23px; }
+.cs .kh-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.cs .kh-cta b { font-family: 'Moul', serif; font-weight: 400; font-size: 34px; color: #fff; white-space: nowrap; }
+.cs .fb-url { margin: 0; padding: 20px 36px; font: 700 30px 'Figtree', sans-serif; background: #2bd9f0; color: #062029; white-space: nowrap; }
+.cs .kh-text { max-width: 32ch; }
+.cs-fb .cs-visual { height: 450px; }
+.cs-fb .cs-shot { width: 215px; }
+.cs-fb .cs-shot.s1 { width: 225px; }
+.cs-fb .cs-shot.s0 { left: 120px; top: 24px; }
+.cs-fb .cs-shot.s2 { right: 120px; top: 24px; }
+.cs-fb .cs-b1 { width: 620px !important; }
+.cs-fb .cs-b2 { width: 500px !important; top: 110px !important; }
+.cs-fb .cs-builds li { padding: 22px 26px; gap: 6px; }
+.cs-fb .cs-ic { width: 58px; height: 58px; margin-bottom: 4px; }
+.cs-fb .cs-foot { gap: 22px; }
+.cs-fb .kh-cta { padding-top: 22px; }
+.cs .cs-b2 { right: 0; }
+.cs-b1 { width: 700px !important; }
+.cs-b2 { width: 600px !important; top: 120px !important; }

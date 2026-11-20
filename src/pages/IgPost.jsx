@@ -255,9 +255,9 @@ const WEBS = {
     tags: ['កក់ព្រឹត្តិការណ៍', 'ម៉ោងបញ្ចុះតម្លៃ', 'ម៉ឺនុយស្រាក្រឡុក'],
   },
 }
-function DarkRibbon({ offset }) {
+function DarkRibbon({ offset, stretch = false }) {
   return (
-    <svg className="inv-ribbon" viewBox={`${offset} 0 1080 1440`} aria-hidden="true">
+    <svg className="inv-ribbon" viewBox={`${offset} 0 1080 1440`} preserveAspectRatio={stretch ? 'none' : undefined} aria-hidden="true">
       <defs>
         <linearGradient id={`dr${offset}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="3240" y2="0">
           <stop offset="0" stopColor="#2bd9f0" stopOpacity="0" />
@@ -435,6 +435,116 @@ function FbPost({ n }) {
   )
 }
 
+// ---------- Portfolio row (dark, Khmer, Moul + Battambang): two case studies + "what we build" ----------
+// Instagram: /ig/cs1..cs3 (1080 x 1440, one ribbon across the row). Facebook: /ig/fbcs1..fbcs3 (1080 x 1350).
+const CASES = {
+  1: {
+    offset: 0,
+    eyebrow: 'ករណីសិក្សា · វេទិកាកក់សណ្ឋាគារ',
+    title: ['កក់សណ្ឋាគារ', 'បង់ប្រាក់តាម KHQR'],
+    text: 'គេហទំព័រ កម្មវិធី iOS និង Android និងប្រព័ន្ធគ្រប់គ្រងសណ្ឋាគារ សម្រាប់ KhmerRooms។',
+    name: 'KhmerRooms', sw: ['#1f5f4a', '#f5f0e6'],
+    tags: ['វេប · iOS · Android', 'បង់ប្រាក់ KHQR', 'ខ្មែរ និងអង់គ្លេស'],
+    cta: 'មើលករណីសិក្សា', url: 'cambo-web.com/work',
+  },
+  2: {
+    offset: 1080,
+    eyebrow: 'ករណីសិក្សា · មន្ទីរពិសោធន៍វេជ្ជសាស្ត្រ',
+    title: 'គេហទំព័រ និងប្រព័ន្ធស្នើសុំតេស្ត',
+    text: 'វេជ្ជបណ្ឌិតស្នើសុំតេស្តតាមអនឡាញ ហើយមន្ទីរពិសោធន៍ទទួលដំណឹងតាម Telegram។',
+    name: 'Saravoan Labo', sw: ['#2f7f9a', '#ffffff'],
+    tags: ['គេហទំព័រពីរភាសា', 'ស្នើសុំតេស្តអនឡាញ', 'ជូនដំណឹង Telegram'],
+    cta: 'មើលករណីសិក្សា', url: 'cambo-web.com/work',
+  },
+  3: {
+    offset: 2160,
+    eyebrow: 'អ្វីដែលយើងបង្កើត',
+    title: 'គម្រោងបន្ទាប់ អាចជារបស់អ្នក',
+    text: 'ពីគេហទំព័រអាជីវកម្ម ដល់កម្មវិធីទូរស័ព្ទ និងប្រព័ន្ធ POS។ ជាភាសាខ្មែរ និងអង់គ្លេស។',
+    cta: 'ទាក់ទងមកយើង', url: 'cambo-web.com',
+  },
+}
+const BUILDS = [
+  ['globe', 'គេហទំព័រអាជីវកម្ម', 'KhmerRooms · Saravoan'],
+  ['bolt', 'កម្មវិធី iOS និង Android', 'KhmerRooms'],
+  ['pos', 'ប្រព័ន្ធ POS ថេប្លេត', 'LoRi POS'],
+  ['desktop', 'កម្មវិធីកុំព្យូទ័រ', 'Saravoan Labo'],
+]
+function CasePost({ n }) {
+  const fb = n.startsWith('fb')
+  const k = n.slice(-1)
+  const t = CASES[k]
+  useEffect(() => {
+    if (document.getElementById('moul-font')) return
+    const l = document.createElement('link')
+    l.id = 'moul-font'; l.rel = 'stylesheet'
+    l.href = 'https://fonts.googleapis.com/css2?family=Moul&family=Battambang:wght@400;700&display=swap'
+    document.head.appendChild(l)
+  }, [])
+  return (
+    <div className={`cs ${fb ? 'cs-fb' : ''}`}>
+      <DarkRibbon offset={fb ? 1080 : t.offset} stretch={fb} />
+      <div className="cs-head">
+        {fb && <Brand />}
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h2>{Array.isArray(t.title) ? t.title.map((x, i) => <span key={x}>{i > 0 && <br />}{x}</span>) : t.title}</h2>
+        <p className="kh-text">{t.text}</p>
+      </div>
+
+      <div className={`cs-visual v${k}`}>
+        {k === '1' && (
+          <>
+            <img className="cs-shot s0" src="/img/kr-discount.jpg" alt="" />
+            <img className="cs-shot s2" src="/img/kr-verified.jpg" alt="" />
+            <img className="cs-shot s1" src="/img/kr-tripmatch.jpg" alt="" />
+          </>
+        )}
+        {k === '2' && (
+          <>
+            <div className="web-browser cs-b2">
+              <div className="web-bar"><i /><i /><i /><span>Our tests</span></div>
+              <img src="/img/saravoan-web-tests.jpg" alt="" />
+            </div>
+            <div className="web-browser cs-b1">
+              <div className="web-bar"><i /><i /><i /><span>Saravoan Medical Laboratory</span></div>
+              <img src="/img/saravoan-web-home.jpg" alt="" />
+            </div>
+          </>
+        )}
+        {k === '3' && (
+          <ul className="cs-builds">
+            {BUILDS.map(([icon, label, ex]) => (
+              <li key={label}>
+                <span className="cs-ic"><Icon name={icon} size={34} /></span>
+                <b>{label}</b>
+                <em>{ex}</em>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="cs-foot">
+        {t.name ? (
+          <div className="web-meta">
+            <span className="kh-name"><i style={{ background: `linear-gradient(135deg, ${t.sw[0]} 50%, ${t.sw[1]} 50%)` }} />{t.name}</span>
+            <ul className="web-tags">{t.tags.map((x) => <li key={x}>{x}</li>)}</ul>
+          </div>
+        ) : (
+          <ul className="web-tags">
+            <li>៤ គម្រោងកំពុងប្រើប្រាស់</li>
+            <li>វេប · iOS · Android · កុំព្យូទ័រ</li>
+          </ul>
+        )}
+        <div className="kh-cta">
+          <b>{t.cta}</b>
+          <span className="fb-url">{t.url}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ---------- Telegram story (1080 x 1920, 9:16): websites first ----------
 // Top ~250px and bottom ~300px stay free for Telegram's header and reply bar.
 const STORY_WAVES = [
@@ -509,6 +619,8 @@ function Story({ lang = 'kh' }) {
 
 export default function IgPost() {
   const { n } = useParams()
+
+  if (n && (n.startsWith('cs') || n.startsWith('fbcs'))) return <CasePost n={n} />
 
   if (n === 'story') return <Story />
   if (n === 'story-en') return <Story lang="en" />
